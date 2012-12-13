@@ -1,0 +1,279 @@
+@charset "utf-8";
+/* CSS Document */
+*{
+	margin:0px auto;
+	font-family:"Comic Sans MS", cursive;
+}
+a:active{
+	
+color:#000000;	
+}
+body{
+	background-image:url(../img/background-image.png);
+	background-repeat:repeat;
+	background-position:50% 50%;
+	
+	
+	
+}
+#wrap{
+	margin:0 auto;
+	width: 1024px;
+	background-color:#ffffff;
+	height:auto;
+}
+#header {
+background-color:#fff;
+height: 300px;
+margin: 12px 0px 3px 5px;
+border:1px solid #031289;
+width: 1010px;
+}
+/*.span9{
+	width:729px;
+}*/
+
+#nav{
+	width:1012px;
+	background-image:url(../img/Buttons-Background.png);
+	background-repeat:repeat-x;
+	border-bottom:#031289 solid 1px;
+	margin-top:20px;
+	height:25px;
+	margin-left:5px;
+	
+}
+#nav a{
+color:#0924F9;
+font-size:14px;
+}
+#nav ul
+{
+list-style-type:none;
+padding:0;
+}
+#nav li
+{
+display:inline;
+line-height:3px;
+margin-right:20px;
+}
+/*.navborder{
+	border-right:1px solid #000;
+}*/
+#nav li + li {
+  border-left: 1px solid #0924F9;
+  padding-left:25px;
+}
+#nav a:hover{
+	color:#F20505;
+	text-decoration:none;
+}
+
+/*logo*/
+#logo img {
+margin: 14px 10px 0px 17px;
+}
+
+/*banner*/
+#banner img {
+margin-bottom: 10px;
+margin-top: -304px;
+margin-left: 0px;
+margin-right: -228px;
+}
+
+
+/*teaser*/
+.teaser{
+	width:1012px;
+	height:auto;
+	margin-top:20px;
+	margin-bottom:30px;
+	margin-left:5px;
+	
+}
+.teaser p{
+	color:#000000;
+	font-size:18px;
+}
+/*first row */
+#news{
+	margin-left: 6px;
+}
+#newsbox{
+margin-left:7px;	
+border: 1px solid #031289;
+margin-top:27px;
+height:300px;
+}
+#news h4 {
+margin-left: 7px;
+color: #031289;
+margin-bottom: -19px;
+}
+.news-box {
+height: 70px;
+margin-top: 5px;
+}
+#news h4{
+margin-left:10px;	
+color:#031289;	
+}
+.news-teaser{
+width:180px;
+margin-left:10px;
+margin-right:5px;
+height:auto;
+}
+.news-teaser a{
+	text-decoration:none;
+	
+}
+.news-teaser a:hover{
+	text-decoration:none;	
+	color:#0924F9;
+}
+.news-teaser a:visited{
+	text-decoration:underline;	
+}
+.news-pic{
+ width:100px;
+/* float:right;*/
+ margin-right:5px;	
+ height:100px;
+}
+.align-kulia{
+float:right;
+margin-right:10px;	
+}
+#youtube{
+	margin-left:32px;
+}
+#youtube h4{
+	text-align:center;
+	color:#031289;		
+}
+#linkbutton{
+	background-image:url(../img/Button.png);
+	background-repeat:no-repeat;
+	height:102px;
+	margin-top: 96px;
+	margin-left:40px;
+}
+#linkbutton p{
+	text-align: center;
+	padding-right: 6px;
+	padding-top: 28px;
+	font-size:18px;
+}
+#linkbutton2{
+	background-image:url(../img/Button.png);
+	background-repeat:no-repeat;
+	height:102px;
+	margin-top: 45px;
+	margin-left:40px;
+}
+#linkbutton2 p{
+	text-align: center;
+	padding-right: 6px;
+	padding-top: 28px;
+	font-size:18px;
+}
+
+/*second row*/
+#fb{
+margin-left:7px;
+width:321px;
+height:auto;	
+margin-top:10px;
+margin-bottom: 60px;
+}
+#slideshow{
+	margin-left:32px;
+	width:400px;
+	height:300px;
+	margin-bottom:40px;
+	margin-top:10px;
+}
+
+
+#linkbutton3{
+	background-image:url(../img/Button.png);
+	background-repeat:no-repeat;
+	height:102px;
+	margin-left:40px;
+	
+}
+#linkbutton3 p{
+	text-align: center;
+	padding-right: 6px;
+	padding-top: 28px;
+	margin-top: 47px;
+	font-size:18px;
+}
+#linkbutton a, #linkbutton2 a, #linkbutton3 a{
+color:#000000;
+}
+#linkbutton a:hover, #linkbutton2 a:hover, #linkbutton3 a:hover{
+color:#0924F9;
+text-decoration:none;
+}
+/*footer*/
+
+#footer{
+	background:#ffffff;
+	width:1024px;
+	height:80px;
+	margin-bottom:-20px;
+	
+	
+}
+#fback{
+	border-top:#031289 solid 1px;
+	background-image:url(../img/Footer-Background.png);
+	background-repeat:repeat-x;
+	width:1012px;
+	height:60px;
+	margin-left:6px;
+}
+#fnav{
+	height:30px;
+	
+}
+#fnav a{
+color:#0924F9;
+text-decoration:underline #0924F9;	
+}
+#fnav a:hover{
+color:#F20505;
+text-decoration:underline #F20505;	
+}
+#fnav ul
+{
+list-style-type:none;
+padding:0;
+}
+#fnav li
+{
+	float:right;
+    line-height:3px;
+    margin-right:10px;
+	text-decoration:underline;
+	font-size:12px;
+}
+/*.navborder{
+	border-right:1px solid #000;
+}*/
+#fnav li + li {
+  border-right: 1px solid #0924F9;
+  padding-right:25px;
+}
+#fnav li:hover{
+	color:#fff;
+}
+#fnav li:active{
+	color:#000000;
+}
+.carousel .carousel-control { visibility: hidden; }
+.carousel:hover .carousel-control { visibility: visible; }

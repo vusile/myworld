@@ -1,0 +1,119 @@
+@charset "utf-8";
+/* CSS Document */
+
+.span12{
+	width:1012px;
+	height:auto;
+	margin-top:10px;
+	margin-bottom:30px;
+	
+}
+.span12 p{
+	margin-right: 15px;
+}
+.sidebar{
+	/*width:337px;*/
+	height:auto;
+	margin-top:10px;
+	margin-bottom:30px;
+	/*float:left;*/
+	
+}
+.content{
+	/*width:1011px;*/
+	height:auto;
+	margin-top:10px;
+	margin-bottom:30px;
+	/*float:right;*/
+}
+.img1{
+	border:#0924F9 solid 1px;
+	margin:0px 15px 8px 0px;
+	float:left;	
+	width:250px;
+	height:270px;
+}
+.img2{
+	border:#0924F9 solid 1px;
+	float:right;	
+	margin: 5px 15px 20px 10px;
+	width:300px;
+	height:200px;
+}
+.img3{
+	border:#0924F9 solid 1px;
+	margin:0px 15px 8px 6px;
+	float:left;	
+	width:250px;
+	height:150px;
+}
+.img4{
+	border:#0924F9 solid 1px;
+	margin:0px 15px 8px 0px;
+	float:left;	
+	
+}
+.content p{
+	margin-right:10px;
+}
+.content a{
+	text-decoration:underline;
+}
+.img5{
+	border:#0924F9 solid 1px;
+    margin: 5px 5px 5px 10px;
+	float:right;
+	
+}
+input, textarea, .uneditable-input {
+width: 400px;
+}
+
+.nav-list {
+margin-right: 70px;
+}
+#nav{
+	margin-top:-62px;
+}
+#slideshow{
+	
+	margin-top:10px;
+	margin-left:0px;
+	width:500px;
+	height:250px;
+	margin-bottom:100px;
+}
+#linkbutton3 {
+margin-left: 4px;
+margin-top: 95px;
+}
+#linkbutton3 p {
+padding-right: 60px;
+}
+.nav-list > li > a{
+background-image:url(../img/Buttons-Background.png);
+background-repeat:repeat-x;
+width:141px;
+margin-left:10px;
+}
+
+.nav-list > li > a:hover{
+color:#F20505;
+}
+
+.activex a{
+	color:#F20505;
+	
+}
+.sidebarp{
+	margin-top:20px;
+	font-size:17px;
+	
+}
+.spam{
+	
+	width:200px;
+}
+.btn {
+margin-top: 17px;
+}
