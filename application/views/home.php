@@ -2,7 +2,7 @@
 <div class="row">
 <div class="span12">
 <div class="teaser">
-  <?php echo $home ?>
+   <?php echo $home ?>
   </div>
 </div>
 </div>
@@ -13,7 +13,8 @@
     <div id="news">
        <h4>News Feed</h4>
       <div id="newsbox">    <!--start of news-->
-		<?php foreach($news->result() as $article): ?>
+          <!--start of news box-->
+       <?php foreach($news->result() as $article): ?>
         <div class="news-box">
 		<?php
 		if($article->thumb_nail != ''):
@@ -26,7 +27,8 @@
 		</div>
 		</div>
 		<div style = 'clear:both; margin:20px 0;   '></div>
-        <?php endforeach; ?>
+        <?php endforeach; ?> 
+        
       </div>
     </div>
   </div>    <!--end of span 4
@@ -47,22 +49,27 @@
   <div id="linkbutton2">
     <a href="#"> <p>What is Play <br>Based Learning</p></a>
      </div>
+       <div id="linkbutton3">
+     <a href="#"><p>For Whatever<br> Rupal Forgot</p></a>
+     </div>
   </div>
   </div>    <!--end of span3-->
 
- <!--end of row-->
+</div>  <!--end of row-->
 <div class="row">
   <div class="span4">
       <div id="fb">
-     <div class="fb-like-box" data-href="http://www.facebook.com/myworldpreschool?fref=ts" data-width="321" data-height="300" data-show-faces="true" data-stream="false" data-header="true"></div>
+     <div class="fb-like-box" data-href="http://www.facebook.com/myworldpreschool?fref=ts" data-width="295" data-height="300" data-show-faces="true" data-stream="false" data-header="true"></div>
       </div>
   </div>
   
   <div class="span5">
-     <div id="slideshow">
+     <div id="slideshow"> <!-- start of slideshow-->
 <div id="myCarousel" class="carousel slide"><!-- class of slide for animation -->
-  <div class="carousel-inner">
-	<?php foreach($images->result() as $image): ?>
+  <div class="carousel-inner">  <!--start of c- inner-->
+  
+ <!-- pic no 1 goes here-->
+    <?php foreach($images->result() as $image): ?>
     <div class="item"><!-- class of active since it's the first item -->
       <img src="img/<?php echo $image->photo ?>"  alt="<?php echo $image->caption; ?>" />
       <div class="carousel-caption">
@@ -74,6 +81,7 @@
       </div>
     </div>
 	<?php endforeach; ?>
+     <!-- end pic no 4 goes here-->
     
   </div><!-- /.carousel-inner -->
   <!--  Next and Previous controls below
@@ -86,18 +94,33 @@
 
   
      
-     </div>
-  </div>
+     </div> <!-- end of slideshow-->
+ 
+ 
+  </div> <!-- end of span 5-->
   
   <div class="span3">
-     <div id="linkbutton3">
-     <a href="#"><p>For Whatever<br> Rupal Forgot</p></a>
+    <div id="partiners">
+       <h4>Our Partners</h4>
+        <ul>
+        <li><a href="#">Link 1</a></li>
+        <li><a href="#">Link 2</a></li>
+        <li><a href="#">Link 3</a></li>
+        <li><a href="#">Link 4</a></li>
+        <li><a href="#">Link 5</a></li>
+        <li><a href="#">Link 6</a></li>
+        <li><a href="#">Link 7</a></li>
+      </ul>
+       
      </div>
+  
   
   </div>
   </div>    <!--end of span3-->
 
 </div>  <!--end of row-->
+
+<!--start of footer-->
 
 
 
