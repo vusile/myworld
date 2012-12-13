@@ -10,25 +10,25 @@
 }
 .span12 p{
 	margin-right: 15px;
+	margin-left:5px;
 }
 .sidebar{
 	/*width:337px;*/
 	height:auto;
 	margin-top:10px;
 	margin-bottom:30px;
-	/*float:left;*/
+	
 	
 }
 .content{
-	/*width:1011px;*/
 	height:auto;
 	margin-top:10px;
 	margin-bottom:30px;
-	/*float:right;*/
+	margin-right:20px;
 }
 .img1{
 	border:#0924F9 solid 1px;
-	margin:0px 15px 8px 0px;
+	margin:0px 15px 8px 6px;
 	float:left;	
 	width:250px;
 	height:270px;
@@ -55,6 +55,7 @@
 }
 .content p{
 	margin-right:10px;
+	
 }
 .content a{
 	text-decoration:underline;
@@ -63,6 +64,26 @@
 	border:#0924F9 solid 1px;
     margin: 5px 5px 5px 10px;
 	float:right;
+	
+}
+.img6{
+	border:#0924F9 solid 1px;
+    margin: 5px 5px 5px 10px;
+	float:right;
+	
+	
+}
+.img7{
+	
+	border:#0924F9 solid 1px;
+	margin:0px 15px 8px 0px;
+	float:left;	
+	
+}
+.img8{
+	border:#0924F9 solid 1px;
+	margin:0px 15px 8px 0px;
+	float:left;	
 	
 }
 input, textarea, .uneditable-input {
@@ -93,7 +114,7 @@ padding-right: 60px;
 .nav-list > li > a{
 background-image:url(../img/Buttons-Background.png);
 background-repeat:repeat-x;
-width:141px;
+width:147px;
 margin-left:10px;
 }
 
@@ -116,4 +137,9 @@ color:#F20505;
 }
 .btn {
 margin-top: 17px;
+}
+.resizeb{
+	
+	margin-left:20px;
+	margin-right:20px;
 }
