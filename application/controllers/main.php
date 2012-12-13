@@ -408,9 +408,9 @@ class Main extends CI_Controller {
 		}
 		//$data['details'] = $this->fetch_page('CONTACT');
 		//$data['title'] = $header['title'] = $data['details']->title;
-		$this->load->view('Header',$header);
-		$this->load->view('Contact',$data);
-		$this->load->view('Footer');
+		$this->load->view('header',$header);
+		$this->load->view('contact',$data);
+		$this->load->view('footer');
 	}
 	
 	function validate_captcha($captcha)
