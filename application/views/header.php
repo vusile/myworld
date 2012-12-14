@@ -5,6 +5,7 @@
 <meta charset="utf-8">   
 <title><?php echo $title ?></title>   
 <meta name="description" content="<?php if(isset($description)) echo $description; ?>">  
+<link rel="stylesheet" type="text/css" href="css/custom.css">
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 <link rel="icon" type="image/ico" href="img/favicon.ico"/>
