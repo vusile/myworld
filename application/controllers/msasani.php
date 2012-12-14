@@ -20,7 +20,7 @@ class Msasani extends CI_Controller {
 	public function index()
 	{
 		
-		$this->db->where('identifier','HOME');
+		$this->db->where('identifier','MSASANI');
 		$pages = $this->db->get('mw_pages');
 		$data['home'] = $pages->row()->text;
 		$header['title'] = $pages->row()->title;
