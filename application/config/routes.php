@@ -40,7 +40,8 @@
 
 $route['default_controller'] = "main";
 $route['404_override'] = '';
-$route['^(?!backend|auth|examples|msasani).*'] = "main/$0";
+$route['^(?!backend|auth|examples|msasani|upanga).*'] = "main/$0";
+$route['training-center'] = "training";
 $route['our-songs'] = "main/songs";
 $route['contact-us'] = "main/contact";
 $route['about-us'] = "main/about";

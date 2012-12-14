@@ -176,9 +176,6 @@ class Main extends CI_Controller {
 	
 	function the_directory()
 	{
-		$header['projects'] = $this->get_projects(1);
-		$header['publications'] = $this->get_projects(2);
-		
 		//$this->db->order_by('company_name');
 	//	$data['partners'] = $this->db->get('mw_directory');
 		
@@ -281,9 +278,7 @@ class Main extends CI_Controller {
 		
 		$query = $this->db->insert_string('mw_captcha', $cap_data);	
 		$this->db->query($query);
-		
-		$header['projects'] = $this->get_projects(1);
-		$header['publications'] = $this->get_projects(2);
+	
 		
 		switch($item)
 		{

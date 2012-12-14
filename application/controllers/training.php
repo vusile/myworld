@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Msasani extends CI_Controller {
+class Training extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -20,7 +20,7 @@ class Msasani extends CI_Controller {
 	public function index()
 	{
 		
-		$this->db->where('identifier','MSASANI');
+		$this->db->where('identifier','TRAINING');
 		$pages = $this->db->get('mw_pages');
 		$data['text'] = $pages->row()->text;
 		$header['title'] = $pages->row()->title;

@@ -66,9 +66,11 @@ class Backend extends CI_Controller {
 	
 	function mw_pages($type=0)
 	{
+		if($type != 0)
+			$this->grocery_crud->where('type',$type);
 		$this->grocery_crud->unset_delete();
-		$this->grocery_crud->unset_fields('thumb_nail');
-		$this->grocery_crud->unset_columns('thumb_nail');
+		$this->grocery_crud->unset_fields('thumb_nail','type');
+		$this->grocery_crud->unset_columns('thumb_nail','type');
 		$this->grocery_crud->callback_after_insert(array($this, 'generate_thumb'));
 		$this->grocery_crud->callback_after_update(array($this, 'generate_thumb'));
 		$output = $this->grocery_crud->render();
@@ -79,6 +81,11 @@ class Backend extends CI_Controller {
 	
 	function generate_thumb($post_array,$primary_key)
 	{
+	
+		$data = array (
+			'type' => $this->uri->segment(3)
+		);
+		
 		$doc = new DOMDocument();
 		@$doc->loadHTML($post_array['text']);
 
