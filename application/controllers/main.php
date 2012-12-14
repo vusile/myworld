@@ -150,26 +150,26 @@ class Main extends CI_Controller {
 		
 	public function blog()
 	{
-		$data['title'] =$header['title'] = 'Nipe Fagio Blog';
+		$data['title'] = $header['title'] = 'My World Preschool Blog';
 		
 		$header['projects'] = $this->get_projects(1);
 		$header['publications'] = $this->get_projects(2);	
-		$this->load->view('Header',$header);
-		$this->load->view('Blog',$data);
-		$this->load->view('Footer');
+		$this->load->view('header',$header);
+		$this->load->view('summary',$data);
+		$this->load->view('footer');
 	}	
 	
 	public function news()
 	{
-		$data['title'] =$header['title'] = 'Nipe Fagio News';
+		$data['title'] =$header['title'] = 'My World Preschool News';
 		$this->db->order_by('date','desc');
 		$data['news'] = $this->db->get('mw_news');
 		$header['projects'] = $this->get_projects(1);
 		$header['publications'] = $this->get_projects(2);
 			
-		$this->load->view('Header',$header);
-		$this->load->view('News',$data);
-		$this->load->view('Footer');
+		$this->load->view('header',$header);
+		$this->load->view('summary',$data);
+		$this->load->view('footer');
 	}	
 	
 	public function newsletter()

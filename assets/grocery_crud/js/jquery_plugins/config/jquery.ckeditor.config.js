@@ -16,10 +16,10 @@ $(function(){
 	
 		toolbar :
 		[
-			{ name: 'basicstyles', items : [ 'Bold','Italic','Underline' ] },
+			{ name: 'basicstyles', items : [ 'Bold','Italic','Underline','Link','Unlink'] },
 			{ name: 'paragraph', items : [ 'NumberedList','BulletedList','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock' ] },
-			{ name: 'insert', items : [ 'Image','Flash','Table','HorizontalRule','Smiley','SpecialChar','PageBreak','Iframe','MediaEmbed' ] },
-			/*{ name: 'styles', items : [ 'Styles','Format','Font','FontSize' ] }*/
+			{ name: 'insert', items : [ 'Image','HorizontalRule','MediaEmbed' ] },
+			{ name: 'styles', items : [ 'Styles'/*,'Format'*/] }
 		],
 		width:700,
 		filebrowserBrowseUrl : 'http://localhost/myworld/ckfinder/ckfinder.html',
@@ -30,7 +30,13 @@ $(function(){
 		filebrowserFlashUploadUrl : 'http://localhost/myworld/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash',
 		filebrowserWindowWidth : '1000',
 		filebrowserWindowHeight : '700',
-		extraPlugins: 'MediaEmbed'
+		extraPlugins: 'MediaEmbed',
+		format_p: [{ element : 'p', attributes : { 'class' : 'contentFonts' } }],
+		forcePasteAsPlainText : true,
+		pasteFromWordRemoveStyles : true,
+		stylesSet :[
+			{ name : 'Introduction Emphasis', element : 'strong' }
+		]
 		
 	
 	

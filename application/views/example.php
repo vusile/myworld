@@ -32,10 +32,14 @@ a:hover
 <body>
 	<div>
 		<a href='<?php echo site_url('logout')?>'>Logout</a> |
-		<a href='<?php echo site_url('backend/mw_pages')?>'>Pages</a> |
+		<a href='<?php echo site_url('backend/mw_pages/1')?>'>Main Pages</a> |
+		<a href='<?php echo site_url('backend/mw_pages/2')?>'>My World Upanga Pages</a> |
+		<a href='<?php echo site_url('backend/mw_pages/3')?>'>My World Msasani Pages</a> |
+		<a href='<?php echo site_url('backend/mw_pages/4')?>'>My World Community Centre Pages</a> |
+		<a href='<?php echo site_url('backend/mw_pages/5')?>'>My World Training Centre Pages</a> |
 		<a href='<?php echo site_url('backend/mw_news')?>'>News</a> |
-		<a href='<?php echo site_url('backend/mw_albums')?>'>Photo Albums</a> |
 		<a href='<?php echo site_url('backend/mw_image_scroller')?>'>Image Scroller</a> |
+		<a href='<?php echo site_url('backend/mw_messages')?>'>Site Messages</a> | 
 		<a href='<?php echo site_url('backend/mw_settings')?>'>Settings</a>
 
 	</div>
