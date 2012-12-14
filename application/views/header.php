@@ -7,7 +7,7 @@
 <meta name="description" content="<?php if(isset($description)) echo $description; ?>">  
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-<link rel="icon" type="image/ico" href="http://localhost/my_world/img/favicon.ico"/>
+<link rel="icon" type="image/ico" href="img/favicon.ico"/>
 </head>
 <body>
 <div id="fb-root"></div>
@@ -189,7 +189,7 @@
         <li ><a href="community-center">Community Center</a></li>
         <li><a href="blog">Blog</a></li>
         <li ><a href="news">News</a></li>
-         <li ><a href="about">About Us</a></li>
+         <li ><a href="about-us">About Us</a></li>
         <li><a href="contact-us">Contact Us</a></li
     ></ul>
       </div>

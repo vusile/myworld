@@ -140,23 +140,14 @@ class Main extends CI_Controller {
 	}
 	
 	public function about()
-	{		
-		$header['projects'] = $this->get_projects(1);
-		$header['publications'] = $this->get_projects(2);
+	{
 		$data['details'] = $this->fetch_page('ABOUT');
 		$header['title'] = $data['details']->title;
-		$this->load->view('Header',$header);
-		$this->load->view('Page',$data);
-		$this->load->view('Footer');
+		$this->load->view('header',$header);
+		$this->load->view('page',$data);
+		$this->load->view('footer');
 	}
-	
-	public function songs()
-	{
-		$this->load->view('Header');
-		$this->load->view('Home');
-		$this->load->view('Footer');
-	}
-	
+		
 	public function blog()
 	{
 		$data['title'] =$header['title'] = 'Nipe Fagio Blog';

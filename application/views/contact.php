@@ -2,7 +2,7 @@
 <div class="row">
 <div class="span12">
 
-<h3>Contact My World Preschool</h3>
+<h1>Contact My World Preschool</h1>
 <div class="teaser">
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam interdum ligula et tellus tempor sed condimentum massa mattis. Etiam id hendrerit orci. Nullam vel diam nisl, imperdiet lobortis est. Donec consectetur, mi quis aliquam placerat, lacus massa </p>
 </div>
