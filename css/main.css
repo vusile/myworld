@@ -10,6 +10,9 @@ body{
 	background-position:50% 50%;
 	background-color:#32AFE4;	
 }
+img{
+padding:5px;	
+}
 #wrap{
 	margin:0 auto;
 	width: 1024px;
@@ -35,6 +38,7 @@ width: 1010px;
 	margin-top:20px;
 	height:25px;
 	margin-left:5px;
+	margin-bottom: -35px;
 	
 }
 #nav a{
@@ -148,6 +152,7 @@ margin-left:27px;
 border: 1px solid #031289;
 margin-top:27px;
 height:300px;
+
 }
 #news h4 {
 margin-left:27px;
@@ -157,6 +162,11 @@ margin-bottom: -19px;
 .news-box {
 height: 70px;
 margin-top: 5px;
+margin-bottom:27px;
+}
+.news-teaser a{
+	text-decoration:none;	
+	color:#0924F9;
 }
 
 .news-teaser{
@@ -193,6 +203,7 @@ margin-right:10px;
 #youtube h4{
 	text-align:center;
 	color:#031289;		
+	margin-bottom: 10px;
 }
 #linkbutton{
 	background-image:url(../img/Button.png);
@@ -261,21 +272,22 @@ margin-bottom: 60px;
 #partiners ul{
 	margin-right:37px;
 	list-style:none;
-	padding:0px
+	padding:0px;
+	margin-top: 10px;
 	}
 #partiners ul li{
 	margin-left: -9px;
 }
 #partiners ul li > a{
 	text-decoration:none;
-	color:#000000;
+	color:#0924F9;
 } 
 #partiners ul li > a:visited{
 	text-decoration:none;
 	color:#0924F9;
 } 
 #partiners ul li > a:hover{
-	color:#0924F9;
+	color:#F20505;
 	text-decoration:underline;
 } 
 
