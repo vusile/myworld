@@ -23,7 +23,7 @@
 		<?php endif;  ?>		<!--start of news box-->
 		<div class="news-teaser"> 
 		<strong><a href = "article/<?php echo $article->url ?>"><?php echo $article->title; ?></a></strong><br>
-		<?php echo substr(strip_tags($article->text),0,65); ?> ... <a href = "article/<?php echo $article->url ?>" class="more">Read More</a>
+		<?php echo substr(strip_tags($article->text),0,65); ?> ... <a href = "article/<?php echo $article->url ?>" >Read More</a>
 		</div>
 		</div>
 		<div style = 'clear:both; margin:20px 0;   '></div>

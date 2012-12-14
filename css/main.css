@@ -106,13 +106,13 @@ position:relative;
 #banner1{
 	width: 141px;
 height: 278px;
-margin: 10px 0px 10px 16px;
+margin: 5px 0px 10px 16px;
 float: left;
 }
 #banner2{
 width: 237px;
 height: 128px;
-margin: 10px 0px 0px 193px;
+margin: 5px 0px 0px 193px;
 }
 #banner3{
 width: 237px;
@@ -133,7 +133,7 @@ margin: -278px 0px 0px 466px;
 	width:1012px;
 	height:auto;
 	margin-top:20px;
-	margin-bottom:10px;
+	margin-bottom:-25px;
 	
 	
 }
@@ -164,7 +164,7 @@ height: 70px;
 margin-top: 5px;
 margin-bottom:27px;
 }
-.news-teaser a{
+.news-teaser a:link{
 	text-decoration:none;	
 	color:#0924F9;
 }
@@ -175,17 +175,9 @@ margin-left:10px;
 margin-right:5px;
 height:auto;
 }
-.news-teaser a{
-	text-decoration:none;
-	color:#000;	
-}
 .news-teaser a:hover{
 	text-decoration:none;	
-	color:#0924F9;
-}
-.news-teaser a:visited{
-	text-decoration:none;	
-	color:#0924F9;
+	color:#F20505;	
 }
 .news-pic{
  width:100px;
@@ -195,7 +187,8 @@ height:auto;
 }
 .align-kulia{
 float:right;
-margin-right:10px;	
+width: 70px;
+height: 50px;
 }
 #youtube{
 	margin-left:15px;
@@ -267,7 +260,7 @@ margin-bottom: 60px;
 	width:400px;
 	height:300px;
 	margin-bottom:40px;
-	margin-top:10px;
+	margin-top:5px;
 }
 #partiners ul{
 	margin-right:37px;
@@ -362,3 +355,6 @@ padding:0;
 
 /*for corousel banner settings 
 */
+.contact{
+	margin-top:40px;
+}

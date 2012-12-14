@@ -6,6 +6,7 @@
 <div class="teaser">
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam interdum ligula et tellus tempor sed condimentum massa mattis. Etiam id hendrerit orci. Nullam vel diam nisl, imperdiet lobortis est. Donec consectetur, mi quis aliquam placerat, lacus massa </p>
 </div>
+<div class="contact">
 <form class="form-horizontal">
   <div class="control-group">
     <label class="control-label" for="inputName">Name:</label>
@@ -55,5 +56,6 @@
   </div>
   </div>
 </form>
+</div>
 
 
