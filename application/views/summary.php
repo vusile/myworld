@@ -5,7 +5,7 @@
 <?php foreach($news->result() as $article): ?>
 <div class="span12">  <!--start of span-->
 <div class="resizeb">
-<h2><?php echo $article->title ?></h2>
+<a href="article/<?php  echo $article->url  ?>"><h2><?php echo $article->title ?></h2></a>
 <?php
 	if($article->thumb_nail != '')	
 		echo "<a href='article/" . $article->url . "'><img src = 'ckfinder/userfiles/_thumbs/Images/" . $article->thumb_nail ."'  class='img3' ></a>";
@@ -14,10 +14,10 @@
 
 
 <?php echo substr(strip_tags($article->text),0,600); ?> ... <p>
-<a href="article/<?php  $article->url  ?>"><p>Read More</p></a>
+<a href="article/<?php  echo $article->url  ?>"><p>Read More</p></a>
 </div>
-<hr>
 </div><!--end of span-->
+<div style = 'clear:both; margin-top:7px; width: 1024px; border-top:1px #cdcdcd solid;'></div>
 <?php endforeach; ?>
 
 </div>  <!--end of the row-->

@@ -197,3 +197,4 @@
     </div>
 
 </div> <!-- end of row for nav-->
+<h1><?php if(isset($title)) echo $title ?></h1>

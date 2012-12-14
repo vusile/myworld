@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Main extends CI_Controller {
+class Msasani extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -20,65 +20,18 @@ class Main extends CI_Controller {
 	public function index()
 	{
 		
-		$this->db->order_by('id','desc');
-		$this->db->limit(4);
-		$data['news'] = $this->db->get('mw_news');
-		
-		$data['images'] = $this->db->get('mw_image_scroller');
-		
-		$this->db->where('id',1);
-		$video = $this->db->get('mw_settings');
-		$data['video'] = str_replace('watch?v=', 'embed/', $video->row()->value);
-		
-		
 		$this->db->where('identifier','HOME');
 		$pages = $this->db->get('mw_pages');
 		$data['home'] = $pages->row()->text;
 		$header['title'] = $pages->row()->title;
 		
 		$this->load->view('header',$header);
-		$this->load->view('home', $data);
+		$this->load->view('sidebar', $data);
+		$this->load->view('subhome', $data);
 		$this->load->view('footer');
-		//$this->load->view('index');
+
 	}
-	
-	public function login()
-	{
 		
-		$this->load->view('Header',$header);
-		$this->load->view('Login');
-		$this->load->view('Footer');
-	}
-	
-	function login_user()
-	{
-		$this->form_validation->set_rules('email', 'Email', 'required|valid_email');
-		$this->form_validation->set_rules('password', 'Password', 'required');
-		
-		if ($this->form_validation->run() == TRUE)
-		{
-			$identity = $_POST['email'];
-			$password = $_POST['password'];
-			$remember = false; // remember the user
-			if($this->ion_auth->login($identity, $password, $remember))
-				redirect(base_url());
-			
-			else
-				redirect('login/1');
-		}
-		else
-			$this->login();
-	}
-	
-	function logout()
-	{
-		if($this->ion_auth->logout())
-			redirect('login/2');
-	}
-	
-	
-	
-	
 	public function fetch_page($identifier)
 	{
 		$this->db->where('identifier',$identifier);

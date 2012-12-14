@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Main extends CI_Controller {
+class Msasani extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
