@@ -143,8 +143,10 @@ margin-top: 17px;
 	margin-left:20px;
 	margin-right:20px;
 	margin-top:20px;
+	}
 	
-	
-.resizeb h2{
-	margin-left: 4px;
+.resizeb h2 a{
+	margin-left: -18px;
+	font-weight: normal;
+	color: #0924F9;
 }
