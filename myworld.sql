@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 13, 2012 at 01:49 PM
+-- Generation Time: Dec 14, 2012 at 01:57 PM
 -- Server version: 5.5.20
 -- PHP Version: 5.3.10
 
@@ -82,7 +82,7 @@ CREATE TABLE IF NOT EXISTS `mw_captcha` (
   `word` varchar(20) NOT NULL,
   PRIMARY KEY (`captcha_id`),
   KEY `word` (`word`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=337 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=359 ;
 
 --
 -- Dumping data for table `mw_captcha`
@@ -96,7 +96,29 @@ INSERT INTO `mw_captcha` (`captcha_id`, `captcha_time`, `ip_address`, `word`) VA
 (333, 1351864463, '127.0.0.1', 'BQ6ZH3D'),
 (334, 1351864480, '127.0.0.1', 'JYRD8HS'),
 (335, 1353926856, '127.0.0.1', '3QKNUWF'),
-(336, 1354025475, '127.0.0.1', '4UK9TNM');
+(336, 1354025475, '127.0.0.1', '4UK9TNM'),
+(337, 1355466756, '127.0.0.1', '9X5QEMW'),
+(338, 1355468360, '127.0.0.1', 'QC8JSKB'),
+(339, 1355468364, '127.0.0.1', 'SGF9HWX'),
+(340, 1355468426, '127.0.0.1', 'VSRK2PD'),
+(341, 1355468444, '127.0.0.1', 'ZEFA4WN'),
+(342, 1355468967, '127.0.0.1', '8D9QACW'),
+(343, 1355468971, '127.0.0.1', 'MU8K9CY'),
+(344, 1355468984, '127.0.0.1', 'BX579KN'),
+(345, 1355469055, '127.0.0.1', '6WFNAPJ'),
+(346, 1355469378, '127.0.0.1', 'VN6AEQW'),
+(347, 1355470840, '127.0.0.1', 'WKG4Z73'),
+(348, 1355471828, '127.0.0.1', '5D3GQR7'),
+(349, 1355472000, '127.0.0.1', 'XPAVTBF'),
+(350, 1355472254, '127.0.0.1', 'SA8D7Y5'),
+(351, 1355473103, '127.0.0.1', 'JYVG3WF'),
+(352, 1355485324, '127.0.0.1', 'ZVU6HD3'),
+(353, 1355485356, '127.0.0.1', 'NDZTWP6'),
+(354, 1355485382, '127.0.0.1', 'Z98NVD3'),
+(355, 1355485405, '127.0.0.1', 'Y5AUMCS'),
+(356, 1355485420, '127.0.0.1', 'JMPS7W5'),
+(357, 1355485426, '127.0.0.1', '4DPYEKX'),
+(358, 1355490447, '127.0.0.1', 'EJTZHB2');
 
 -- --------------------------------------------------------
 
@@ -424,19 +446,22 @@ CREATE TABLE IF NOT EXISTS `mw_pages` (
   `text` text NOT NULL,
   `identifier` varchar(50) NOT NULL,
   `thumb_nail` varchar(255) DEFAULT NULL,
+  `type` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `mw_pages`
 --
 
-INSERT INTO `mw_pages` (`id`, `title`, `text`, `identifier`, `thumb_nail`) VALUES
-(1, 'About Nipe Fagio', '<p>\r\n	<img alt="" src="/ckfinder/userfiles/images/logo.png" style="width: 206px; height: 224px; float: left; " />While still warm, the oil, like hot punch, is received into the six-barrel casks; and while, perhaps, the ship is pitching and rolling this way and that in the midnight sea, the enormous casks are slewed round and headed over, end for end, and sometimes perilously scoot across the slippery deck, like so many land slides, till at last man-handled and stayed in their course; and all round the hoops, rap, rap, go as many hammers as can play upon them, for now, EX OFFICIO, every sailor is a cooper.</p>\r\n<p>\r\n	At length, when the last pint is casked, and all is cool, then the great hatchways are unsealed, the bowels of the ship are thrown open, and down go the casks to their final rest in the sea. This done, the hatches are replaced, and hermetically closed, like a closet walled up. In the sperm fishery, this is perhaps one of the most remarkable incidents in all the business of whaling.</p>\r\n<p>\r\n	One day the planks stream with freshets of blood and oil; on the sacred quarter-deck enormous masses of the whale&#39;s head are profanely piled; great rusty casks lie about, as in a brewery yard; the smoke from the try-works has besooted all the bulwarks; the mariners go about suffused with unctuousness; the entire ship seems great leviathan himself; while on all hands the din is deafening.</p>\r\n<p>\r\n	But a day or two after, you look about you, and prick your ears in this self-same ship; and were it not for the tell-tale boats and try-works, you would all but swear you trod some silent merchant vessel, with a most scrupulously neat commander. The unmanufactured sperm oil possesses a singularly cleansing virtue. This is the reason why the decks never look so white as just after what they call an affair of oil. Besides, from the ashes of the burned scraps of the whale, a potent lye is readily made; and whenever any adhesiveness from the back of the whale remains clinging to the side, that lye quickly exterminates it. Hands go diligently along the bulwarks, and with buckets of water and rags restore them to their full tidiness.</p>\r\n<p>\r\n	The soot is brushed from the lower rigging. All the numerous implements which have been in use are likewise faithfully cleansed and put away. The great hatch is scrubbed and placed upon the try-works, completely hiding the pots; every cask is out of sight; all tackles are coiled in unseen nooks; and when by the combined and simultaneous industry of almost the entire ship&#39;s company, the whole of this conscientious duty is at last concluded, then the crew themselves proceed to their own ablutions; shift themselves from top to toe; and finally issue to the immaculate deck, fresh and all aglow, as bridegrooms new-leaped from out the daintiest Holland.</p>\r\n<div>\r\n	<div>\r\n		&nbsp;</div>\r\n	<div>\r\n		&nbsp;</div>\r\n</div>\r\n<p>\r\n	&nbsp;</p>\r\n', 'ABOUT', NULL),
-(2, 'Contact Nipe Fagio', '<p>\r\n	<span style="color: rgb(51, 51, 51); font-family: ''Helvetica Neue'', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 20px; ">We value your feedback, please say hello!</span></p>\r\n', 'CONTACT', NULL),
-(6, 'Message Has Been Sent', '<p>\r\n	Your Message has been sent, we&#39;ll respond to you as soon as possible</p>\r\n', 'MESSAGE_SENT', NULL),
-(7, 'Home', '<p>\r\n	Under this head I reckon a monster which, by the various names of Fin-Back, Tall-Spout, and Long-John, has been seen almost in every sea and is commonly the whale whose distant jet is so often descried by passengers crossing the Atlantic, in the New York packet-tracks. In the length he attains, and in his baleen, the Fin-back resembles the right whale, but is of a less portly girth, and a lighter colour, approaching to olive.</p>\r\n', 'HOME', NULL),
-(8, 'The Nipe Fagio Team', '<p>\r\n	Don&#39;t we have the best team.</p>\r\n', 'TEAM', '');
+INSERT INTO `mw_pages` (`id`, `title`, `text`, `identifier`, `thumb_nail`, `type`) VALUES
+(1, 'About My World Preschool', '<p>\r\n	<img alt="Flowers" src="/myworld/ckfinder/userfiles/images/Hydrangeas.jpg" style="width: 206px; height: 224px; float: left;" />While still warm, the oil, like hot punch, is received into the six-barrel casks; and while, perhaps, the ship is pitching and rolling this way and that in the midnight sea, the enormous casks are slewed round and headed over, end for end, and sometimes perilously scoot across the slippery deck, like so many land slides, till at last man-handled and stayed in their course; and all round the hoops, rap, rap, go as many hammers as can play upon them, for now, EX OFFICIO, every sailor is a cooper.</p>\r\n<p>\r\n	At length, when the last pint is casked, and all is cool, then the great hatchways are unsealed, the bowels of the ship are thrown open, and down go the casks to their final rest in the sea. This done, the hatches are replaced, and hermetically closed, like a closet walled up. In the sperm fishery, this is perhaps one of the most remarkable incidents in all the business of whaling.</p>\r\n<p>\r\n	One day the planks stream with freshets of blood and oil; on the sacred quarter-deck enormous masses of the whale&#39;s head are profanely piled; great rusty casks lie about, as in a brewery yard; the smoke from the try-works has besooted all the bulwarks; the mariners go about suffused with unctuousness; the entire ship seems great leviathan himself; while on all hands the din is deafening.</p>\r\n<p>\r\n	But a day or two after, you look about you, and prick your ears in this self-same ship; and were it not for the tell-tale boats and try-works, you would all but swear you trod some silent merchant vessel, with a most scrupulously neat commander. The unmanufactured sperm oil possesses a singularly cleansing virtue. This is the reason why the decks never look so white as just after what they call an affair of oil. Besides, from the ashes of the burned scraps of the whale, a potent lye is readily made; and whenever any adhesiveness from the back of the whale remains clinging to the side, that lye quickly exterminates it. Hands go diligently along the bulwarks, and with buckets of water and rags restore them to their full tidiness.</p>\r\n<p>\r\n	The soot is brushed from the lower rigging. All the numerous implements which have been in use are likewise faithfully cleansed and put away. The great hatch is scrubbed and placed upon the try-works, completely hiding the pots; every cask is out of sight; all tackles are coiled in unseen nooks; and when by the combined and simultaneous industry of almost the entire ship&#39;s company, the whole of this conscientious duty is at last concluded, then the crew themselves proceed to their own ablutions; shift themselves from top to toe; and finally issue to the immaculate deck, fresh and all aglow, as bridegrooms new-leaped from out the daintiest Holland.</p>\r\n<div>\r\n	<div>\r\n		&nbsp;</div>\r\n	<div>\r\n		&nbsp;</div>\r\n</div>\r\n<p>\r\n	&nbsp;</p>\r\n', 'ABOUT', 'Hydrangeas.jpg', 1),
+(2, 'Contact My World Preschool', '<p>\r\n	<span style="color: rgb(51, 51, 51); font-family: ''Helvetica Neue'', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 20px; ">We value your feedback, please say hello!</span></p>\r\n', 'CONTACT', NULL, 1),
+(7, 'My World Preschool | Home', '<p>\r\n	Under this head I reckon a monster which, by the various names of Fin-Back, Tall-Spout, and Long-John, has been seen almost in every sea and is commonly the whale whose distant jet is so often descried by passengers crossing the Atlantic, in the New York packet-tracks. In the length he attains, and in his baleen, the Fin-back resembles the right whale, but is of a less portly girth, and a lighter colour, approaching to olive.</p>\r\n', 'HOME', '', 1),
+(9, 'My World Preschool Msasani', '<p>\r\n	<img alt="Surfing Guy" src="/myworld/ckfinder/userfiles/images/-148.jpg" style="width: 300px; height: 199px; float: left;" />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae ullamcorper lacus. In urna dolor, molestie et commodo eu, viverra nec ligula. Sed a sodales ipsum, nec commodo quam nisl sed diam. In urna dolor, molestie et commodo eu, viverra nec ligula. Sed a In urna dolor, molestie et commodo eu, viverra nec ligula. Sed a&nbsp;<a href="http://www.zoomtanzania.com">See Our Play Ground</a>.&nbsp;<br />\r\n	<br />\r\n	Cras quis velit ac dolor tristique placerat. Phasellus placerat aliquet semper. Donec in elit sit amet neque venenatis faucibus eget eget magna. Pellentesque pretium nunc vitae orci ultrices ac vehicula sapien pretium. Nullam non tellus risus, ut laoreet turpis. Aliquam erat volutpat. Sed lectus leo, mattis ut vehicula quis, ultrices id tellus. Duis adipiscing mauris nec nulla faucibus ac porta ipsum imperdiet. Donec porttitor suscipit elit, a ultrices nibh suscipit ut. Suspendisse nec nisl mauris, nec cursus neque. Phasellus elit eros, feugiat eget elementum quis, faucibus sed augue. Morbi fringilla dictum velit ac rhoncus. Aenean auctor tellus sodales lectus condimentum interdum. Donec nisi augue, ornare dignissim pellentesque sit amet, vehicula in urna. Nam faucibus aliquet nisi, vitae tristique mauris tincidunt eu. Nullam sagittis felis vitae eros dignissim lobortis.</p>\r\n', 'MSASANI', '-148.jpg', 3),
+(10, 'My World Preschool Upanga', '<p>\r\n	<img alt="Playing on the wall." src="/myworld/ckfinder/userfiles/images/-28.jpg" style="width: 250px; height: 376px; float: right;" />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae ullamcorper lacus. In urna dolor, molestie et commodo eu, viverra nec ligula. Sed a sodales ipsum, nec commodo quam nisl sed diam. In urna dolor, molestie et commodo eu, viverra nec ligula. Sed a In urna dolor, molestie et commodo eu, viverra nec ligula. Sed a <a href="http://www.swahilimusicnotes.com">See Our Play Ground.</a></p>\r\n<p>\r\n	Cras quis velit ac dolor tristique placerat. Phasellus placerat aliquet semper. Donec in elit sit amet</p>\r\n<p>\r\n	&nbsp;neque venenatis faucibus eget eget magna. Pellentesque pretium nunc vitae orci ultrices ac vehicula sapien pretium. Nullam non tellus risus, ut laoreet turpis. Aliquam erat volutpat. Sed lectus leo, mattis ut vehicula quis, ultrices id tellus. Duis adipiscing mauris nec nulla faucibus ac porta ipsum imperdiet. Donec porttitor suscipit elit, a ultrices nibh suscipit ut. Suspendisse nec nisl mauris, nec cursus neque. Phasellus elit eros, feugiat eget elementum quis, faucibus sed augue. Morbi fringilla dictum velit ac rhoncus. Aenean auctor tellus sodales lectus condimentum interdum. Donec nisi augue, ornare dignissim pellentesque sit amet, vehicula in urna. Nam faucibus aliquet nisi, vitae tristique mauris tincidunt eu. Nullam sagittis felis vitae eros dignissim lobortis.</p>\r\n<div>\r\n	&nbsp;</div>\r\n', 'UPANGA', '-28.jpg', 2),
+(11, 'My World Training Center', '<p>\r\n	This is the Training Center home</p>\r\n', 'TRAINING', '', 5),
+(12, 'My World Community Centre', '<p>\r\n	This is the Community Centre Home Page</p>\r\n', 'COMMUNITY', '', 4);
 
 -- --------------------------------------------------------
 
@@ -604,7 +629,7 @@ CREATE TABLE IF NOT EXISTS `mw_users` (
 --
 
 INSERT INTO `mw_users` (`id`, `ip_address`, `username`, `password`, `salt`, `email`, `activation_code`, `forgotten_password_code`, `forgotten_password_time`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
-(1, '\0\0', 'administrator', '59beecdf7fc966e2f17fd8f65a4a9aeb09d4a3d4', '9462e8eee0', 'admin@admin.com', '', NULL, NULL, NULL, 1268889823, 1354188456, 1, 'Admin', 'istrator', 'ADMIN', '0'),
+(1, '\0\0', 'administrator', '59beecdf7fc966e2f17fd8f65a4a9aeb09d4a3d4', '9462e8eee0', 'admin@admin.com', '', NULL, NULL, NULL, 1268889823, 1355470226, 1, 'Admin', 'istrator', 'ADMIN', '0'),
 (2, '\0\0', 'anton.fouquet@djpa.co.tz', 'ded126212466ac57fea9c2dbab79f42acaa5670b', NULL, 'anton.fouquet@djpa.co.tz', NULL, NULL, NULL, NULL, 1351672322, 1351672358, 1, 'Anton', 'Fouquet', NULL, '+255 753 102 000'),
 (3, '\0\0', 'anton2.fouquet@djpa.co.tz', '5ef2cc5b647649523f749a4da095c1a5e3fdae46', NULL, 'anton2.fouquet@djpa.co.tz', NULL, NULL, NULL, NULL, 1353495312, 1353495312, 1, 'Anton', 'Fouquet', NULL, '+255 753 102 000'),
 (4, '\0\0', 'anton23.fouquet@djpa.co.tz', '7e06f410a1f61449a70e041e0284265df154924a', NULL, 'anton23.fouquet@djpa.co.tz', NULL, NULL, NULL, NULL, 1353495348, 1353495348, 1, 'Anton', 'Fouquet', NULL, '+255 753 102 000');
