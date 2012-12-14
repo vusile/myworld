@@ -1,5 +1,4 @@
 <!--*start of first row for news, video and button/-->
-<h1><?php echo $title ?></h1>
 <div class="row">    <!--start of the row-->
 
 <?php foreach($news->result() as $article): ?>

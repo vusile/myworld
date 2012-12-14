@@ -64,7 +64,7 @@ class Backend extends CI_Controller {
 		return true;
 	}
 	
-	function mw_pages()
+	function mw_pages($type=0)
 	{
 		$this->grocery_crud->unset_delete();
 		$this->grocery_crud->unset_fields('thumb_nail');
