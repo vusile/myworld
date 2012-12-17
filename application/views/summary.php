@@ -16,7 +16,7 @@
 <a href="article/<?php  echo $article->url  ?>"><p>Read More</p></a>
 </div>
 </div><!--end of span-->
-<!--<div style = 'clear:both; margin-top:7px; width: 1024px; border-top:1px #cdcdcd solid;'></div>-->
+<div style = 'clear:both; margin-top:7px; margin-left:19px; width: 1024px; border-top:1px #cdcdcd solid;'></div>
 <?php endforeach; ?>
 
 </div>  <!--end of the row-->

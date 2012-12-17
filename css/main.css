@@ -297,6 +297,7 @@ margin-left: -13px;
 /*footer*/
 
 #footer{
+	margin-top: 40px;
 	background:#ffffff;
 	width:1024px;
 	height:80px;
