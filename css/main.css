@@ -132,7 +132,7 @@ margin: -278px 0px 0px 466px;
 .teaser{
 	width:1012px;
 	height:auto;
-	margin-top:20px;
+	margin-top:0px;
 	margin-bottom:-25px;
 	
 	
@@ -142,6 +142,10 @@ margin: -278px 0px 0px 466px;
 	font-size:18px;
 	margin-left:27px;
 	margin-right:37px;
+}
+.title_h1{
+
+	margin: 15px 0px 15px 0px;
 }
 /*first row */
 #news{

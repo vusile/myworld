@@ -42,7 +42,7 @@
 }
 .img3{
 	border:#0924F9 solid 1px;
-	margin:0px 15px 8px 6px;
+	margin:2px 15px 8px 6px;
 	float:left;	
 	width:250px;
 	height:150px;
@@ -149,4 +149,20 @@ margin-top: 17px;
 	margin-left: -18px;
 	font-weight: normal;
 	color: #0924F9;
+}
+.resizec{
+	
+	margin-left:20px;
+	margin-right:20px;
+	}
+	
+.resizec h2 a{
+	margin-left: -18px;
+	font-weight: normal;
+	color: #0924F9;
+	margin-bottom: 5px;
+}
+.container_news{
+
+	margin-top: -30px;
 }

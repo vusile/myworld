@@ -1,9 +1,10 @@
 <!--*start of first row for news, video and button/-->
+<div class="container_news">
 <div class="row">    <!--start of the row-->
 
 <?php foreach($news->result() as $article): ?>
 <div class="span12">  <!--start of span-->
-<div class="resizeb">
+<div class="resizec">
 <h2><a href="article/<?php  echo $article->url  ?>"><?php echo $article->title ?></a></h2>
 <?php
 	if($article->thumb_nail != '')	
@@ -20,7 +21,7 @@
 <?php endforeach; ?>
 
 </div>  <!--end of the row-->
-
+</div>  <!--end of the container_news"-->
 
 
 
