@@ -23,14 +23,35 @@ class Backend extends CI_Controller {
 			redirect('login');
 	}	
 	
-	function mw_directory()
+	function mw_page_templates()
 	{
-		$this->grocery_crud->set_relation('company_type','mw_company_types','title');
-		$this->grocery_crud->set_relation('sector','mw_company_sectors','title');
+	
+		$this->grocery_crud->set_relation('access_level','mw_groups','description');
+		
+		$output = $this->grocery_crud->render();
+		$this->_example_output($output);
+
+	}		
+	
+	function mw_testimonials()
+	{
+	
+		$this->grocery_crud->set_relation('approved','mw_options','title');
+		
 		$output = $this->grocery_crud->render();
 		$this->_example_output($output);
 
 	}	
+	
+	function mw_categories()
+	{
+		
+		$output = $this->grocery_crud->render();
+		$this->_example_output($output);
+
+	}	
+	
+
 	
 	function mw_newsletters()
 	{
@@ -64,10 +85,18 @@ class Backend extends CI_Controller {
 		return true;
 	}
 	
-	function mw_pages($type=0)
+	function mw_pages($type=1)
 	{
-		if($type != 0)
-			$this->grocery_crud->where('type',$type);
+		$this->grocery_crud->where('type',$type);
+		
+		if(!$this->ion_auth->is_admin())
+			$this->grocery_crud->set_relation('template','mw_page_templates','name',array('access_level'=>2));
+		else
+			$this->grocery_crud->set_relation('template','mw_page_templates','name');
+		
+	
+		$this->grocery_crud->set_relation('parent','mw_categories','title');
+			
 		$this->grocery_crud->unset_delete();
 		$this->grocery_crud->unset_fields('thumb_nail','type');
 		$this->grocery_crud->unset_columns('thumb_nail','type');
@@ -115,20 +144,7 @@ class Backend extends CI_Controller {
 		
 	}
 	
-	function mw_company_sectors()
-	{
-		$output = $this->grocery_crud->render();
 
-		$this->_example_output($output);
-
-	}	
-	function mw_company_types()
-	{
-		$output = $this->grocery_crud->render();
-
-		$this->_example_output($output);
-
-	}
 
 	
 	function mw_projects_and_publications($section)
@@ -425,6 +441,9 @@ class Backend extends CI_Controller {
 		else
 			$this->image_moo->load($source_image)->resize($resize_width,$resize_height)->save($source_image,$overwrite=TRUE);
 	}
+	
+	
+	
 	
 	function index()
 	{

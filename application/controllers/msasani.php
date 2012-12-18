@@ -27,16 +27,100 @@ class Msasani extends CI_Controller {
 		
 		$this->load->view('header',$header);
 		$this->load->view('sidebar', $data);
-		$this->load->view('subhome', $data);
+		$this->load->view('subpage', $data);
 		$this->load->view('footer');
 
 	}
 		
-	public function fetch_page($identifier)
+	function sidebar ($identifier = '')
 	{
-		$this->db->where('identifier',$identifier);
+		$page_categories=$this->db->get('mw_categories');
+		
+		$sidebar['sidebar']='';
+		foreach($page_categories->result() as $category)
+		{
+			$this->db->where('type',3);
+			$this->db->where('parent',$category->id);
+			if($this->db->count_all_results('mw_pages') > 0)
+			{
+				$sidebar['sidebar'] .= '<p class="sidebarp">' . $category->title . '</p>';
+				$this->db->where('type',3);
+				$this->db->where('parent',$category->id);
+				//$this->db->where('url',$identifier);
+				$pages=$this->db->get('mw_pages');
+				
+				foreach($pages->result() as $page)
+				{
+					if($identifier == $page->url)
+						$sidebar['sidebar'] .= '<li class="activex"><a href="msasani/page/' . $page->url . '">'. $page->title .'</a></li>';
+					else
+						$sidebar['sidebar'] .= '<li><a href="msasani/page/' . $page->url . '">'. $page->title .'</a></li>';
+				}
+				
+			}
+			
+		}
+		
+		return $sidebar;
+	}
+		
+	public function page($identifier)
+	{
+		
+		
+		$this->db->where('type',3);
+		$this->db->where('url',$identifier);
 		$content = $this->db->get('mw_pages');
-		return $content->row();
+		
+		$data['text'] = $content->row()->text;
+		$header['title'] = $content->row()->title;
+		
+		$templateID = $content->row()->template;
+		
+		$this->db->where('id',$templateID);
+		$obj=$this->db->get('mw_page_templates');
+		
+		$template = $obj->row()->view;
+		
+		switch($template)
+		{
+			case 'subsummary.php':
+			$this->db->where('type',3);
+			$data['news'] = $this->db->get('mw_projects');
+			$data['url'] = 'msasani/project';
+			break;
+			
+			case 'testimonials.php':
+			$this->db->where('school',3);
+			$data['testimonials'] = $this->db->get('mw_testimonials');
+			break;
+			
+			case '':
+			break;
+			
+		}
+		
+		
+		$sidebar = $this->sidebar($identifier);
+		
+		$this->load->view('header',$header);
+		$this->load->view('sidebar', $sidebar);
+		$this->load->view($template, $data);
+		$this->load->view('footer');
+	}
+	
+	function project($url)
+	{
+		$this->db->where('url',$url);
+		$pages = $this->db->get('mw_projects');
+		$data['text'] = $pages->row()->text;
+		$header['title'] = $pages->row()->title;
+		$sidebar = $this->sidebar();
+		
+		$this->load->view('header',$header);
+		$this->load->view('sidebar', $sidebar);
+		$this->load->view('subpage', $data);
+		$this->load->view('footer');
 	}
 }
 

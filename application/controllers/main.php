@@ -99,8 +99,6 @@ class Main extends CI_Controller {
 	{
 		$data['title'] = $header['title'] = 'My World Preschool Blog';
 		
-		$header['projects'] = $this->get_projects(1);
-		$header['publications'] = $this->get_projects(2);	
 		$this->load->view('header',$header);
 		$this->load->view('summary',$data);
 		$this->load->view('footer');

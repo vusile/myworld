@@ -27,7 +27,7 @@ class Training extends CI_Controller {
 		
 		$this->load->view('header',$header);
 		$this->load->view('sidebar', $data);
-		$this->load->view('subhome', $data);
+		$this->load->view('subpage', $data);
 		$this->load->view('footer');
 
 	}

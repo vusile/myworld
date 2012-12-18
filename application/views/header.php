@@ -184,10 +184,10 @@
       <div id="nav">
       <ul>
          <li><a href="<?php base_url(); ?>">Home</a></li>
-        <li><a href="msasani">Msasani Preschool</a></li>
-        <li ><a href="upanga">Upanga Preschool</a></li>
-        <li ><a href="training-center">Training Center</a></li>
-        <li ><a href="community-center">Community Center</a></li>
+        <li><a href="msasani/page/home">Msasani Preschool</a></li>
+        <li ><a href="upanga/page/home">Upanga Preschool</a></li>
+        <li ><a href="training-center/page/home">Training Center</a></li>
+        <li ><a href="community-center/page/home">Community Center</a></li>
         <li><a href="blog">Blog</a></li>
         <li ><a href="news">News</a></li>
          <li ><a href="about-us">About Us</a></li>
