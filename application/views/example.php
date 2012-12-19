@@ -38,9 +38,11 @@ a:hover
 		<a href='<?php echo site_url('backend/mw_projects/2')?>'>My World Upanga Projects</a> |
 		<a href='<?php echo site_url('backend/mw_pages/3')?>'>My World Msasani Pages</a> |
 		<a href='<?php echo site_url('backend/mw_projects/3')?>'>My World Msasani Projects</a> |
+		<!--<a href='<?php echo site_url('backend/mw_helpful_links_categories/3')?>'>My World Msasani Helpful Links</a> |-->
 		<a href='<?php echo site_url('backend/mw_pages/4')?>'>My World Community Centre Pages</a> |
 		<a href='<?php echo site_url('backend/mw_pages/5')?>'>My World Training Centre Pages</a> |
 		<a href='<?php echo site_url('backend/mw_news')?>'>News</a> |
+		<a href='<?php echo site_url('backend/mw_helpful_links_categories')?>'>Helpful Links</a> |
 		<a href='<?php echo site_url('backend/mw_image_scroller')?>'>Image Scroller</a> |
 		<a href='<?php echo site_url('backend/mw_testimonials')?>'>Testimonials</a> | 
 		<a href='<?php echo site_url('backend/mw_messages')?>'>Site Messages</a> | 

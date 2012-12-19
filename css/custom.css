@@ -64,6 +64,7 @@
 	border:#0924F9 solid 1px;
     margin: 5px 5px 5px 10px;
 	float:right;
+
 	
 }
 .img6{
@@ -78,6 +79,8 @@
 	border:#0924F9 solid 1px;
 	margin:0px 15px 8px 0px;
 	float:left;	
+			width:150px;
+	height:150px;
 	
 }
 .img8{

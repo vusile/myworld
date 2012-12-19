@@ -63,11 +63,47 @@ class Msasani extends CI_Controller {
 		
 		return $sidebar;
 	}
+	
+	function helpful_links($school){
+		$links='';
+		$this->db->where('school',3);
+		$this->db->or_where('school',1);
+		$categories = $this->db->get('mw_helpful_links_categories');
+		
+		foreach($categories->result() as $category)
+		{
+			$this->db->where('category',$category->id);
+			$this->db->where_in('school',array(1,3));
+			
+			if($this->db->count_all_results('mw_helpful_links') > 0)
+			{
+			
+
+				$links .= '<p>' . $category->category . '</p>';
+				$this->db->where('category',$category->id);
+				$this->db->where_in('school',array(1,3));
+				
+				$hlinks=$this->db->get('mw_helpful_links');
+				
+								//echo $this->db->last_query();
+				
+				
+				foreach($hlinks->result() as $link)
+				{
+					$links .= '<a target="_blank" href="' . $link->url . '"><p>'. $link->link_text .'</p></a>';
+
+				}
+				
+				$links .= '<hr />';
+				
+			}
+		}
+		//die();
+		return $links;
+	}
 		
 	public function page($identifier)
 	{
-		
-		
 		$this->db->where('type',3);
 		$this->db->where('url',$identifier);
 		$content = $this->db->get('mw_pages');
@@ -95,7 +131,8 @@ class Msasani extends CI_Controller {
 			$data['testimonials'] = $this->db->get('mw_testimonials');
 			break;
 			
-			case '':
+			case 'hlinks.php':
+			$data['links'] = $this->helpful_links(3);
 			break;
 			
 		}

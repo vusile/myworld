@@ -41,7 +41,61 @@ class Backend extends CI_Controller {
 		$output = $this->grocery_crud->render();
 		$this->_example_output($output);
 
+	}
+
+	function mw_helpful_links_categories()
+	{
+	
+		//$this->grocery_crud->where('school',$school);
+		$this->grocery_crud->unset_fields('the_links');
+		$this->grocery_crud->set_relation('school','mw_schools','school_name');
+		$this->grocery_crud->callback_after_insert(array($this, 'generate_links_link'));
+		$this->grocery_crud->callback_after_update(array($this, 'generate_links_link'));
+		$output = $this->grocery_crud->render();
+		$this->_example_output($output);
+
+	}
+	
+	function generate_links_link($post_array,$primary_key)
+	{	
+	
+		$data = array (
+			'the_links' => '<a target = "_blank" href = "' . base_url() . 'backend/mw_helpful_links/' .  $primary_key . '">Helpful Links</a>'
+		);
+		
+		
+		$this->db->where('id',$primary_key);
+		$this->db->update('mw_helpful_links_categories',$data);
+		
+		return true;
 	}	
+	
+	function mw_helpful_links($cat)
+	{
+		
+		$this->grocery_crud->where('category',$cat);
+		$this->grocery_crud->unset_fields('category');
+		$this->grocery_crud->unset_columns('category');
+		$this->grocery_crud->set_relation('school','mw_schools','school_name');
+		$this->grocery_crud->callback_after_insert(array($this, 'assign_link_to_category'));
+		$this->grocery_crud->callback_after_update(array($this, 'assign_link_to_category'));
+		$output = $this->grocery_crud->render();
+		$this->_example_output($output);
+	}
+	
+	function assign_link_to_category($post_array,$primary_key)
+	{
+		$data = array (
+			'category' => $this->uri->segment(3)
+		);
+		
+		$this->db->where('id',$primary_key);
+		$this->db->update('mw_helpful_links',$data);
+
+		return true;
+	}
+
+	
 	
 	function mw_categories()
 	{
@@ -51,19 +105,28 @@ class Backend extends CI_Controller {
 
 	}	
 	
+	function mw_teaching_staff()
+	{
+		$this->grocery_crud->set_relation_n_n('classes','mw_teachers_classes','mw_classes','newsletter_id','news_id','title','priority');
+		$output = $this->grocery_crud->render();
+		$this->_example_output($output);
+
+	}
 
 	
 	function mw_newsletters()
 	{
 		$this->grocery_crud->unset_fields('url','identifier');
+		$this->grocery_crud->unset_columns('identifier');
 		$this->grocery_crud->set_relation_n_n('news_articles','mw_newsletter_news','mw_news','newsletter_id','news_id','title','priority');
 		$this->grocery_crud->callback_after_insert(array($this, 'generate_newsletter_url'));
 		$this->grocery_crud->callback_after_update(array($this, 'generate_newsletter_url'));
-		$this->grocery_crud->unset_columns('identifier');
 		$output = $this->grocery_crud->render();
 		$this->_example_output($output);
 
 	}
+	
+	
 	
 	
 	function generate_newsletter_url($post_array,$primary_key)
@@ -186,15 +249,15 @@ class Backend extends CI_Controller {
 		$this->_example_output($output);
 	}
 	
-	function mw_projects()
+	function mw_projects($type)
 	{
 		
-		$this->grocery_crud->set_relation('featured','mw_options','title');
+		$this->grocery_crud->where('type',$type);
 		$this->grocery_crud->callback_after_insert(array($this, 'set_projects_category'));
 		$this->grocery_crud->callback_after_update(array($this, 'set_projects_category'));
 		$this->grocery_crud->display_as('text','Project Description');
-		$this->grocery_crud->unset_fields('url','category');
-		$this->grocery_crud->unset_columns('url','category');	
+		$this->grocery_crud->unset_fields('url','category','type');
+		$this->grocery_crud->unset_columns('url','category','type');	
 		$output = $this->grocery_crud->render();
 
 		$this->_example_output($output);
