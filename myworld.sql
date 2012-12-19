@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 14, 2012 at 01:57 PM
+-- Generation Time: Dec 19, 2012 at 02:14 PM
 -- Server version: 5.5.20
 -- PHP Version: 5.3.10
 
@@ -82,7 +82,7 @@ CREATE TABLE IF NOT EXISTS `mw_captcha` (
   `word` varchar(20) NOT NULL,
   PRIMARY KEY (`captcha_id`),
   KEY `word` (`word`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=359 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=379 ;
 
 --
 -- Dumping data for table `mw_captcha`
@@ -118,7 +118,49 @@ INSERT INTO `mw_captcha` (`captcha_id`, `captcha_time`, `ip_address`, `word`) VA
 (355, 1355485405, '127.0.0.1', 'Y5AUMCS'),
 (356, 1355485420, '127.0.0.1', 'JMPS7W5'),
 (357, 1355485426, '127.0.0.1', '4DPYEKX'),
-(358, 1355490447, '127.0.0.1', 'EJTZHB2');
+(358, 1355490447, '127.0.0.1', 'EJTZHB2'),
+(359, 1355727477, '127.0.0.1', 'X32VQ67'),
+(360, 1355727974, '127.0.0.1', 'GX2N7FH'),
+(361, 1355728401, '127.0.0.1', '59P6XEK'),
+(362, 1355729197, '127.0.0.1', 'P9WVH8T'),
+(363, 1355729649, '127.0.0.1', '2CJPRT9'),
+(364, 1355733461, '127.0.0.1', '9YF2G7R'),
+(365, 1355733475, '127.0.0.1', '46DE9PX'),
+(366, 1355733709, '127.0.0.1', 'KTMQ8DS'),
+(367, 1355744007, '127.0.0.1', 'RYZGB9X'),
+(368, 1355753320, '127.0.0.1', 'U3M7WRZ'),
+(369, 1355809528, '127.0.0.1', '2PTK5BA'),
+(370, 1355809552, '127.0.0.1', 'AXU5TC2'),
+(371, 1355809719, '127.0.0.1', 'P4F7YKT'),
+(372, 1355809724, '127.0.0.1', 'PFU5RDM'),
+(373, 1355809731, '127.0.0.1', 'PMN6S4G'),
+(374, 1355809775, '127.0.0.1', '9Q7S5FD'),
+(375, 1355809824, '127.0.0.1', 'HCEP2TU'),
+(376, 1355809867, '127.0.0.1', 'K58XSNA'),
+(377, 1355813203, '127.0.0.1', 'VWQT35N'),
+(378, 1355838893, '127.0.0.1', 'V5WEDMC');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mw_categories`
+--
+
+CREATE TABLE IF NOT EXISTS `mw_categories` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `mw_categories`
+--
+
+INSERT INTO `mw_categories` (`id`, `title`) VALUES
+(1, 'Our Approach'),
+(2, 'The School'),
+(3, 'Parent Resources'),
+(4, 'Home');
 
 -- --------------------------------------------------------
 
@@ -213,6 +255,53 @@ CREATE TABLE IF NOT EXISTS `mw_groups` (
 INSERT INTO `mw_groups` (`id`, `name`, `description`) VALUES
 (1, 'admin', 'Administrator'),
 (2, 'members', 'General User');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mw_helpful_links`
+--
+
+CREATE TABLE IF NOT EXISTS `mw_helpful_links` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `link_text` varchar(255) NOT NULL,
+  `url` varchar(255) NOT NULL,
+  `school` int(11) NOT NULL,
+  `category` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data for table `mw_helpful_links`
+--
+
+INSERT INTO `mw_helpful_links` (`id`, `link_text`, `url`, `school`, `category`) VALUES
+(3, 'Listen to Kids', 'http://www.listeningtokids.com', 3, 4),
+(4, 'Music Can Help', 'http://www.swahilimusicnotes.com', 1, 4),
+(5, 'Kids Speak their Minds', 'http://www.speakyourmind.com', 3, 6);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mw_helpful_links_categories`
+--
+
+CREATE TABLE IF NOT EXISTS `mw_helpful_links_categories` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `category` varchar(255) NOT NULL,
+  `the_links` varchar(255) NOT NULL,
+  `school` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table `mw_helpful_links_categories`
+--
+
+INSERT INTO `mw_helpful_links_categories` (`id`, `category`, `the_links`, `school`) VALUES
+(4, 'Help Children As they Play', '<a target = "_blank" href = "http://localhost/myworld/backend/mw_helpful_links/4">Helpful Links</a>', 3),
+(5, 'Dance & Games', '<a target = "_blank" href = "http://localhost/myworld/backend/mw_helpful_links/5">Helpful Links</a>', 2),
+(6, 'Public Speaking for kids links', '<a target = "_blank" href = "http://localhost/myworld/backend/mw_helpful_links/6">Helpful Links</a>', 1);
 
 -- --------------------------------------------------------
 
@@ -349,6 +438,20 @@ CREATE TABLE IF NOT EXISTS `mw_login_attempts` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `mw_msasani_classes`
+--
+
+CREATE TABLE IF NOT EXISTS `mw_msasani_classes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `class_name` varchar(255) NOT NULL,
+  `school` int(11) NOT NULL,
+  `class_teacher` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `mw_news`
 --
 
@@ -447,21 +550,74 @@ CREATE TABLE IF NOT EXISTS `mw_pages` (
   `identifier` varchar(50) NOT NULL,
   `thumb_nail` varchar(255) DEFAULT NULL,
   `type` int(11) NOT NULL,
+  `url` varchar(255) DEFAULT NULL,
+  `template` int(11) NOT NULL,
+  `parent` int(11) NOT NULL,
+  `table` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=33 ;
 
 --
 -- Dumping data for table `mw_pages`
 --
 
-INSERT INTO `mw_pages` (`id`, `title`, `text`, `identifier`, `thumb_nail`, `type`) VALUES
-(1, 'About My World Preschool', '<p>\r\n	<img alt="Flowers" src="/myworld/ckfinder/userfiles/images/Hydrangeas.jpg" style="width: 206px; height: 224px; float: left;" />While still warm, the oil, like hot punch, is received into the six-barrel casks; and while, perhaps, the ship is pitching and rolling this way and that in the midnight sea, the enormous casks are slewed round and headed over, end for end, and sometimes perilously scoot across the slippery deck, like so many land slides, till at last man-handled and stayed in their course; and all round the hoops, rap, rap, go as many hammers as can play upon them, for now, EX OFFICIO, every sailor is a cooper.</p>\r\n<p>\r\n	At length, when the last pint is casked, and all is cool, then the great hatchways are unsealed, the bowels of the ship are thrown open, and down go the casks to their final rest in the sea. This done, the hatches are replaced, and hermetically closed, like a closet walled up. In the sperm fishery, this is perhaps one of the most remarkable incidents in all the business of whaling.</p>\r\n<p>\r\n	One day the planks stream with freshets of blood and oil; on the sacred quarter-deck enormous masses of the whale&#39;s head are profanely piled; great rusty casks lie about, as in a brewery yard; the smoke from the try-works has besooted all the bulwarks; the mariners go about suffused with unctuousness; the entire ship seems great leviathan himself; while on all hands the din is deafening.</p>\r\n<p>\r\n	But a day or two after, you look about you, and prick your ears in this self-same ship; and were it not for the tell-tale boats and try-works, you would all but swear you trod some silent merchant vessel, with a most scrupulously neat commander. The unmanufactured sperm oil possesses a singularly cleansing virtue. This is the reason why the decks never look so white as just after what they call an affair of oil. Besides, from the ashes of the burned scraps of the whale, a potent lye is readily made; and whenever any adhesiveness from the back of the whale remains clinging to the side, that lye quickly exterminates it. Hands go diligently along the bulwarks, and with buckets of water and rags restore them to their full tidiness.</p>\r\n<p>\r\n	The soot is brushed from the lower rigging. All the numerous implements which have been in use are likewise faithfully cleansed and put away. The great hatch is scrubbed and placed upon the try-works, completely hiding the pots; every cask is out of sight; all tackles are coiled in unseen nooks; and when by the combined and simultaneous industry of almost the entire ship&#39;s company, the whole of this conscientious duty is at last concluded, then the crew themselves proceed to their own ablutions; shift themselves from top to toe; and finally issue to the immaculate deck, fresh and all aglow, as bridegrooms new-leaped from out the daintiest Holland.</p>\r\n<div>\r\n	<div>\r\n		&nbsp;</div>\r\n	<div>\r\n		&nbsp;</div>\r\n</div>\r\n<p>\r\n	&nbsp;</p>\r\n', 'ABOUT', 'Hydrangeas.jpg', 1),
-(2, 'Contact My World Preschool', '<p>\r\n	<span style="color: rgb(51, 51, 51); font-family: ''Helvetica Neue'', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 20px; ">We value your feedback, please say hello!</span></p>\r\n', 'CONTACT', NULL, 1),
-(7, 'My World Preschool | Home', '<p>\r\n	Under this head I reckon a monster which, by the various names of Fin-Back, Tall-Spout, and Long-John, has been seen almost in every sea and is commonly the whale whose distant jet is so often descried by passengers crossing the Atlantic, in the New York packet-tracks. In the length he attains, and in his baleen, the Fin-back resembles the right whale, but is of a less portly girth, and a lighter colour, approaching to olive.</p>\r\n', 'HOME', '', 1),
-(9, 'My World Preschool Msasani', '<p>\r\n	<img alt="Surfing Guy" src="/myworld/ckfinder/userfiles/images/-148.jpg" style="width: 300px; height: 199px; float: left;" />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae ullamcorper lacus. In urna dolor, molestie et commodo eu, viverra nec ligula. Sed a sodales ipsum, nec commodo quam nisl sed diam. In urna dolor, molestie et commodo eu, viverra nec ligula. Sed a In urna dolor, molestie et commodo eu, viverra nec ligula. Sed a&nbsp;<a href="http://www.zoomtanzania.com">See Our Play Ground</a>.&nbsp;<br />\r\n	<br />\r\n	Cras quis velit ac dolor tristique placerat. Phasellus placerat aliquet semper. Donec in elit sit amet neque venenatis faucibus eget eget magna. Pellentesque pretium nunc vitae orci ultrices ac vehicula sapien pretium. Nullam non tellus risus, ut laoreet turpis. Aliquam erat volutpat. Sed lectus leo, mattis ut vehicula quis, ultrices id tellus. Duis adipiscing mauris nec nulla faucibus ac porta ipsum imperdiet. Donec porttitor suscipit elit, a ultrices nibh suscipit ut. Suspendisse nec nisl mauris, nec cursus neque. Phasellus elit eros, feugiat eget elementum quis, faucibus sed augue. Morbi fringilla dictum velit ac rhoncus. Aenean auctor tellus sodales lectus condimentum interdum. Donec nisi augue, ornare dignissim pellentesque sit amet, vehicula in urna. Nam faucibus aliquet nisi, vitae tristique mauris tincidunt eu. Nullam sagittis felis vitae eros dignissim lobortis.</p>\r\n', 'MSASANI', '-148.jpg', 3),
-(10, 'My World Preschool Upanga', '<p>\r\n	<img alt="Playing on the wall." src="/myworld/ckfinder/userfiles/images/-28.jpg" style="width: 250px; height: 376px; float: right;" />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae ullamcorper lacus. In urna dolor, molestie et commodo eu, viverra nec ligula. Sed a sodales ipsum, nec commodo quam nisl sed diam. In urna dolor, molestie et commodo eu, viverra nec ligula. Sed a In urna dolor, molestie et commodo eu, viverra nec ligula. Sed a <a href="http://www.swahilimusicnotes.com">See Our Play Ground.</a></p>\r\n<p>\r\n	Cras quis velit ac dolor tristique placerat. Phasellus placerat aliquet semper. Donec in elit sit amet</p>\r\n<p>\r\n	&nbsp;neque venenatis faucibus eget eget magna. Pellentesque pretium nunc vitae orci ultrices ac vehicula sapien pretium. Nullam non tellus risus, ut laoreet turpis. Aliquam erat volutpat. Sed lectus leo, mattis ut vehicula quis, ultrices id tellus. Duis adipiscing mauris nec nulla faucibus ac porta ipsum imperdiet. Donec porttitor suscipit elit, a ultrices nibh suscipit ut. Suspendisse nec nisl mauris, nec cursus neque. Phasellus elit eros, feugiat eget elementum quis, faucibus sed augue. Morbi fringilla dictum velit ac rhoncus. Aenean auctor tellus sodales lectus condimentum interdum. Donec nisi augue, ornare dignissim pellentesque sit amet, vehicula in urna. Nam faucibus aliquet nisi, vitae tristique mauris tincidunt eu. Nullam sagittis felis vitae eros dignissim lobortis.</p>\r\n<div>\r\n	&nbsp;</div>\r\n', 'UPANGA', '-28.jpg', 2),
-(11, 'My World Training Center', '<p>\r\n	This is the Training Center home</p>\r\n', 'TRAINING', '', 5),
-(12, 'My World Community Centre', '<p>\r\n	This is the Community Centre Home Page</p>\r\n', 'COMMUNITY', '', 4);
+INSERT INTO `mw_pages` (`id`, `title`, `text`, `identifier`, `thumb_nail`, `type`, `url`, `template`, `parent`, `table`) VALUES
+(1, 'About My World Preschool', '<p>\r\n	<img alt="Flowers" src="/myworld/ckfinder/userfiles/images/Hydrangeas.jpg" style="width: 206px; height: 224px; float: left;" />While still warm, the oil, like hot punch, is received into the six-barrel casks; and while, perhaps, the ship is pitching and rolling this way and that in the midnight sea, the enormous casks are slewed round and headed over, end for end, and sometimes perilously scoot across the slippery deck, like so many land slides, till at last man-handled and stayed in their course; and all round the hoops, rap, rap, go as many hammers as can play upon them, for now, EX OFFICIO, every sailor is a cooper.</p>\r\n<p>\r\n	At length, when the last pint is casked, and all is cool, then the great hatchways are unsealed, the bowels of the ship are thrown open, and down go the casks to their final rest in the sea. This done, the hatches are replaced, and hermetically closed, like a closet walled up. In the sperm fishery, this is perhaps one of the most remarkable incidents in all the business of whaling.</p>\r\n<p>\r\n	One day the planks stream with freshets of blood and oil; on the sacred quarter-deck enormous masses of the whale&#39;s head are profanely piled; great rusty casks lie about, as in a brewery yard; the smoke from the try-works has besooted all the bulwarks; the mariners go about suffused with unctuousness; the entire ship seems great leviathan himself; while on all hands the din is deafening.</p>\r\n<p>\r\n	But a day or two after, you look about you, and prick your ears in this self-same ship; and were it not for the tell-tale boats and try-works, you would all but swear you trod some silent merchant vessel, with a most scrupulously neat commander. The unmanufactured sperm oil possesses a singularly cleansing virtue. This is the reason why the decks never look so white as just after what they call an affair of oil. Besides, from the ashes of the burned scraps of the whale, a potent lye is readily made; and whenever any adhesiveness from the back of the whale remains clinging to the side, that lye quickly exterminates it. Hands go diligently along the bulwarks, and with buckets of water and rags restore them to their full tidiness.</p>\r\n<p>\r\n	The soot is brushed from the lower rigging. All the numerous implements which have been in use are likewise faithfully cleansed and put away. The great hatch is scrubbed and placed upon the try-works, completely hiding the pots; every cask is out of sight; all tackles are coiled in unseen nooks; and when by the combined and simultaneous industry of almost the entire ship&#39;s company, the whole of this conscientious duty is at last concluded, then the crew themselves proceed to their own ablutions; shift themselves from top to toe; and finally issue to the immaculate deck, fresh and all aglow, as bridegrooms new-leaped from out the daintiest Holland.</p>\r\n<div>\r\n	<div>\r\n		&nbsp;</div>\r\n	<div>\r\n		&nbsp;</div>\r\n</div>\r\n<p>\r\n	&nbsp;</p>\r\n', 'ABOUT', 'Hydrangeas.jpg', 1, NULL, 1, 4, ''),
+(2, 'Contact My World Preschool', '<p>\r\n	<span style="color: rgb(51, 51, 51); font-family: ''Helvetica Neue'', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 20px; ">We value your feedback, please say hello!</span></p>\r\n', 'CONTACT', '', 1, NULL, 5, 4, ''),
+(7, 'My World Preschool | Home', '<p>\r\n	Under this head I reckon a monster which, by the various names of Fin-Back, Tall-Spout, and Long-John, has been seen almost in every sea and is commonly the whale whose distant jet is so often descried by passengers crossing the Atlantic, in the New York packet-tracks. In the length he attains, and in his baleen, the Fin-back resembles the right whale, but is of a less portly girth, and a lighter colour, approaching to olive.</p>\r\n', 'HOME', '', 1, NULL, 6, 4, ''),
+(9, 'My World Preschool Msasani', '<p>\r\n	<img alt="Surfing Guy" src="/myworld/ckfinder/userfiles/images/-148.jpg" style="width: 300px; height: 199px; float: left;" />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae ullamcorper lacus. In urna dolor, molestie et commodo eu, viverra nec ligula. Sed a sodales ipsum, nec commodo quam nisl sed diam. In urna dolor, molestie et commodo eu, viverra nec ligula. Sed a In urna dolor, molestie et commodo eu, viverra nec ligula. Sed a&nbsp;<a href="http://www.zoomtanzania.com">See Our Play Ground</a>.&nbsp;<br />\r\n	<br />\r\n	Cras quis velit ac dolor tristique placerat. Phasellus placerat aliquet semper. Donec in elit sit amet neque venenatis faucibus eget eget magna. Pellentesque pretium nunc vitae orci ultrices ac vehicula sapien pretium. Nullam non tellus risus, ut laoreet turpis. Aliquam erat volutpat. Sed lectus leo, mattis ut vehicula quis, ultrices id tellus. Duis adipiscing mauris nec nulla faucibus ac porta ipsum imperdiet. Donec porttitor suscipit elit, a ultrices nibh suscipit ut. Suspendisse nec nisl mauris, nec cursus neque. Phasellus elit eros, feugiat eget elementum quis, faucibus sed augue. Morbi fringilla dictum velit ac rhoncus. Aenean auctor tellus sodales lectus condimentum interdum. Donec nisi augue, ornare dignissim pellentesque sit amet, vehicula in urna. Nam faucibus aliquet nisi, vitae tristique mauris tincidunt eu. Nullam sagittis felis vitae eros dignissim lobortis.</p>\r\n', 'MSASANI', '-148.jpg', 3, 'home', 2, 1, ''),
+(10, 'My World Preschool Upanga', '<p>\r\n	<img alt="Playing on the wall." src="/myworld/ckfinder/userfiles/images/-28.jpg" style="width: 250px; height: 376px; float: right;" />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae ullamcorper lacus. In urna dolor, molestie et commodo eu, viverra nec ligula. Sed a sodales ipsum, nec commodo quam nisl sed diam. In urna dolor, molestie et commodo eu, viverra nec ligula. Sed a In urna dolor, molestie et commodo eu, viverra nec ligula. Sed a <a href="http://www.swahilimusicnotes.com">See Our Play Ground.</a></p>\r\n<p>\r\n	Cras quis velit ac dolor tristique placerat. Phasellus placerat aliquet semper. Donec in elit sit amet</p>\r\n<p>\r\n	&nbsp;neque venenatis faucibus eget eget magna. Pellentesque pretium nunc vitae orci ultrices ac vehicula sapien pretium. Nullam non tellus risus, ut laoreet turpis. Aliquam erat volutpat. Sed lectus leo, mattis ut vehicula quis, ultrices id tellus. Duis adipiscing mauris nec nulla faucibus ac porta ipsum imperdiet. Donec porttitor suscipit elit, a ultrices nibh suscipit ut. Suspendisse nec nisl mauris, nec cursus neque. Phasellus elit eros, feugiat eget elementum quis, faucibus sed augue. Morbi fringilla dictum velit ac rhoncus. Aenean auctor tellus sodales lectus condimentum interdum. Donec nisi augue, ornare dignissim pellentesque sit amet, vehicula in urna. Nam faucibus aliquet nisi, vitae tristique mauris tincidunt eu. Nullam sagittis felis vitae eros dignissim lobortis.</p>\r\n<div>\r\n	&nbsp;</div>\r\n', 'UPANGA', '-28.jpg', 2, 'home', 2, 1, ''),
+(11, 'My World Training Center', '<p>\r\n	This is the Training Center home</p>\r\n', 'TRAINING', '', 5, NULL, 0, 0, ''),
+(12, 'My World Community Centre', '<p>\r\n	This is the Community Centre Home Page</p>\r\n', 'COMMUNITY', '', 4, NULL, 0, 0, ''),
+(13, 'Curriculum', '<p>\r\n	Curriculum Test</p>\r\n', 'UPANGA_CURRICULUM', '', 2, 'upanga-curriculum', 2, 1, ''),
+(14, 'School-Home Link', '', 'UPANGA_SCHOOL_HOME_LINK', '', 2, 'school-home-link', 2, 1, ''),
+(15, 'Projects', '', 'UPANGA_PROJECTS', '', 2, 'projects', 4, 1, 'mw_projects'),
+(16, 'Facilities', '', 'FACILITIES', '', 2, 'facilities', 2, 2, ''),
+(17, 'Play Ground', '', 'PLAY_GROUND', '', 2, 'play-ground', 2, 2, ''),
+(18, 'Teaching Staff', '', 'TEACHING_STAFF', '', 2, 'teaching-staff', 9, 2, ''),
+(19, 'Application Guidelines', '', 'APPLICATION_GUIDELINES', '', 2, 'application-guidelines', 2, 3, ''),
+(20, 'Parent Handbook', '', 'PARENT_HANDBOOK', '', 2, 'parent-handbook', 2, 3, ''),
+(21, 'Testimonials', '', 'TESTIMONIALS', '', 2, 'testimonials', 2, 3, ''),
+(22, 'Helpful Links', '', 'HELPFUL_LINKS', '', 2, 'helpful-links', 8, 3, 'mw_helpful_links'),
+(23, 'Curriculum', '<p>\r\n	Curriculum Test</p>\r\n', 'UPANGA_CURRICULUM', '', 3, 'upanga-curriculum', 2, 1, ''),
+(24, 'School-Home Link', '', 'UPANGA_SCHOOL_HOME_LINK', '', 3, 'school-home-link', 2, 1, ''),
+(25, 'Projects', '', 'UPANGA_PROJECTS', '', 3, 'projects', 4, 1, 'mw_projects'),
+(26, 'Facilities', '', 'FACILITIES', '', 3, 'facilities', 2, 2, ''),
+(27, 'Play Ground', '', 'PLAY_GROUND', '', 3, 'play-ground', 2, 2, ''),
+(28, 'Teaching Staff', '', 'TEACHING_STAFF', '', 3, 'teaching-staff', 9, 2, ''),
+(29, 'Application Guidelines', '', 'APPLICATION_GUIDELINES', '', 3, 'application-guidelines', 2, 3, ''),
+(30, 'Parent Handbook', '', 'PARENT_HANDBOOK', '', 3, 'parent-handbook', 2, 3, ''),
+(31, 'Testimonials', '', 'TESTIMONIALS', '', 3, 'testimonials', 7, 3, ''),
+(32, 'Helpful Links', '', 'HELPFUL_LINKS', '', 3, 'helpful-links', 8, 3, 'mw_helpful_links');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mw_page_templates`
+--
+
+CREATE TABLE IF NOT EXISTS `mw_page_templates` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `view` varchar(255) NOT NULL,
+  `access_level` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+
+--
+-- Dumping data for table `mw_page_templates`
+--
+
+INSERT INTO `mw_page_templates` (`id`, `name`, `view`, `access_level`) VALUES
+(1, 'Wide Page', 'page.php', 2),
+(2, 'Page with Sidebar', 'subpage.php', 2),
+(3, 'Summary', 'summary.php', 1),
+(4, 'Sub Summary', 'subsummary.php', 1),
+(5, 'Contact ', 'contact.php', 1),
+(6, 'Home', 'home.php', 1),
+(7, 'Testimonials', 'testimonials.php', 1),
+(8, 'Helpful Links', 'hlinks.php', 1),
+(9, 'Staff', 'staff.php', 1);
 
 -- --------------------------------------------------------
 
@@ -474,8 +630,7 @@ CREATE TABLE IF NOT EXISTS `mw_projects` (
   `title` varchar(255) NOT NULL,
   `text` text NOT NULL,
   `url` varchar(255) NOT NULL,
-  `category` int(11) NOT NULL,
-  `featured` int(11) DEFAULT '2',
+  `type` int(11) NOT NULL,
   `thumb_nail` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
@@ -484,9 +639,9 @@ CREATE TABLE IF NOT EXISTS `mw_projects` (
 -- Dumping data for table `mw_projects`
 --
 
-INSERT INTO `mw_projects` (`id`, `title`, `text`, `url`, `category`, `featured`, `thumb_nail`) VALUES
-(1, 'Test Project', '<p>\r\n	<img alt="" src="/nipe_fagio/ckfinder/userfiles/images/Koala.jpg" style="width: 400px; height: 300px; float: left;" /></p>\r\n<div>\r\n	Mr. Fogg and Aouda descended into the cabin at midnight, having been already preceded by Fix, who had lain down on one of the cots. The pilot and crew remained on deck all night.</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	At sunrise the next day, which was 8th November, the boat had made more than one hundred miles. The log indicated a mean speed of between eight and nine miles. The Tankadere still carried all sail, and was accomplishing her greatest capacity of speed. If the wind held as it was, the chances would be in her favour. During the day she kept along the coast, where the currents were favourable; the coast, irregular in profile, and visible sometimes across the clearings, was at most five miles distant. The sea was less boisterous, since the wind came off land&mdash;a fortunate circumstance for the boat, which would suffer, owing to its small tonnage, by a heavy surge on the sea.</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	The breeze subsided a little towards noon, and set in from the south-west. The pilot put up his poles, but took them down again within two hours, as the wind freshened up anew.</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	Mr. Fogg and Aouda, happily unaffected by the roughness of the sea, ate with a good appetite, Fix being invited to share their repast, which he accepted with secret chagrin. To travel at this man&#39;s expense and live upon his provisions was not palatable to him. Still, he was obliged to eat, and so he ate.</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	When the meal was over, he took Mr. Fogg apart, and said, &quot;sir&quot;&mdash;this &quot;sir&quot; scorched his lips, and he had to control himself to avoid collaring this &quot;gentleman&quot;&mdash;&quot;sir, you have been very kind to give me a passage on this boat. But, though my means will not admit of my expending them as freely as you, I must ask to pay my share&mdash;&quot;</div>\r\n<div>\r\n	&quot;Let us not speak of that, sir,&quot; replied Mr. Fogg.</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	&quot;But, if I insist&mdash;&quot;</div>\r\n<div>\r\n	&quot;No, sir,&quot; repeated Mr. Fogg, in a tone which did not admit of a reply. &quot;This enters into my general expenses.&quot;</div>\r\n<div>\r\n	Fix, as he bowed, had a stifled feeling, and, going forward, where he ensconced himself, did not open his mouth for the rest of the day.</div>\r\n<div>\r\n	Meanwhile they were progressing famously, and John Bunsby was in high hope. He several times assured Mr. Fogg that they would reach Shanghai in time; to which that gentleman responded that he counted upon it. The crew set to work in good earnest, inspired by the reward to be gained. There was not a sheet which was not tightened not a sail which was not vigorously hoisted; not a lurch could be charged to the man at the helm. They worked as desperately as if they were contesting in a Royal yacht regatta.</div>\r\n', 'test-project', 1, 1, 'Koala.jpg'),
-(2, 'This is a test project number 5', '<p>\r\n	Test project number 5</p>\r\n', 'this-is-a-test-project-number-5', 2, 2, NULL);
+INSERT INTO `mw_projects` (`id`, `title`, `text`, `url`, `type`, `thumb_nail`) VALUES
+(1, 'Test Project', '<p>\r\n	<img alt="" src="/nipe_fagio/ckfinder/userfiles/images/Koala.jpg" style="width: 400px; height: 300px; float: left;" /></p>\r\n<div>\r\n	Mr. Fogg and Aouda descended into the cabin at midnight, having been already preceded by Fix, who had lain down on one of the cots. The pilot and crew remained on deck all night.</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	At sunrise the next day, which was 8th November, the boat had made more than one hundred miles. The log indicated a mean speed of between eight and nine miles. The Tankadere still carried all sail, and was accomplishing her greatest capacity of speed. If the wind held as it was, the chances would be in her favour. During the day she kept along the coast, where the currents were favourable; the coast, irregular in profile, and visible sometimes across the clearings, was at most five miles distant. The sea was less boisterous, since the wind came off land&mdash;a fortunate circumstance for the boat, which would suffer, owing to its small tonnage, by a heavy surge on the sea.</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	The breeze subsided a little towards noon, and set in from the south-west. The pilot put up his poles, but took them down again within two hours, as the wind freshened up anew.</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	Mr. Fogg and Aouda, happily unaffected by the roughness of the sea, ate with a good appetite, Fix being invited to share their repast, which he accepted with secret chagrin. To travel at this man&#39;s expense and live upon his provisions was not palatable to him. Still, he was obliged to eat, and so he ate.</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	When the meal was over, he took Mr. Fogg apart, and said, &quot;sir&quot;&mdash;this &quot;sir&quot; scorched his lips, and he had to control himself to avoid collaring this &quot;gentleman&quot;&mdash;&quot;sir, you have been very kind to give me a passage on this boat. But, though my means will not admit of my expending them as freely as you, I must ask to pay my share&mdash;&quot;</div>\r\n<div>\r\n	&quot;Let us not speak of that, sir,&quot; replied Mr. Fogg.</div>\r\n<div>\r\n	&nbsp;</div>\r\n<div>\r\n	&quot;But, if I insist&mdash;&quot;</div>\r\n<div>\r\n	&quot;No, sir,&quot; repeated Mr. Fogg, in a tone which did not admit of a reply. &quot;This enters into my general expenses.&quot;</div>\r\n<div>\r\n	Fix, as he bowed, had a stifled feeling, and, going forward, where he ensconced himself, did not open his mouth for the rest of the day.</div>\r\n<div>\r\n	Meanwhile they were progressing famously, and John Bunsby was in high hope. He several times assured Mr. Fogg that they would reach Shanghai in time; to which that gentleman responded that he counted upon it. The crew set to work in good earnest, inspired by the reward to be gained. There was not a sheet which was not tightened not a sail which was not vigorously hoisted; not a lurch could be charged to the man at the helm. They worked as desperately as if they were contesting in a Royal yacht regatta.</div>\r\n', 'test-project', 3, 'Koala.jpg'),
+(2, 'This is a test project number 5', '<p>\r\n	Test project number 5</p>\r\n', 'this-is-a-test-project-number-5', 2, NULL);
 
 -- --------------------------------------------------------
 
@@ -545,6 +700,27 @@ INSERT INTO `mw_publications` (`id`, `title`, `description`, `category`, `public
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `mw_schools`
+--
+
+CREATE TABLE IF NOT EXISTS `mw_schools` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `school_name` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `mw_schools`
+--
+
+INSERT INTO `mw_schools` (`id`, `school_name`) VALUES
+(1, 'Both'),
+(2, 'Upanga Preschool'),
+(3, 'Msasani Preschool');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `mw_sections`
 --
 
@@ -577,6 +753,21 @@ INSERT INTO `mw_settings` (`id`, `setting`, `value`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `mw_teaching_staff`
+--
+
+CREATE TABLE IF NOT EXISTS `mw_teaching_staff` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `photo` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `school` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `mw_team`
 --
 
@@ -596,6 +787,46 @@ CREATE TABLE IF NOT EXISTS `mw_team` (
 INSERT INTO `mw_team` (`id`, `name`, `photo`, `position_or_title`, `info`) VALUES
 (1, 'Team Member 1', '737b7-ChrysanthemumLR.jpg', 'Team Leader', '<p>\r\n	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eget magna elit. Pellentesque eget risus sit amet mi rhoncus pharetra et quis lorem. Maecenas at scelerisque diam. Pellentesque egestas purus ut nunc facilisis non lacinia turpis pretium. Fusce a arcu eleifend massa venenatis egestas ut ut neque. Vivamus eu sagittis urna. Praesent et faucibus libero. Curabitur nec est vitae diam posuere malesuada non et arcu. Nam vulputate mauris quis est adipiscing sit amet fermentum orci luctus. Nulla non dolor tortor.</p>\r\n'),
 (2, 'The Penguin', '31c03-Koala.jpg', 'Penguin Guy', '<p>\r\n	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eget magna elit. Pellentesque eget risus sit amet mi rhoncus pharetra et quis lorem. Maecenas at scelerisque diam. Pellentesque egestas purus ut nunc facilisis non lacinia turpis pretium. Fusce a arcu eleifend massa venenatis egestas ut ut neque. Vivamus eu sagittis urna. Praesent et faucibus libero. Curabitur nec est vitae diam posuere malesuada non et arcu. Nam vulputate mauris quis est adipiscing sit amet fermentum orci luctus. Nulla non dolor tortor.</p>\r\n');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mw_testimonials`
+--
+
+CREATE TABLE IF NOT EXISTS `mw_testimonials` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `message` text NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `approved` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `school` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `mw_testimonials`
+--
+
+INSERT INTO `mw_testimonials` (`id`, `name`, `title`, `message`, `email`, `approved`, `date`, `school`) VALUES
+(1, 'Terence Silonda', 'Keep up the Good Work', '<p>\r\n	Now that&#39;s great. I love your website and I love your school. Go Go guys :)</p>\r\n', 'terence@zoomtanzania.com', 1, '2012-12-18', 3),
+(2, 'Daniel Chikaka', 'Web Developer', '<p>\r\n	I&#39;ve enjoyed every step of making this amazing website. The good vibe that comes from the school spreads to all in the community. I&#39;m proud to have done this project.</p>\r\n', 'danniemanji@gmail.com', 1, '2012-12-17', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mw_upanga_classes`
+--
+
+CREATE TABLE IF NOT EXISTS `mw_upanga_classes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `class_name` varchar(255) NOT NULL,
+  `school` int(11) NOT NULL,
+  `class_teacher` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -629,7 +860,7 @@ CREATE TABLE IF NOT EXISTS `mw_users` (
 --
 
 INSERT INTO `mw_users` (`id`, `ip_address`, `username`, `password`, `salt`, `email`, `activation_code`, `forgotten_password_code`, `forgotten_password_time`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
-(1, '\0\0', 'administrator', '59beecdf7fc966e2f17fd8f65a4a9aeb09d4a3d4', '9462e8eee0', 'admin@admin.com', '', NULL, NULL, NULL, 1268889823, 1355470226, 1, 'Admin', 'istrator', 'ADMIN', '0'),
+(1, '\0\0', 'administrator', '59beecdf7fc966e2f17fd8f65a4a9aeb09d4a3d4', '9462e8eee0', 'admin@admin.com', '', NULL, NULL, NULL, 1268889823, 1355904862, 1, 'Admin', 'istrator', 'ADMIN', '0'),
 (2, '\0\0', 'anton.fouquet@djpa.co.tz', 'ded126212466ac57fea9c2dbab79f42acaa5670b', NULL, 'anton.fouquet@djpa.co.tz', NULL, NULL, NULL, NULL, 1351672322, 1351672358, 1, 'Anton', 'Fouquet', NULL, '+255 753 102 000'),
 (3, '\0\0', 'anton2.fouquet@djpa.co.tz', '5ef2cc5b647649523f749a4da095c1a5e3fdae46', NULL, 'anton2.fouquet@djpa.co.tz', NULL, NULL, NULL, NULL, 1353495312, 1353495312, 1, 'Anton', 'Fouquet', NULL, '+255 753 102 000'),
 (4, '\0\0', 'anton23.fouquet@djpa.co.tz', '7e06f410a1f61449a70e041e0284265df154924a', NULL, 'anton23.fouquet@djpa.co.tz', NULL, NULL, NULL, NULL, 1353495348, 1353495348, 1, 'Anton', 'Fouquet', NULL, '+255 753 102 000');
