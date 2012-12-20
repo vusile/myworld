@@ -182,3 +182,8 @@ font:italic bold 14px Georgia, serif;
 .signature:after, .signature:before {
 	content: "~";
 }
+
+#fade, #fade2, #fade3, #fade4 {
+
+	float: left;
+} 

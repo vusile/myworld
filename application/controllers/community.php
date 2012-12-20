@@ -29,21 +29,205 @@ class Community extends CI_Controller {
 		$this->load->view('sidebar', $data);
 		$this->load->view('subpage', $data);
 		$this->load->view('footer');
-	}
-	
-	public function curriculum()
-	{
-		$this->load->view('header',$header);
-		$this->load->view('sidebar', $data);
-		$this->load->view('subpage', $data);
-		$this->load->view('footer');
+
 	}
 		
-	public function fetch_page($identifier)
+	function sidebar ($identifier = '')
 	{
-		$this->db->where('identifier',$identifier);
+		$flag = 0;
+		$page_categories=$this->db->get('mw_categories');
+		
+		$sidebar['sidebar']='';
+		foreach($page_categories->result() as $category)
+		{
+			$this->db->where('type',4);
+			$this->db->where('parent',$category->id);
+			if($this->db->count_all_results('mw_pages') > 0)
+			{
+				$sidebar['sidebar'] .= '<p class="sidebarp">' . $category->title . '</p>';
+				$this->db->where('type',4);
+				$this->db->where('parent',$category->id);
+				//$this->db->where('url',$identifier);
+				$pages=$this->db->get('mw_pages');
+				
+				foreach($pages->result() as $page)
+				{
+					if($identifier == $page->url)
+						$sidebar['sidebar'] .= '<li class="activex"><a href="community/page/' . $page->url . '">'. $page->title .'</a></li>';
+					else
+						$sidebar['sidebar'] .= '<li><a href="community/page/' . $page->url . '">'. $page->title .'</a></li>';
+				}
+				
+				$flag++;
+			}
+			
+		}
+		
+		if($flag==0)
+		{
+			$this->db->where('type',4);
+			if($this->db->count_all_results('mw_pages') > 0){
+				$this->db->where('type',4);
+
+				$pages=$this->db->get('mw_pages');
+				
+				foreach($pages->result() as $page)
+				{
+					if($identifier == $page->url)
+						$sidebar['sidebar'] .= '<li class="activex"><a href="community/page/' . $page->url . '">'. $page->title .'</a></li>';
+					else
+						$sidebar['sidebar'] .= '<li><a href="community/page/' . $page->url . '">'. $page->title .'</a></li>';
+				}
+			}
+		}
+		
+		return $sidebar;
+	}
+	
+	function helpful_links($school){
+		$links='';
+		$this->db->where('school',2);
+		$this->db->or_where('school',1);
+		$categories = $this->db->get('mw_helpful_links_categories');
+		
+		foreach($categories->result() as $category)
+		{
+			$this->db->where('category',$category->id);
+			$this->db->where_in('school',array(1,2));
+			
+			if($this->db->count_all_results('mw_helpful_links') > 0)
+			{
+			
+
+				$links .= '<p>' . $category->category . '</p>';
+				$this->db->where('category',$category->id);
+				$this->db->where_in('school',array(1,2));
+				
+				$hlinks=$this->db->get('mw_helpful_links');
+				
+								//echo $this->db->last_query();
+				
+				
+				foreach($hlinks->result() as $link)
+				{
+					$links .= '<a target="_blank" href="' . $link->url . '"><p>'. $link->link_text .'</p></a>';
+
+				}
+				
+				$links .= '<hr />';
+				
+			}
+		}
+		//die();
+		return $links;
+	}
+	
+	function teaching_staff($school)
+	{
+		$staff = '';
+		$this->db->where('school',$school);
+		$teachers = $this->db->get('mw_teaching_staff');
+		
+		$this->db->where('school',$school);
+		$classes = $this->db->get('mw_classes');
+		$classes_array = array();
+		
+		foreach($classes->result() as $class)
+		{
+			$classes_array[$class->id] = $class->class_name;
+		}
+		
+		
+		foreach($teachers->result() as $teacher)
+		{
+			$staff .= "<strong>Teacher's Name: </strong>" . $teacher->name .  "<br>";
+			$staff .= '<strong>Class(es): </strong>' ; 
+			$this->db->where('teacher_id', $teacher->id);
+			$tac = $this->db->get('mw_teachers_classes');
+			
+			if($tac->num_rows() > 0)
+				foreach($tac->result() as $tc)	
+					$staff .= $classes_array[$tc->class_id] . ', ' ;
+			else
+				$staff .= 'All Rounder  ';
+				
+			$staff = substr($staff,0,-2);
+			
+			//echo $staff; die();
+			
+			
+			
+			$staff .= '<br>';
+			$staff .= '<img src="photos/' . $teacher->photo .'" alt=""  class="img7">';
+			$staff .= "<p>" . $teacher->description . "<p><div style = 'clear:both; margin-top:7px;  width: 740px; border-top:1px #cdcdcd solid;'></div>";
+			
+		}
+		
+		return $staff;
+		
+	}
+		
+	public function page($identifier)
+	{
+		$this->db->where('type',4);
+		$this->db->where('url',$identifier);
 		$content = $this->db->get('mw_pages');
-		return $content->row();
+		
+		$data['text'] = $content->row()->text;
+		$header['title'] = $content->row()->title;
+		
+		$templateID = $content->row()->template;
+		
+		$this->db->where('id',$templateID);
+		$obj=$this->db->get('mw_page_templates');
+		
+		$template = $obj->row()->view;
+		
+		switch($template)
+		{
+			case 'subsummary.php':
+			$this->db->where('type',2);
+			$data['news'] = $this->db->get('mw_projects');
+			$data['url'] = 'msasani/project';
+			break;
+			
+			case 'testimonials.php':
+			$this->db->where('school',2);
+			$data['testimonials'] = $this->db->get('mw_testimonials');
+			break;
+			
+			case 'hlinks.php':
+			$data['links'] = $this->helpful_links(2);
+			break;			
+			
+			
+			case 'staff.php':
+			$data['staff'] = $this->teaching_staff(2);
+			break;
+			
+		}
+		
+		
+		$sidebar = $this->sidebar($identifier);
+		
+		$this->load->view('header',$header);
+		$this->load->view('sidebar', $sidebar);
+		$this->load->view($template, $data);
+		$this->load->view('footer');
+	}
+	
+	function project($url)
+	{
+		$this->db->where('url',$url);
+		$pages = $this->db->get('mw_projects');
+		$data['text'] = $pages->row()->text;
+		$header['title'] = $pages->row()->title;
+		$sidebar = $this->sidebar();
+		
+		$this->load->view('header',$header);
+		$this->load->view('sidebar', $sidebar);
+		$this->load->view('subpage', $data);
+		$this->load->view('footer');
 	}
 }
 

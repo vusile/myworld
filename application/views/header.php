@@ -32,151 +32,36 @@
     <div id="banner">      <!--start of banner-->
     <!--<img src="img/Header.jpg" alt="My World" align="right" />-->
     <div class="row">
-          <div id="banner1">
-          <div id="myCarousel01" class="carousel slide"><!-- class of slide for animation -->
-  <div class="carousel-inner">  <!--start of c- inner-->
-  
- <!-- pic no 1 goes here-->
-    <div class="item active"><!-- class of active since it's the first item -->
+	<div id="banner1">
+          
       <img src="http://placehold.it/141x278"  alt="" />
-      
-    </div>        <!--   end of item-->
-   <!-- end of pic1-->
-   
-   <!-- pic no 2 goes here-->
-    <div class="item">
+      <img src="http://placehold.it/141x278" alt="" />
       <img src="http://placehold.it/141x278" alt="" />
       
     </div>
-    <!-- end pic no 2 goes here-->
-    
-     <!-- pic no 3 goes here-->
-    <div class="item">
-      <img src="http://placehold.it/141x278" alt="" />
-      
-    </div>
-      <!-- end pic no 3 goes here-->
-     
-      <!-- pic no 4 goes here--> 
-    <div class="item">
-      <img src="http://placehold.it/141x278"  alt="" />
-    </div>
-     <!-- end pic no 4 goes here-->
-    
-  </div><!-- /.carousel-inner -->
-</div><!-- /.carousel -->
- 
-         <!-- end of slideshow banner1-->
-          </div>
-             <div id="banner2">
-          <div id="myCarousel02" class="carousel slide"><!-- class of slide for animation -->
-  <div class="carousel-inner">  <!--start of c- inner-->
-  
- <!-- pic no 1 goes here-->
-    <div class="item active"><!-- class of active since it's the first item -->
+	<div id="banner2">
+          
       <img src="http://placehold.it/237x128"  alt="" />
-      
-    </div>        <!--   end of item-->
-   <!-- end of pic1-->
-   
-   <!-- pic no 2 goes here-->
-    <div class="item">
-      <img src="http://placehold.it/237x128" alt="" />
-      
-    </div>
-    <!-- end pic no 2 goes here-->
-    
-     <!-- pic no 3 goes here-->
-    <div class="item">
-      <img src="http://placehold.it/237x128" alt="" />
-      
-    </div>
-      <!-- end pic no 3 goes here-->
-     
-      <!-- pic no 4 goes here--> 
-    <div class="item">
       <img src="http://placehold.it/237x128"  alt="" />
-    </div>
-     <!-- end pic no 4 goes here-->
-    
-  </div><!-- /.carousel-inner -->
-</div><!-- /.carousel -->
- 
-         <!-- end of slideshow banner2-->
-          </div>
-              <div id="banner3">
-          <div id="myCarousel03" class="carousel slide"><!-- class of slide for animation -->
-  <div class="carousel-inner">  <!--start of c- inner-->
-  
- <!-- pic no 1 goes here-->
-    <div class="item active"><!-- class of active since it's the first item -->
+     <img src="http://placehold.it/237x128"  alt="" />
+      
+    </div> 
+	<div id="banner3">
+          
       <img src="http://placehold.it/237x131"  alt="" />
-      
-    </div>        <!--   end of item-->
-   <!-- end of pic1-->
-   
-   <!-- pic no 2 goes here-->
-    <div class="item">
-      <img src="http://placehold.it/237x131" alt="" />
-      
-    </div>
-    <!-- end pic no 2 goes here-->
-    
-     <!-- pic no 3 goes here-->
-    <div class="item">
-      <img src="http://placehold.it/237x131" alt="" />
-      
-    </div>
-      <!-- end pic no 3 goes here-->
-     
-      <!-- pic no 4 goes here--> 
-    <div class="item">
       <img src="http://placehold.it/237x131"  alt="" />
-    </div>
-     <!-- end pic no 4 goes here-->
-    
-  </div><!-- /.carousel-inner -->
-</div><!-- /.carousel -->
- 
-         <!-- end of slideshow banner3-->
-          </div>
-           <div id="banner4">
- <div id="myCarousel04" class="carousel slide"><!-- class of slide for animation -->
-  <div class="carousel-inner">  <!--start of c- inner-->
-  
- <!-- pic no 1 goes here-->
-    <div class="item active"><!-- class of active since it's the first item -->
+    <img src="http://placehold.it/237x131"  alt="" />
+      
+    </div>    	
+	<div id="banner4">
+          
       <img src="http://placehold.it/302x278"  alt="" />
-      
-    </div>        <!--   end of item-->
-   <!-- end of pic1-->
-   
-   <!-- pic no 2 goes here-->
-    <div class="item">
-      <img src="http://placehold.it/302x278" alt="" />
-      
-    </div>
-    <!-- end pic no 2 goes here-->
-    
-     <!-- pic no 3 goes here-->
-    <div class="item">
-      <img src="http://placehold.it/302x278" alt="" />
-      
-    </div>
-      <!-- end pic no 3 goes here-->
-     
-      <!-- pic no 4 goes here--> 
-    <div class="item">
       <img src="http://placehold.it/302x278"  alt="" />
-    </div>
-     <!-- end pic no 4 goes here-->
-    
-  </div><!-- /.carousel-inner -->
-</div><!-- /.carousel -->
-          </div>
-    </div> <!-- end of row-->
-    
-    </div>                   <!--end of banner-->
+    <img src="http://placehold.it/302x278"  alt="" />
+      
+    </div>       
+</div>   <!--end of row-->
+</div>   <!--end of banner-->
 </div>   <!--end of header-->
 
 <div class="row">  <!--start of row for nav-->
@@ -184,10 +69,10 @@
       <div id="nav">
       <ul>
          <li><a href="<?php base_url(); ?>">Home</a></li>
-        <li><a href="msasani/page/home">Msasani Preschool</a></li>
-        <li ><a href="upanga/page/home">Upanga Preschool</a></li>
-        <li ><a href="training-center/page/home">Training Center</a></li>
-        <li ><a href="community-center/page/home">Community Center</a></li>
+        <li><a href="msasani-preschool">Msasani Preschool</a></li>
+        <li ><a href="upanga-preschool">Upanga Preschool</a></li>
+        <li ><a href="community-center">Community Center</a></li>
+        <li ><a href="training-center">Training Center</a></li>
         <li><a href="blog">Blog</a></li>
         <li ><a href="news">News</a></li>
          <li ><a href="about-us">About Us</a></li>

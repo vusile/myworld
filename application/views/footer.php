@@ -18,26 +18,21 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script src="js/bootstrap-carousel.js" type="text/javascript"></script>
 <script src="js/bootstrap.js" type="text/javascript"></script>
+<script src="js/jquery.cycle.all.js" type="text/javascript"></script>
 <script>
 $('#myCarousel').carousel({
       interval: 5000,
       pause: "hover"
     });
-	$('#myCarousel01').carousel({
-      interval: 7000
-    });
-	$('#myCarousel02').carousel({
-      interval: 7000
-    });
-	$('#myCarousel03').carousel({
-      interval: 7000
-      
-    });
-	$('#myCarousel04').carousel({
-      interval: 7000
-      
-    });
+
    </script>
+   
+  <script>
+  $('#banner1').cycle();
+  $('#banner2').cycle();
+  $('#banner3').cycle();
+  $('#banner4').cycle();
+  </script>
 
 </body>
 </html>
