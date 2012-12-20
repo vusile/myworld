@@ -105,14 +105,74 @@ class Backend extends CI_Controller {
 
 	}	
 	
-	function mw_teaching_staff()
+	function mw_teaching_staff($school=2)
 	{
-		$this->grocery_crud->set_relation_n_n('classes','mw_teachers_classes','mw_classes','newsletter_id','news_id','title','priority');
+		$this->grocery_crud->unset_columns('school');
+		$this->grocery_crud->unset_fields('school');
+		$this->grocery_crud->where('school',$school);
+		$this->grocery_crud->set_relation_n_n('classes','mw_teachers_classes','mw_classes','teacher_id','class_id','class_name','priority',array('school'=>$school));
+		$this->grocery_crud->callback_after_insert(array($this, 'set_school'));
+		$this->grocery_crud->callback_after_update(array($this, 'set_school'));
+		$this->grocery_crud->set_field_upload('photo','photos');
 		$output = $this->grocery_crud->render();
 		$this->_example_output($output);
 
 	}
 
+	function mw_classes($school=2)
+	{	
+		$this->grocery_crud->set_relation('class_teacher','mw_teaching_staff','name',array('mw_teaching_staff.school'=>$school));
+		$this->grocery_crud->unset_columns('school');
+		$this->grocery_crud->unset_fields('school');
+		$this->grocery_crud->where('mw_classes.school',$school);
+		$this->grocery_crud->callback_after_insert(array($this, 'set_school'));
+		$this->grocery_crud->callback_after_update(array($this, 'set_school'));
+		$output = $this->grocery_crud->render();
+		$this->_example_output($output);
+	}
+	
+	function set_school($post_array,$primary_key)
+	{
+		$data = array (
+			'school' => $this->uri->segment(3)
+		);
+		
+		$this->db->where('id',$primary_key);
+		$this->db->update($this->uri->segment(2),$data);
+		
+		if($this->uri->segment(2)=='mw_teaching_staff')
+		{
+			$this->db->where('id',$primary_key);
+			$teachers= $this->db->get('mw_teaching_staff');
+			
+			
+			
+			$teacher = $teachers->row();
+			
+			$photo = $teacher->photo;
+			
+			//echo $logo;
+			
+			
+			$this->load->library('image_moo');
+			$sizes = getimagesize('photos/' . $photo);
+			
+			$source_image = 'photos/' . $photo;
+			
+			$width = $sizes[0];
+			$height = $sizes[1];
+			
+
+			
+			if($width >= $height and $width > 150 )				
+				$this->image_moo->load($source_image)->resize(150,999999999999)->save( $source_image,$overwrite=TRUE);
+			else if($width <= $height and $height > 150 )
+				$this->image_moo->load($source_image)->resize(999999999999,150)->save( $source_image,$overwrite=TRUE);	
+				
+		}
+
+		return true;
+	}
 	
 	function mw_newsletters()
 	{

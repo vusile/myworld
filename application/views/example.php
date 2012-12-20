@@ -36,8 +36,12 @@ a:hover
 		<a href='<?php echo site_url('backend/mw_categories')?>'>Page Categories</a> |
 		<a href='<?php echo site_url('backend/mw_pages/2')?>'>My World Upanga Pages</a> |
 		<a href='<?php echo site_url('backend/mw_projects/2')?>'>My World Upanga Projects</a> |
+		<a href='<?php echo site_url('backend/mw_teaching_staff/2')?>'>My World Upanga Staff</a> |
+		<a href='<?php echo site_url('backend/mw_classes/2')?>'>My World Upanga Classes</a> |
 		<a href='<?php echo site_url('backend/mw_pages/3')?>'>My World Msasani Pages</a> |
 		<a href='<?php echo site_url('backend/mw_projects/3')?>'>My World Msasani Projects</a> |
+		<a href='<?php echo site_url('backend/mw_teaching_staff/3')?>'>My World Msasani Staff</a> |
+		<a href='<?php echo site_url('backend/mw_classes/3')?>'>My World Msasani Classes</a> |
 		<!--<a href='<?php echo site_url('backend/mw_helpful_links_categories/3')?>'>My World Msasani Helpful Links</a> |-->
 		<a href='<?php echo site_url('backend/mw_pages/4')?>'>My World Community Centre Pages</a> |
 		<a href='<?php echo site_url('backend/mw_pages/5')?>'>My World Training Centre Pages</a> |

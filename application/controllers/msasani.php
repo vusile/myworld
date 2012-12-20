@@ -101,6 +101,51 @@ class Msasani extends CI_Controller {
 		//die();
 		return $links;
 	}
+	
+	function teaching_staff($school)
+	{
+		$staff = '';
+		$this->db->where('school',$school);
+		$teachers = $this->db->get('mw_teaching_staff');
+		
+		$this->db->where('school',$school);
+		$classes = $this->db->get('mw_classes');
+		$classes_array = array();
+		
+		foreach($classes->result() as $class)
+		{
+			$classes_array[$class->id] = $class->class_name;
+		}
+		
+		
+		foreach($teachers->result() as $teacher)
+		{
+			$staff .= "<strong>Teacher's Name: </strong>" . $teacher->name .  "<br>";
+			$staff .= '<strong>Class(es): </strong>' ; 
+			$this->db->where('teacher_id', $teacher->id);
+			$tac = $this->db->get('mw_teachers_classes');
+			
+			if($tac->num_rows() > 0)
+				foreach($tac->result() as $tc)	
+					$staff .= $classes_array[$tc->class_id] . ', ' ;
+			else
+				$staff .= 'All Rounder  ';
+				
+			$staff = substr($staff,0,-2);
+			
+			//echo $staff; die();
+			
+			
+			
+			$staff .= '<br>';
+			$staff .= '<img src="photos/' . $teacher->photo .'" alt=""  class="img7">';
+			$staff .= "<p>" . $teacher->description . "<p><div style = 'clear:both; margin-top:7px;  width: 740px; border-top:1px #cdcdcd solid;'></div>";
+			
+		}
+		
+		return $staff;
+		
+	}
 		
 	public function page($identifier)
 	{
@@ -133,6 +178,11 @@ class Msasani extends CI_Controller {
 			
 			case 'hlinks.php':
 			$data['links'] = $this->helpful_links(3);
+			break;			
+			
+			
+			case 'staff.php':
+			$data['staff'] = $this->teaching_staff(3);
 			break;
 			
 		}
