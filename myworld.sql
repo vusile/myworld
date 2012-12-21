@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 20, 2012 at 02:50 PM
+-- Generation Time: Dec 21, 2012 at 02:01 PM
 -- Server version: 5.5.20
 -- PHP Version: 5.3.10
 
@@ -82,7 +82,7 @@ CREATE TABLE IF NOT EXISTS `mw_captcha` (
   `word` varchar(20) NOT NULL,
   PRIMARY KEY (`captcha_id`),
   KEY `word` (`word`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=381 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=388 ;
 
 --
 -- Dumping data for table `mw_captcha`
@@ -140,7 +140,14 @@ INSERT INTO `mw_captcha` (`captcha_id`, `captcha_time`, `ip_address`, `word`) VA
 (377, 1355813203, '127.0.0.1', 'VWQT35N'),
 (378, 1355838893, '127.0.0.1', 'V5WEDMC'),
 (379, 1356005837, '127.0.0.1', 'M86AWVH'),
-(380, 1356012907, '127.0.0.1', '36BPY7M');
+(380, 1356012907, '127.0.0.1', '36BPY7M'),
+(381, 1356077998, '127.0.0.1', 'DMW8QJS'),
+(382, 1356078023, '127.0.0.1', 'XMZ5V3D'),
+(383, 1356078031, '127.0.0.1', 'F3BEUCM'),
+(384, 1356078070, '127.0.0.1', '3QTEYMZ'),
+(385, 1356095440, '127.0.0.1', 'ZX5FBJM'),
+(386, 1356096461, '127.0.0.1', '4DYNHPK'),
+(387, 1356098280, '127.0.0.1', '3BETUDR');
 
 -- --------------------------------------------------------
 
@@ -281,6 +288,29 @@ CREATE TABLE IF NOT EXISTS `mw_groups` (
 INSERT INTO `mw_groups` (`id`, `name`, `description`) VALUES
 (1, 'admin', 'Administrator'),
 (2, 'members', 'General User');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mw_header_images`
+--
+
+CREATE TABLE IF NOT EXISTS `mw_header_images` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `left` varchar(255) NOT NULL,
+  `centre_top` varchar(255) NOT NULL,
+  `centre_bottom` varchar(255) NOT NULL,
+  `right` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `mw_header_images`
+--
+
+INSERT INTO `mw_header_images` (`id`, `left`, `centre_top`, `centre_bottom`, `right`) VALUES
+(1, '77043-ChrysanthemumLR.jpg', '73c6c-Hydrangeas.jpg', '20440-Koala.jpg', '03177-Tulips.jpg'),
+(2, 'c5c10-Lighthouse.jpg', '3b976-Penguins.jpg', '532e5-Tulips.jpg', '7feb1-Jellyfish.jpg');
 
 -- --------------------------------------------------------
 
@@ -653,6 +683,27 @@ INSERT INTO `mw_page_templates` (`id`, `name`, `view`, `access_level`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `mw_partner_links`
+--
+
+CREATE TABLE IF NOT EXISTS `mw_partner_links` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `partner_name` varchar(255) NOT NULL,
+  `partner_website` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `mw_partner_links`
+--
+
+INSERT INTO `mw_partner_links` (`id`, `partner_name`, `partner_website`) VALUES
+(1, 'Play Based Learning', 'http://www.playbasedlearning.com.au/'),
+(2, 'ZoomTanzania.com', 'http://www.zoomtanzania.com/');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `mw_projects`
 --
 
@@ -779,7 +830,7 @@ CREATE TABLE IF NOT EXISTS `mw_settings` (
 --
 
 INSERT INTO `mw_settings` (`id`, `setting`, `value`) VALUES
-(1, 'My World Pre School Prezi Video', 'http://www.youtube.com/watch?v=m1-pHdcMCK8');
+(1, 'My World Pre School Prezi Video', 'http://www.youtube.com/watch?v=z3lsd6tiDA4');
 
 -- --------------------------------------------------------
 
@@ -919,7 +970,7 @@ CREATE TABLE IF NOT EXISTS `mw_users` (
 --
 
 INSERT INTO `mw_users` (`id`, `ip_address`, `username`, `password`, `salt`, `email`, `activation_code`, `forgotten_password_code`, `forgotten_password_time`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
-(1, '\0\0', 'administrator', '59beecdf7fc966e2f17fd8f65a4a9aeb09d4a3d4', '9462e8eee0', 'admin@admin.com', '', NULL, NULL, NULL, 1268889823, 1355995999, 1, 'Admin', 'istrator', 'ADMIN', '0'),
+(1, '\0\0', 'administrator', '59beecdf7fc966e2f17fd8f65a4a9aeb09d4a3d4', '9462e8eee0', 'admin@admin.com', '', NULL, NULL, NULL, 1268889823, 1356068966, 1, 'Admin', 'istrator', 'ADMIN', '0'),
 (2, '\0\0', 'anton.fouquet@djpa.co.tz', 'ded126212466ac57fea9c2dbab79f42acaa5670b', NULL, 'anton.fouquet@djpa.co.tz', NULL, NULL, NULL, NULL, 1351672322, 1351672358, 1, 'Anton', 'Fouquet', NULL, '+255 753 102 000'),
 (3, '\0\0', 'anton2.fouquet@djpa.co.tz', '5ef2cc5b647649523f749a4da095c1a5e3fdae46', NULL, 'anton2.fouquet@djpa.co.tz', NULL, NULL, NULL, NULL, 1353495312, 1353495312, 1, 'Anton', 'Fouquet', NULL, '+255 753 102 000'),
 (4, '\0\0', 'anton23.fouquet@djpa.co.tz', '7e06f410a1f61449a70e041e0284265df154924a', NULL, 'anton23.fouquet@djpa.co.tz', NULL, NULL, NULL, NULL, 1353495348, 1353495348, 1, 'Anton', 'Fouquet', NULL, '+255 753 102 000');
