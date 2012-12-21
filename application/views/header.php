@@ -82,6 +82,3 @@
     </div>
 
 </div> <!-- end of row for nav-->
-<div class="title_h1">
-<h1><?php if(isset($title)) echo $title ?></h1>
-</div>

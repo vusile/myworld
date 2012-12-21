@@ -1,7 +1,10 @@
 <!--*start of first row for news, video and button/-->
 <div class="container_news">
 <div class="row">    <!--start of the row-->
-
+<div class="span12"> 
+<div class="title_h1">
+<h1><?php if(isset($title)) echo $title ?></h1>
+</div>
 <?php
 $feedUrl = "http://www.myworldpreschooltz.com/apps/blog/entries/feed/rss";
 $feedContent = "";
@@ -29,7 +32,7 @@ if($feedContent && !empty($feedContent)):
 ?>
 
 <?php foreach($feedXml->channel->item as $item): ?>
-<div class="span12">  <!--start of span-->
+ <!--start of span-->
 <div class="resizec">
 <h2><a href="<?php  echo $item->link;  ?>"><?php echo $item->title; ?></a></h2>
 
@@ -58,11 +61,11 @@ if($feedContent && !empty($feedContent)):
 <?php echo substr(strip_tags($item->description),0,600); ?> ... <p>
 <a href="<?php  echo $item->link;  ?>"><p>Read More</p></a>
 </div>
-</div><!--end of span-->
 <div style = 'clear:both; margin-top:7px; margin-left:19px; width: 1024px; border-top:1px #cdcdcd solid;'></div>
 <?php endforeach; ?>
 	<?php endif; ?>
 <?php endif; ?>
+</div><!--end of span-->
 </div>  <!--end of the row-->
 </div>  <!--end of the container_news"-->
 

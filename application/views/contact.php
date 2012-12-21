@@ -2,6 +2,9 @@
 <div class="row">
 <div class="span12">
 <div class="teaser">
+<div class="title_h1">
+<h1><?php if(isset($title)) echo $title ?></h1>
+</div>
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam interdum ligula et tellus tempor sed condimentum massa mattis. Etiam id hendrerit orci. Nullam vel diam nisl, imperdiet lobortis est. Donec consectetur, mi quis aliquam placerat, lacus massa </p>
 </div>
 <div class="contact">
