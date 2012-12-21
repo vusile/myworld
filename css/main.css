@@ -147,6 +147,10 @@ margin: -278px 0px 0px 466px;
 
 	margin: 15px 0px 15px 0px;
 }
+
+.summary_title_h1 {
+	margin-left: -24px;
+}
 /*first row */
 #news{
 	margin-left: 6px;

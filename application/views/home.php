@@ -1,3 +1,11 @@
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 <!--start of teaser-->
 <div class="row">
 <div class="span12">
@@ -101,15 +109,12 @@
   
   <div class="span3">
     <div id="partiners">
-       <h4>Our Partners</h4>
+       <h4 style = "margin-bottom:5px;">Our Partners</h4>
         <ul>
-        <li><a href="#">Link 1</a></li>
-        <li><a href="#">Link 2</a></li>
-        <li><a href="#">Link 3</a></li>
-        <li><a href="#">Link 4</a></li>
-        <li><a href="#">Link 5</a></li>
-        <li><a href="#">Link 6</a></li>
-        <li><a href="#">Link 7</a></li>
+		<?php foreach($links->result() as $link): ?>
+			<li style = "margin-bottom:3px;"><a href="<?php echo $link->partner_website ?>"><?php echo $link->partner_name ?></a></li>
+		<?php endforeach; ?>
+
       </ul>
        
      </div>

@@ -34,7 +34,16 @@ class Main extends CI_Controller {
 		$this->db->where('identifier','HOME');
 		$pages = $this->db->get('mw_pages');
 		$data['home'] = $pages->row()->text;
+		
+		$header = $this->header();
+		
+		
 		$header['title'] = $pages->row()->title;
+		
+		$data['links'] = $this->db->get('mw_partner_links');
+		
+		
+		
 		
 		$this->load->view('header',$header);
 		$this->load->view('home', $data);
@@ -42,9 +51,33 @@ class Main extends CI_Controller {
 		//$this->load->view('index');
 	}
 	
+	function header()
+	{
+		$header_images = $this->db->get('mw_header_images');
+	
+		$header['left'] = '';
+		$header['centre_top'] ='';
+		$header['centre_bottom'] = '';
+		$header['right'] = '';
+		
+		foreach($header_images->result() as $imgs)
+		{
+			$header['left'] .= "<img src = 'img/" . $imgs->left . "' />";
+			$header['centre_top'] .= "<img src = 'img/" . $imgs->centre_top . "' />";
+			$header['centre_bottom'] .= "<img src = 'img/" . $imgs->centre_bottom . "' />";;
+			$header['right'] .= "<img src = 'img/" . $imgs->right . "' />";
+			
+		}
+		
+		return $header;
+	}
+	
 	public function login()
 	{
+	
 		
+		$header = $this->header();
+		$header['title'] = 'Login';
 		$this->load->view('Header',$header);
 		$this->load->view('Login');
 		$this->load->view('Footer');
@@ -88,6 +121,7 @@ class Main extends CI_Controller {
 	
 	public function about()
 	{
+		$header = $this->header();
 		$data['details'] = $this->fetch_page('ABOUT');
 		$header['title'] = $data['details']->title;
 		$this->load->view('header',$header);
@@ -97,6 +131,7 @@ class Main extends CI_Controller {
 		
 	public function blog()
 	{
+		$header = $this->header();
 		$data['title'] = $header['title'] = 'My World Preschool Blog';
 		
 		$this->load->view('header',$header);
@@ -106,6 +141,7 @@ class Main extends CI_Controller {
 	
 	public function news()
 	{
+		$header = $this->header();
 		$data['title'] =$header['title'] = 'My World Preschool News';
 		$this->db->order_by('date','desc');
 		$data['news'] = $this->db->get('mw_news');
@@ -120,6 +156,7 @@ class Main extends CI_Controller {
 	
 	public function article($url)
 	{
+		$header = $this->header();
 		$this->db->where('url',$url);
 		$article = $this->db->get('mw_news');
 		
@@ -137,6 +174,7 @@ class Main extends CI_Controller {
 	
 	public function projects($url)
 	{
+		$header = $this->header();
 		$header['projects'] = $this->get_projects(1);
 		$header['publications'] = $this->get_projects(2);
 		
@@ -155,6 +193,7 @@ class Main extends CI_Controller {
 	
 	public function project($url)
 	{
+		$header = $this->header();
 		$this->db->where('url',$url);
 		$article = $this->db->get('mw_projects');
 
@@ -174,6 +213,7 @@ class Main extends CI_Controller {
 	
 	function the_directory()
 	{
+		$header = $this->header();
 		//$this->db->order_by('company_name');
 	//	$data['partners'] = $this->db->get('mw_directory');
 		
@@ -195,6 +235,7 @@ class Main extends CI_Controller {
 	
 	public function publications($url)
 	{
+		$header = $this->header();
 		$header['projects'] = $this->get_projects(1);
 		$header['publications'] = $this->get_projects(2);
 		
@@ -252,7 +293,7 @@ class Main extends CI_Controller {
 	
 	public function contact($item='',$id=0)
 	{
-	
+		$header = $this->header();
 		$word = strtoupper($this->randomAlphaNum(7));
 		
 		

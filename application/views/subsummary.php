@@ -4,6 +4,9 @@
 <?php foreach($news->result() as $article): ?>
 <div class="span9">  <!--start of span-->
 <div class="resizeb">
+<div class="title_h1 summary_title_h1">
+<h1><?php if(isset($title)) echo $title ?></h1>
+</div>
 <h2><a href="<?php echo $url ?>/<?php  echo $article->url  ?>"><?php echo $article->title ?></a></h2>
 <?php
 	if($article->thumb_nail != '')	

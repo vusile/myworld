@@ -11,14 +11,7 @@
 <link rel="icon" type="image/ico" href="img/favicon.ico"/>
 </head>
 <body>
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+
 <div id="wrap">
 <div class="container">   <!--start of the container-->
 <div id="header">
@@ -33,31 +26,23 @@
    
     <div class="row">
 	<div id="banner1">
-          
-      <img src="http://placehold.it/141x278"  alt="" />
-      <img src="http://placehold.it/141x278" alt="" />
-      <img src="http://placehold.it/141x278" alt="" />
-      
+		<?php echo $left ?>
     </div>
 	<div id="banner2">
           
-      <img src="http://placehold.it/237x128"  alt="" />
-      <img src="http://placehold.it/237x128"  alt="" />
-     <img src="http://placehold.it/237x128"  alt="" />
+		<?php echo $centre_top ?>
+
       
     </div> 
 	<div id="banner3">
           
-      <img src="http://placehold.it/237x131"  alt="" />
-      <img src="http://placehold.it/237x131"  alt="" />
-    <img src="http://placehold.it/237x131"  alt="" />
+		<?php echo $centre_bottom ?>
+
       
     </div>    	
 	<div id="banner4">
           
-      <img src="http://placehold.it/302x278"  alt="" />
-      <img src="http://placehold.it/302x278"  alt="" />
-    <img src="http://placehold.it/302x278"  alt="" />
+		<?php echo $right?>
       
     </div>       
 </div>   <!--end of row-->

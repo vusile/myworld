@@ -28,7 +28,7 @@ $('#myCarousel').carousel({
    </script>
    
   <script>
-  $('#banner1').cycle();
+  $('#banner1').cycle({fx: 'fade'});
   $('#banner2').cycle();
   $('#banner3').cycle();
   $('#banner4').cycle();

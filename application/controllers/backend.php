@@ -31,7 +31,47 @@ class Backend extends CI_Controller {
 		$output = $this->grocery_crud->render();
 		$this->_example_output($output);
 
-	}		
+	}	
+
+	function mw_partner_links()
+	{		
+		$output = $this->grocery_crud->render();
+		$this->_example_output($output);
+	}
+	
+	function mw_header_images()
+	{		
+		$this->grocery_crud->set_field_upload('left', 'img');
+		$this->grocery_crud->set_field_upload('centre_top', 'img');
+		$this->grocery_crud->set_field_upload('centre_bottom', 'img');
+		$this->grocery_crud->set_field_upload('right', 'img');
+		$this->grocery_crud->callback_after_insert(array($this, 'resize_header_images'));
+		$this->grocery_crud->callback_after_update(array($this, 'resize_header_images'));
+		
+		
+		$output = $this->grocery_crud->render();
+		$this->_example_output($output);
+	}
+	
+	function resize_header_images($post_array,$primary_key)
+	{
+		$this->db->where('id',$primary_key);
+		$images=$this->db->get('mw_header_images');
+		$imgs = $images->row();
+		
+		$this->load->library('image_moo');
+		$source_image141_by_278 = 'img/' . $imgs->left;
+		$source_image237_by_128 = 'img/' . $imgs->centre_top;
+		$source_image237_by_131 = 'img/' . $imgs->centre_bottom;
+		$source_image302_by_278 = 'img/' . $imgs->right;
+		
+		$this->image_moo->load($source_image141_by_278)->set_background_colour("#FFF")->resize(141,278,true)->save( $source_image141_by_278,$overwrite=TRUE);
+		$this->image_moo->load($source_image237_by_128)->set_background_colour("#FFF")->resize(237,128,true)->save( $source_image237_by_128,$overwrite=TRUE);
+		$this->image_moo->load($source_image237_by_131)->set_background_colour("#FFF")->resize(237,131,true)->save( $source_image237_by_131,$overwrite=TRUE);
+		$this->image_moo->load($source_image302_by_278)->set_background_colour("#FFF")->resize(302,278,true)->save( $source_image302_by_278,$overwrite=TRUE);
+		
+		return true;
+	}
 	
 	function mw_testimonials()
 	{
@@ -155,9 +195,9 @@ class Backend extends CI_Controller {
 			
 			
 			$this->load->library('image_moo');
+			$source_image = 'photos/' . $photo;
 			$sizes = getimagesize('photos/' . $photo);
 			
-			$source_image = 'photos/' . $photo;
 			
 			$width = $sizes[0];
 			$height = $sizes[1];

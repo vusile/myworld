@@ -42,13 +42,14 @@ a:hover
 		<a href='<?php echo site_url('backend/mw_projects/3')?>'>My World Msasani Projects</a> |
 		<a href='<?php echo site_url('backend/mw_teaching_staff/3')?>'>My World Msasani Staff</a> |
 		<a href='<?php echo site_url('backend/mw_classes/3')?>'>My World Msasani Classes</a> |
-		<!--<a href='<?php echo site_url('backend/mw_helpful_links_categories/3')?>'>My World Msasani Helpful Links</a> |-->
 		<a href='<?php echo site_url('backend/mw_pages/4')?>'>My World Community Centre Pages</a> |
 		<a href='<?php echo site_url('backend/mw_pages/5')?>'>My World Training Centre Pages</a> |
 		<a href='<?php echo site_url('backend/mw_news')?>'>News</a> |
 		<a href='<?php echo site_url('backend/mw_helpful_links_categories')?>'>Helpful Links</a> |
 		<a href='<?php echo site_url('backend/mw_image_scroller')?>'>Image Scroller</a> |
+		<a href='<?php echo site_url('backend/mw_header_images')?>'>Header Images</a> |
 		<a href='<?php echo site_url('backend/mw_testimonials')?>'>Testimonials</a> | 
+		<a href='<?php echo site_url('backend/mw_partner_links')?>'>Partners Links</a> | 
 		<a href='<?php echo site_url('backend/mw_messages')?>'>Site Messages</a> | 
 		<a href='<?php echo site_url('backend/mw_settings')?>'>Settings</a> 
 		<?php if($this->ion_auth->is_admin()): ?>

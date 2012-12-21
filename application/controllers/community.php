@@ -19,7 +19,7 @@ class Community extends CI_Controller {
 	 */
 	public function index()
 	{
-		
+		$header = $this->header();
 		$this->db->where('identifier','COMMUNITY');
 		$pages = $this->db->get('mw_pages');
 		$data['text'] = $pages->row()->text;
@@ -31,7 +31,28 @@ class Community extends CI_Controller {
 		$this->load->view('footer');
 
 	}
+	
+	function header()
+	{
+		$header_images = $this->db->get('mw_header_images');
+	
+		$header['left'] = '';
+		$header['centre_top'] ='';
+		$header['centre_bottom'] = '';
+		$header['right'] = '';
 		
+		foreach($header_images->result() as $imgs)
+		{
+			$header['left'] .= "<img src = 'img/" . $imgs->left . "' />";
+			$header['centre_top'] .= "<img src = 'img/" . $imgs->centre_top . "' />";
+			$header['centre_bottom'] .= "<img src = 'img/" . $imgs->centre_bottom . "' />";;
+			$header['right'] .= "<img src = 'img/" . $imgs->right . "' />";
+			
+		}
+		
+		return $header;
+	}
+	
 	function sidebar ($identifier = '')
 	{
 		$flag = 0;
@@ -124,6 +145,7 @@ class Community extends CI_Controller {
 	
 	function teaching_staff($school)
 	{
+		
 		$staff = '';
 		$this->db->where('school',$school);
 		$teachers = $this->db->get('mw_teaching_staff');
@@ -169,6 +191,7 @@ class Community extends CI_Controller {
 		
 	public function page($identifier)
 	{
+		$header = $this->header();
 		$this->db->where('type',4);
 		$this->db->where('url',$identifier);
 		$content = $this->db->get('mw_pages');
@@ -218,6 +241,7 @@ class Community extends CI_Controller {
 	
 	function project($url)
 	{
+		$header = $this->header();
 		$this->db->where('url',$url);
 		$pages = $this->db->get('mw_projects');
 		$data['text'] = $pages->row()->text;
