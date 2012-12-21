@@ -100,7 +100,7 @@ class Main extends CI_Controller {
 		$data['title'] = $header['title'] = 'My World Preschool Blog';
 		
 		$this->load->view('header',$header);
-		$this->load->view('summary',$data);
+		$this->load->view('blog',$data);
 		$this->load->view('footer');
 	}	
 	

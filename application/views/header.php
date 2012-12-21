@@ -30,7 +30,7 @@
   </div>
   </div>   <!--end of  logo-->
     <div id="banner">      <!--start of banner-->
-    <!--<img src="img/Header.jpg" alt="My World" align="right" />-->
+   
     <div class="row">
 	<div id="banner1">
           
