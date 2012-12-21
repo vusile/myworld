@@ -554,10 +554,13 @@ h6 small {
   line-height: 1;
   color: #999999;
 }
-h1,
+h1
+ {
+  line-height: 35px;
+}
 h2,
-h3 {
-  line-height: 32px;
+h3{
+	line-height: 25px;
 }
 h1 {
   font-size: 30px;
