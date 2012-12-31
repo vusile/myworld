@@ -106,26 +106,24 @@ position:relative;
 #banner1{
 	width: 141px;
 height: 278px;
-margin: 5px 0px 10px 16px;
+margin: 6px 0px 10px 16px;
 float: left;
 }
 #banner2{
 width: 237px;
 height: 128px;
-margin: 5px 0px 0px 193px;
+margin: 6px 0px 0px 193px;
 }
 #banner3{
 width: 237px;
 height: 131px;
-margin: 19px 0px 0px 193px;
+margin: 21px 0px 0px 193px;
 }
 #banner4{
 width: 302px;
 height: 278px;
-margin: -278px 0px 0px 466px;
+margin: -279px 0px 0px 463px;
 }
-/*#banner4 img { display:none; }
-#banner4 .is-showing { display: inline; }*/
 
 
 /*teaser*/
