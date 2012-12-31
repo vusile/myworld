@@ -35,7 +35,11 @@ class Main extends CI_Controller {
 		$pages = $this->db->get('mw_pages');
 		$data['home'] = $pages->row()->text;
 		
-		$header = $this->header();
+		$logo_id = $pages->row()->logo;
+
+		
+		
+		$header = $this->header($logo_id);
 		
 		
 		$header['title'] = $pages->row()->title;
@@ -51,7 +55,7 @@ class Main extends CI_Controller {
 		//$this->load->view('index');
 	}
 	
-	function header()
+	function header($logo_id=1)
 	{
 		$header_images = $this->db->get('mw_header_images');
 	
@@ -68,6 +72,12 @@ class Main extends CI_Controller {
 			$header['right'] .= "<img src = 'img/" . $imgs->right . "' />";
 			
 		}
+		
+		$this->db->where('id',$logo_id);
+		$logo = $this->db->get('mw_logos');
+		
+		$header['logo'] = $logo->row()->logo;
+		$header['tag_line'] = $logo->row()->tag_line;
 		
 		return $header;
 	}

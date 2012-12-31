@@ -40,7 +40,7 @@
   </div>
   </div>
   <div class="control-group">
-    <label class="control-label" for="inputCaptcha">Capcha:</label>
+    <label class="control-label" for="inputCaptcha">Captcha:</label>
     <div class="controls">
 	<small style="font-weight: bold">Enter the text in the box below, only CAPITAL letters and numbers</small>
 	<p><?php echo $cap['image'] ?></p>

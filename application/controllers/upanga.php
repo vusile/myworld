@@ -19,11 +19,15 @@ class Upanga extends CI_Controller {
 	 */
 	public function index()
 	{
-		$header = $this->header();
+
 		$this->db->where('identifier','UPANGA');
 		$pages = $this->db->get('mw_pages');
 		$data['text'] = $pages->row()->text;
 		$header['title'] = $pages->row()->title;
+		
+		$logo_id = $pages->row()->logo;
+		
+		$header = $this->header($logo_id);
 		
 		$this->load->view('header',$header);
 		$this->load->view('sidebar', $data);
@@ -32,7 +36,7 @@ class Upanga extends CI_Controller {
 
 	}
 	
-	function header()
+	function header($logo_id=1)
 	{
 		$header_images = $this->db->get('mw_header_images');
 	
@@ -49,6 +53,12 @@ class Upanga extends CI_Controller {
 			$header['right'] .= "<img src = 'img/" . $imgs->right . "' />";
 			
 		}
+		
+		$this->db->where('id',$logo_id);
+		$logo = $this->db->get('mw_logos');
+		
+		$header['logo'] = $logo->row()->logo;
+		$header['tag_line'] = $logo->row()->tag_line;
 		
 		return $header;
 	}
@@ -170,15 +180,20 @@ class Upanga extends CI_Controller {
 		
 	public function page($identifier)
 	{
-		$header = $this->header();
+
 		$this->db->where('type',2);
 		$this->db->where('url',$identifier);
 		$content = $this->db->get('mw_pages');
 		
 		$data['text'] = $content->row()->text;
-		$header['title'] = $content->row()->title;
 		
 		$templateID = $content->row()->template;
+		
+		
+		$logo_id = $content->row()->logo;
+		
+		$header = $this->header($logo_id);
+		$header['title'] = $content->row()->title;
 		
 		$this->db->where('id',$templateID);
 		$obj=$this->db->get('mw_page_templates');
@@ -220,7 +235,7 @@ class Upanga extends CI_Controller {
 	
 	function project($url)
 	{
-		$header = $this->header();
+		$header = $this->header(5);
 		$this->db->where('url',$url);
 		$pages = $this->db->get('mw_projects');
 		$data['text'] = $pages->row()->text;

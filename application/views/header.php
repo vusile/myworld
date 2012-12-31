@@ -17,9 +17,9 @@
 <div id="header">
 
  <div id="logo">  <!-- start of logo-->
-  <a href="home.html"><img src="img/my-world.png" align="left" alt="My World" /></a>
+  <a href="<?php echo base_url(); ?>"><img src="img/<?php echo $logo ?>" align="left" alt="<?php echo $tag_line ?>" /></a>
   <div id="slogan">
-  <p align="center">Creating Leaders <br> Since 1994</p>
+  <p align="center"><?php echo $tag_line ?></p>
   </div>
   </div>   <!--end of  logo-->
     <div id="banner">      <!--start of banner-->

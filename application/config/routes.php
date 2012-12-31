@@ -41,10 +41,10 @@
 $route['default_controller'] = "main";
 $route['404_override'] = '';
 $route['^(?!backend|auth|examples|msasani|upanga|training|community).*'] = "main/$0";
-$route['training-center'] = "training/page/home";
-$route['msasani-preschool'] = "msasani/page/home";
-$route['upanga-preschool'] = "upanga/page/home";
-$route['community-center'] = "community/page/home";
+$route['training-center'] = "training/page/my-world-training-center";
+$route['msasani-preschool'] = "msasani/page/my-world-preschool-msasani";
+$route['upanga-preschool'] = "upanga/page/my-world-preschool-upanga";
+$route['community-center'] = "community/page/my-world-community-centre";
 $route['our-songs'] = "main/songs";
 $route['contact-us'] = "main/contact";
 $route['about-us'] = "main/about";

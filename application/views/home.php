@@ -120,7 +120,7 @@
      </div>
   
   
-  </div>
+  
   </div>    <!--end of span3-->
 
 </div>  <!--end of row-->

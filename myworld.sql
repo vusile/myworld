@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 21, 2012 at 02:01 PM
+-- Generation Time: Dec 31, 2012 at 09:33 AM
 -- Server version: 5.5.20
 -- PHP Version: 5.3.10
 
@@ -82,7 +82,7 @@ CREATE TABLE IF NOT EXISTS `mw_captcha` (
   `word` varchar(20) NOT NULL,
   PRIMARY KEY (`captcha_id`),
   KEY `word` (`word`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=388 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=400 ;
 
 --
 -- Dumping data for table `mw_captcha`
@@ -147,7 +147,19 @@ INSERT INTO `mw_captcha` (`captcha_id`, `captcha_time`, `ip_address`, `word`) VA
 (384, 1356078070, '127.0.0.1', '3QTEYMZ'),
 (385, 1356095440, '127.0.0.1', 'ZX5FBJM'),
 (386, 1356096461, '127.0.0.1', '4DYNHPK'),
-(387, 1356098280, '127.0.0.1', '3BETUDR');
+(387, 1356098280, '127.0.0.1', '3BETUDR'),
+(388, 1356587917, '127.0.0.1', 'RPTGSHV'),
+(389, 1356588516, '127.0.0.1', 'SAZGKPT'),
+(390, 1356590816, '127.0.0.1', 'AYWJ4BM'),
+(391, 1356591048, '127.0.0.1', 'VNUKZ9P'),
+(392, 1356591567, '127.0.0.1', 'WMEUKZN'),
+(393, 1356592261, '127.0.0.1', 'JGUR549'),
+(394, 1356595980, '127.0.0.1', 'Q9Y7KMZ'),
+(395, 1356601062, '127.0.0.1', '54PZSGE'),
+(396, 1356601836, '127.0.0.1', 'ZRYT6BA'),
+(397, 1356604334, '127.0.0.1', 'V4QPBSC'),
+(398, 1356610207, '127.0.0.1', 'BVDH9KP'),
+(399, 1356613859, '127.0.0.1', 'QMXGTP7');
 
 -- --------------------------------------------------------
 
@@ -182,6 +194,7 @@ CREATE TABLE IF NOT EXISTS `mw_classes` (
   `class_name` varchar(255) NOT NULL,
   `class_teacher` int(11) NOT NULL,
   `school` int(11) NOT NULL,
+  `students` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
@@ -189,11 +202,11 @@ CREATE TABLE IF NOT EXISTS `mw_classes` (
 -- Dumping data for table `mw_classes`
 --
 
-INSERT INTO `mw_classes` (`id`, `class_name`, `class_teacher`, `school`) VALUES
-(1, 'Lion', 0, 0),
-(2, 'Lion', 0, 0),
-(3, 'Lion', 0, 3),
-(4, 'Elephant', 0, 2);
+INSERT INTO `mw_classes` (`id`, `class_name`, `class_teacher`, `school`, `students`) VALUES
+(1, 'Lion', 0, 0, ''),
+(2, 'Lion', 0, 0, ''),
+(3, 'Lion', 0, 3, '<a target = "_blank" href = "http://localhost/myworld/backend/mw_students/3">Students</a>'),
+(4, 'Elephant', 0, 2, '<a target = "_blank" href = "http://localhost/myworld/backend/mw_students/4">Students</a>');
 
 -- --------------------------------------------------------
 
@@ -309,8 +322,8 @@ CREATE TABLE IF NOT EXISTS `mw_header_images` (
 --
 
 INSERT INTO `mw_header_images` (`id`, `left`, `centre_top`, `centre_bottom`, `right`) VALUES
-(1, '77043-ChrysanthemumLR.jpg', '73c6c-Hydrangeas.jpg', '20440-Koala.jpg', '03177-Tulips.jpg'),
-(2, 'c5c10-Lighthouse.jpg', '3b976-Penguins.jpg', '532e5-Tulips.jpg', '7feb1-Jellyfish.jpg');
+(1, 'c0952-141x278a.jpg', 'dcffe-237x128a.jpg', '246c9-237x131a.jpg', 'ccc0f-302x278a.jpg'),
+(2, 'd24c5-141x278b.jpg', 'e2454-237x128b.jpg', 'c96fa-237x131b.jpg', '1542f-302x278b.jpg');
 
 -- --------------------------------------------------------
 
@@ -494,6 +507,31 @@ CREATE TABLE IF NOT EXISTS `mw_login_attempts` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `mw_logos`
+--
+
+CREATE TABLE IF NOT EXISTS `mw_logos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL,
+  `logo` varchar(255) NOT NULL,
+  `tag_line` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data for table `mw_logos`
+--
+
+INSERT INTO `mw_logos` (`id`, `title`, `logo`, `tag_line`) VALUES
+(1, 'General Logo', 'b92c9-b5b8b-my-world.png', 'Creating Leaders Since 1994'),
+(2, 'Community Centre Logo', 'bcbdb-My-World-Preschool-Community-Centre.png', 'Heartbeat of Community'),
+(3, 'Training Centre Logo', '413bd-My-World-Preschool-Training-Centre.png', 'Training Centre Tag Line'),
+(4, 'Msasani Preschool Logo', 'd4018-My-World-Preschool-Msasani.png', 'Msasani School Tag Line'),
+(5, 'Upanga Preschool Logo', 'bcce5-My-World-Preschool-Upanga.png', 'Upanga Preschool Tag line');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `mw_msasani_classes`
 --
 
@@ -610,6 +648,7 @@ CREATE TABLE IF NOT EXISTS `mw_pages` (
   `template` int(11) NOT NULL,
   `parent` int(11) NOT NULL,
   `table` varchar(255) NOT NULL,
+  `logo` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=38 ;
 
@@ -617,39 +656,39 @@ CREATE TABLE IF NOT EXISTS `mw_pages` (
 -- Dumping data for table `mw_pages`
 --
 
-INSERT INTO `mw_pages` (`id`, `title`, `text`, `identifier`, `thumb_nail`, `type`, `url`, `template`, `parent`, `table`) VALUES
-(1, 'About My World Preschool', '<p>\r\n	<img alt="Flowers" src="/myworld/ckfinder/userfiles/images/Hydrangeas.jpg" style="width: 206px; height: 224px; float: left;" />While still warm, the oil, like hot punch, is received into the six-barrel casks; and while, perhaps, the ship is pitching and rolling this way and that in the midnight sea, the enormous casks are slewed round and headed over, end for end, and sometimes perilously scoot across the slippery deck, like so many land slides, till at last man-handled and stayed in their course; and all round the hoops, rap, rap, go as many hammers as can play upon them, for now, EX OFFICIO, every sailor is a cooper.</p>\r\n<p>\r\n	At length, when the last pint is casked, and all is cool, then the great hatchways are unsealed, the bowels of the ship are thrown open, and down go the casks to their final rest in the sea. This done, the hatches are replaced, and hermetically closed, like a closet walled up. In the sperm fishery, this is perhaps one of the most remarkable incidents in all the business of whaling.</p>\r\n<p>\r\n	One day the planks stream with freshets of blood and oil; on the sacred quarter-deck enormous masses of the whale&#39;s head are profanely piled; great rusty casks lie about, as in a brewery yard; the smoke from the try-works has besooted all the bulwarks; the mariners go about suffused with unctuousness; the entire ship seems great leviathan himself; while on all hands the din is deafening.</p>\r\n<p>\r\n	But a day or two after, you look about you, and prick your ears in this self-same ship; and were it not for the tell-tale boats and try-works, you would all but swear you trod some silent merchant vessel, with a most scrupulously neat commander. The unmanufactured sperm oil possesses a singularly cleansing virtue. This is the reason why the decks never look so white as just after what they call an affair of oil. Besides, from the ashes of the burned scraps of the whale, a potent lye is readily made; and whenever any adhesiveness from the back of the whale remains clinging to the side, that lye quickly exterminates it. Hands go diligently along the bulwarks, and with buckets of water and rags restore them to their full tidiness.</p>\r\n<p>\r\n	The soot is brushed from the lower rigging. All the numerous implements which have been in use are likewise faithfully cleansed and put away. The great hatch is scrubbed and placed upon the try-works, completely hiding the pots; every cask is out of sight; all tackles are coiled in unseen nooks; and when by the combined and simultaneous industry of almost the entire ship&#39;s company, the whole of this conscientious duty is at last concluded, then the crew themselves proceed to their own ablutions; shift themselves from top to toe; and finally issue to the immaculate deck, fresh and all aglow, as bridegrooms new-leaped from out the daintiest Holland.</p>\r\n<div>\r\n	<div>\r\n		&nbsp;</div>\r\n	<div>\r\n		&nbsp;</div>\r\n</div>\r\n<p>\r\n	&nbsp;</p>\r\n', 'ABOUT', 'Hydrangeas.jpg', 1, NULL, 1, 4, ''),
-(2, 'Contact My World Preschool', '<p>\r\n	<span style="color: rgb(51, 51, 51); font-family: ''Helvetica Neue'', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 20px; ">We value your feedback, please say hello!</span></p>\r\n', 'CONTACT', '', 1, NULL, 5, 4, ''),
-(7, 'My World Preschool | Home', '<p>\r\n	Under this head I reckon a monster which, by the various names of Fin-Back, Tall-Spout, and Long-John, has been seen almost in every sea and is commonly the whale whose distant jet is so often descried by passengers crossing the Atlantic, in the New York packet-tracks. In the length he attains, and in his baleen, the Fin-back resembles the right whale, but is of a less portly girth, and a lighter colour, approaching to olive.</p>\r\n', 'HOME', '', 1, NULL, 6, 4, ''),
-(9, 'My World Preschool Msasani', '<p>\r\n	<img alt="Surfing Guy" src="/myworld/ckfinder/userfiles/images/-148.jpg" style="width: 300px; height: 199px; float: left;" />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae ullamcorper lacus. In urna dolor, molestie et commodo eu, viverra nec ligula. Sed a sodales ipsum, nec commodo quam nisl sed diam. In urna dolor, molestie et commodo eu, viverra nec ligula. Sed a In urna dolor, molestie et commodo eu, viverra nec ligula. Sed a&nbsp;<a href="http://localhost/myworld/msasani/page/play-ground">See Our Play Ground</a>.&nbsp;<br />\r\n	<br />\r\n	Cras quis velit ac dolor tristique placerat. Phasellus placerat aliquet semper. Donec in elit sit amet neque venenatis faucibus eget eget magna. Pellentesque pretium nunc vitae orci ultrices ac vehicula sapien pretium. Nullam non tellus risus, ut laoreet turpis. Aliquam erat volutpat. Sed lectus leo, mattis ut vehicula quis, ultrices id tellus. Duis adipiscing mauris nec nulla faucibus ac porta ipsum imperdiet. Donec porttitor suscipit elit, a ultrices nibh suscipit ut. Suspendisse nec nisl mauris, nec cursus neque. Phasellus elit eros, feugiat eget elementum quis, faucibus sed augue. Morbi fringilla dictum velit ac rhoncus. Aenean auctor tellus sodales lectus condimentum interdum. Donec nisi augue, ornare dignissim pellentesque sit amet, vehicula in urna. Nam faucibus aliquet nisi, vitae tristique mauris tincidunt eu. Nullam sagittis felis vitae eros dignissim lobortis.</p>\r\n', 'MSASANI', '-148.jpg', 3, 'home', 2, 1, ''),
-(10, 'My World Preschool Upanga', '<p>\r\n	<img alt="Playing on the wall." src="/myworld/ckfinder/userfiles/images/-28.jpg" style="width: 250px; height: 376px; float: right;" />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae ullamcorper lacus. In urna dolor, molestie et commodo eu, viverra nec ligula. Sed a sodales ipsum, nec commodo quam nisl sed diam. In urna dolor, molestie et commodo eu, viverra nec ligula. Sed a In urna dolor, molestie et commodo eu, viverra nec ligula. Sed a <a href="http://www.swahilimusicnotes.com">See Our Play Ground.</a></p>\r\n<p>\r\n	Cras quis velit ac dolor tristique placerat. Phasellus placerat aliquet semper. Donec in elit sit amet</p>\r\n<p>\r\n	&nbsp;neque venenatis faucibus eget eget magna. Pellentesque pretium nunc vitae orci ultrices ac vehicula sapien pretium. Nullam non tellus risus, ut laoreet turpis. Aliquam erat volutpat. Sed lectus leo, mattis ut vehicula quis, ultrices id tellus. Duis adipiscing mauris nec nulla faucibus ac porta ipsum imperdiet. Donec porttitor suscipit elit, a ultrices nibh suscipit ut. Suspendisse nec nisl mauris, nec cursus neque. Phasellus elit eros, feugiat eget elementum quis, faucibus sed augue. Morbi fringilla dictum velit ac rhoncus. Aenean auctor tellus sodales lectus condimentum interdum. Donec nisi augue, ornare dignissim pellentesque sit amet, vehicula in urna. Nam faucibus aliquet nisi, vitae tristique mauris tincidunt eu. Nullam sagittis felis vitae eros dignissim lobortis.</p>\r\n<div>\r\n	&nbsp;</div>\r\n', 'UPANGA', '-28.jpg', 2, 'home', 2, 1, ''),
-(11, 'My World Training Center', '<p>\r\n	This is the Training Center home</p>\r\n', 'TRAINING', '', 5, 'home', 2, 0, ''),
-(12, 'My World Community Centre', '<p>\r\n	This is the Community Centre Home Page</p>\r\n', 'COMMUNITY', '', 4, 'home', 2, 0, ''),
-(13, 'Curriculum', '<p>\r\n	Curriculum Test</p>\r\n', 'UPANGA_CURRICULUM', '', 2, 'upanga-curriculum', 2, 1, ''),
-(14, 'School-Home Link', '', 'UPANGA_SCHOOL_HOME_LINK', '', 2, 'school-home-link', 2, 1, ''),
-(15, 'Projects', '', 'UPANGA_PROJECTS', '', 2, 'projects', 4, 1, 'mw_projects'),
-(16, 'Facilities', '', 'FACILITIES', '', 2, 'facilities', 2, 2, ''),
-(17, 'Play Ground', '', 'PLAY_GROUND', '', 2, 'play-ground', 2, 2, ''),
-(18, 'Teaching Staff', '', 'TEACHING_STAFF', '', 2, 'teaching-staff', 9, 2, ''),
-(19, 'Application Guidelines', '', 'APPLICATION_GUIDELINES', '', 2, 'application-guidelines', 2, 3, ''),
-(20, 'Parent Handbook', '', 'PARENT_HANDBOOK', '', 2, 'parent-handbook', 2, 3, ''),
-(21, 'Testimonials', '', 'TESTIMONIALS', '', 2, 'testimonials', 2, 3, ''),
-(22, 'Helpful Links', '', 'HELPFUL_LINKS', '', 2, 'helpful-links', 8, 3, 'mw_helpful_links'),
-(23, 'Curriculum', '<p>\r\n	Curriculum Test</p>\r\n', 'UPANGA_CURRICULUM', '', 3, 'upanga-curriculum', 2, 1, ''),
-(24, 'School-Home Link', '', 'UPANGA_SCHOOL_HOME_LINK', '', 3, 'school-home-link', 2, 1, ''),
-(25, 'Projects', '', 'UPANGA_PROJECTS', '', 3, 'projects', 4, 1, 'mw_projects'),
-(26, 'Facilities', '', 'FACILITIES', '', 3, 'facilities', 2, 2, ''),
-(27, 'Play Ground', '', 'PLAY_GROUND', '', 3, 'play-ground', 2, 2, ''),
-(28, 'Teaching Staff', '', 'TEACHING_STAFF', '', 3, 'teaching-staff', 9, 2, ''),
-(29, 'Application Guidelines', '', 'APPLICATION_GUIDELINES', '', 3, 'application-guidelines', 2, 3, ''),
-(30, 'Parent Handbook', '', 'PARENT_HANDBOOK', '', 3, 'parent-handbook', 2, 3, ''),
-(31, 'Testimonials', '', 'TESTIMONIALS', '', 3, 'testimonials', 7, 3, ''),
-(32, 'Helpful Links', '', 'HELPFUL_LINKS', '', 3, 'helpful-links', 8, 3, 'mw_helpful_links'),
-(33, 'Dance Studio', '', 'DANCE', '', 4, 'dance-studio', 2, 0, ''),
-(34, 'Baby Centre', '', 'BABY_CENTER', '', 4, 'baby-centre', 2, 0, ''),
-(35, 'Art Centre', '', 'ART_CENTER', '', 4, 'art-centre', 2, 0, ''),
-(36, 'Café', '', 'CAFE', '', 4, 'cafe', 2, 0, ''),
-(37, 'Play Ground', '', 'PLAY_GROUND', '', 4, 'play-ground', 2, 0, '');
+INSERT INTO `mw_pages` (`id`, `title`, `text`, `identifier`, `thumb_nail`, `type`, `url`, `template`, `parent`, `table`, `logo`) VALUES
+(1, 'About My World Preschool', '<p>\r\n	<img alt="Flowers" src="/myworld/ckfinder/userfiles/images/Hydrangeas.jpg" style="width: 206px; height: 224px; float: left;" />While still warm, the oil, like hot punch, is received into the six-barrel casks; and while, perhaps, the ship is pitching and rolling this way and that in the midnight sea, the enormous casks are slewed round and headed over, end for end, and sometimes perilously scoot across the slippery deck, like so many land slides, till at last man-handled and stayed in their course; and all round the hoops, rap, rap, go as many hammers as can play upon them, for now, EX OFFICIO, every sailor is a cooper.</p>\r\n<p>\r\n	At length, when the last pint is casked, and all is cool, then the great hatchways are unsealed, the bowels of the ship are thrown open, and down go the casks to their final rest in the sea. This done, the hatches are replaced, and hermetically closed, like a closet walled up. In the sperm fishery, this is perhaps one of the most remarkable incidents in all the business of whaling.</p>\r\n<p>\r\n	One day the planks stream with freshets of blood and oil; on the sacred quarter-deck enormous masses of the whale&#39;s head are profanely piled; great rusty casks lie about, as in a brewery yard; the smoke from the try-works has besooted all the bulwarks; the mariners go about suffused with unctuousness; the entire ship seems great leviathan himself; while on all hands the din is deafening.</p>\r\n<p>\r\n	But a day or two after, you look about you, and prick your ears in this self-same ship; and were it not for the tell-tale boats and try-works, you would all but swear you trod some silent merchant vessel, with a most scrupulously neat commander. The unmanufactured sperm oil possesses a singularly cleansing virtue. This is the reason why the decks never look so white as just after what they call an affair of oil. Besides, from the ashes of the burned scraps of the whale, a potent lye is readily made; and whenever any adhesiveness from the back of the whale remains clinging to the side, that lye quickly exterminates it. Hands go diligently along the bulwarks, and with buckets of water and rags restore them to their full tidiness.</p>\r\n<p>\r\n	The soot is brushed from the lower rigging. All the numerous implements which have been in use are likewise faithfully cleansed and put away. The great hatch is scrubbed and placed upon the try-works, completely hiding the pots; every cask is out of sight; all tackles are coiled in unseen nooks; and when by the combined and simultaneous industry of almost the entire ship&#39;s company, the whole of this conscientious duty is at last concluded, then the crew themselves proceed to their own ablutions; shift themselves from top to toe; and finally issue to the immaculate deck, fresh and all aglow, as bridegrooms new-leaped from out the daintiest Holland.</p>\r\n<div>\r\n	<div>\r\n		&nbsp;</div>\r\n	<div>\r\n		&nbsp;</div>\r\n</div>\r\n<p>\r\n	&nbsp;</p>\r\n', 'ABOUT', 'Hydrangeas.jpg', 1, 'about-my-world-preschool', 1, 4, '', '1'),
+(2, 'Contact My World Preschool', '<p>\r\n	<span style="color: rgb(51, 51, 51); font-family: ''Helvetica Neue'', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 20px; ">We value your feedback, please say hello!</span></p>\r\n', 'CONTACT', '', 1, 'contact-my-world-preschool', 5, 4, '', '1'),
+(7, 'My World Preschool | Home', '<p>\r\n	Under this head I reckon a monster which, by the various names of Fin-Back, Tall-Spout, and Long-John, has been seen almost in every sea and is commonly the whale whose distant jet is so often descried by passengers crossing the Atlantic, in the New York packet-tracks. In the length he attains, and in his baleen, the Fin-back resembles the right whale, but is of a less portly girth, and a lighter colour, approaching to olive.</p>\r\n', 'HOME', '', 1, 'my-world-preschool-home', 6, 4, '', '1'),
+(9, 'My World Preschool Msasani', '<p>\r\n	<img alt="Surfing Guy" src="/myworld/ckfinder/userfiles/images/-148.jpg" style="width: 300px; height: 199px; float: left;" />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae ullamcorper lacus. In urna dolor, molestie et commodo eu, viverra nec ligula. Sed a sodales ipsum, nec commodo quam nisl sed diam. In urna dolor, molestie et commodo eu, viverra nec ligula. Sed a In urna dolor, molestie et commodo eu, viverra nec ligula. Sed a&nbsp;<a href="http://localhost/myworld/msasani/page/play-ground">See Our Play Ground</a>.&nbsp;<br />\r\n	<br />\r\n	Cras quis velit ac dolor tristique placerat. Phasellus placerat aliquet semper. Donec in elit sit amet neque venenatis faucibus eget eget magna. Pellentesque pretium nunc vitae orci ultrices ac vehicula sapien pretium. Nullam non tellus risus, ut laoreet turpis. Aliquam erat volutpat. Sed lectus leo, mattis ut vehicula quis, ultrices id tellus. Duis adipiscing mauris nec nulla faucibus ac porta ipsum imperdiet. Donec porttitor suscipit elit, a ultrices nibh suscipit ut. Suspendisse nec nisl mauris, nec cursus neque. Phasellus elit eros, feugiat eget elementum quis, faucibus sed augue. Morbi fringilla dictum velit ac rhoncus. Aenean auctor tellus sodales lectus condimentum interdum. Donec nisi augue, ornare dignissim pellentesque sit amet, vehicula in urna. Nam faucibus aliquet nisi, vitae tristique mauris tincidunt eu. Nullam sagittis felis vitae eros dignissim lobortis.</p>\r\n', 'MSASANI', '-148.jpg', 3, 'my-world-preschool-msasani', 2, 1, '', '4'),
+(10, 'My World Preschool Upanga', '<p>\r\n	<img alt="Playing on the wall." src="/myworld/ckfinder/userfiles/images/-28.jpg" style="width: 250px; height: 376px; float: right;" />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae ullamcorper lacus. In urna dolor, molestie et commodo eu, viverra nec ligula. Sed a sodales ipsum, nec commodo quam nisl sed diam. In urna dolor, molestie et commodo eu, viverra nec ligula. Sed a In urna dolor, molestie et commodo eu, viverra nec ligula. Sed a <a href="http://localhost/myworld/upanga/page/play-ground">See Our Play Ground.</a></p>\r\n<p>\r\n	Cras quis velit ac dolor tristique placerat. Phasellus placerat aliquet semper. Donec in elit sit amet</p>\r\n<p>\r\n	&nbsp;neque venenatis faucibus eget eget magna. Pellentesque pretium nunc vitae orci ultrices ac vehicula sapien pretium. Nullam non tellus risus, ut laoreet turpis. Aliquam erat volutpat. Sed lectus leo, mattis ut vehicula quis, ultrices id tellus. Duis adipiscing mauris nec nulla faucibus ac porta ipsum imperdiet. Donec porttitor suscipit elit, a ultrices nibh suscipit ut. Suspendisse nec nisl mauris, nec cursus neque. Phasellus elit eros, feugiat eget elementum quis, faucibus sed augue. Morbi fringilla dictum velit ac rhoncus. Aenean auctor tellus sodales lectus condimentum interdum. Donec nisi augue, ornare dignissim pellentesque sit amet, vehicula in urna. Nam faucibus aliquet nisi, vitae tristique mauris tincidunt eu. Nullam sagittis felis vitae eros dignissim lobortis.</p>\r\n<div>\r\n	&nbsp;</div>\r\n', 'UPANGA', '-28.jpg', 2, 'my-world-preschool-upanga', 2, 1, '', '5'),
+(11, 'My World Training Center', '<p>\r\n	This is the Training Center home</p>\r\n', 'TRAINING', '', 5, 'my-world-training-center', 2, 0, '', '3'),
+(12, 'My World Community Centre', '<p>\r\n	This is the Community Centre Home Page</p>\r\n', 'COMMUNITY', '', 4, 'my-world-community-centre', 2, 0, '', '2'),
+(13, 'Curriculum', '<p>\r\n	Curriculum Test</p>\r\n', 'UPANGA_CURRICULUM', '', 2, 'curriculum', 2, 1, '', '5'),
+(14, 'School-Home Link', '', 'UPANGA_SCHOOL_HOME_LINK', '', 2, 'school-home-link', 2, 1, '', '5'),
+(15, 'Projects', '', 'UPANGA_PROJECTS', '', 2, 'projects', 4, 1, 'mw_projects', '5'),
+(16, 'Facilities', '', 'FACILITIES', '', 2, 'facilities', 2, 2, '', '5'),
+(17, 'Play Ground', '', 'PLAY_GROUND', '', 2, 'play-ground', 2, 2, '', '5'),
+(18, 'Teaching Staff', '', 'TEACHING_STAFF', '', 2, 'teaching-staff', 9, 2, '', '5'),
+(19, 'Application Guidelines', '', 'APPLICATION_GUIDELINES', '', 2, 'application-guidelines', 2, 3, '', '5'),
+(20, 'Parent Handbook', '', 'PARENT_HANDBOOK', '', 2, 'parent-handbook', 2, 3, '', '5'),
+(21, 'Testimonials', '', 'TESTIMONIALS', '', 2, 'testimonials', 2, 3, '', '5'),
+(22, 'Helpful Links', '', 'HELPFUL_LINKS', '', 2, 'helpful-links', 8, 3, 'mw_helpful_links', '4'),
+(23, 'Curriculum', '<p>\r\n	Curriculum Test</p>\r\n', 'MSASANI_CURRICULUM', '', 3, 'curriculum-curriculum', 2, 1, '', '4'),
+(24, 'School-Home Link', '', 'MSASANI_SCHOOL_HOME_LINK', '', 3, 'school-home-link', 2, 1, '', '4'),
+(25, 'Projects', '', 'UPANGA_PROJECTS', '', 3, 'projects', 4, 1, 'mw_projects', '4'),
+(26, 'Facilities', '', 'FACILITIES', '', 3, 'facilities', 2, 2, '', '4'),
+(27, 'Play Ground', '', 'PLAY_GROUND', '', 3, 'play-ground', 2, 2, '', '4'),
+(28, 'Teaching Staff', '', 'TEACHING_STAFF', '', 3, 'teaching-staff', 9, 2, '', '4'),
+(29, 'Application Guidelines', '', 'APPLICATION_GUIDELINES', '', 3, 'application-guidelines', 2, 3, '', '4'),
+(30, 'Parent Handbook', '', 'PARENT_HANDBOOK', '', 3, 'parent-handbook', 2, 3, '', '4'),
+(31, 'Testimonials', '', 'TESTIMONIALS', '', 3, 'testimonials', 7, 3, '', '4'),
+(32, 'Helpful Links', '', 'HELPFUL_LINKS', '', 3, 'helpful-links', 8, 3, 'mw_helpful_links', '4'),
+(33, 'Dance Studio', '', 'DANCE', '', 4, 'dance-studio', 2, 0, '', '2'),
+(34, 'Baby Centre', '', 'BABY_CENTER', '', 4, 'baby-centre', 2, 0, '', '2'),
+(35, 'Art Centre', '', 'ART_CENTER', '', 4, 'art-centre', 2, 0, '', '2'),
+(36, 'Café', '', 'CAFE', '', 4, 'caf', 2, 0, '', '2'),
+(37, 'Play Ground', '', 'PLAY_GROUND', '', 4, 'play-ground', 2, 0, '', '2');
 
 -- --------------------------------------------------------
 
@@ -679,6 +718,55 @@ INSERT INTO `mw_page_templates` (`id`, `name`, `view`, `access_level`) VALUES
 (7, 'Testimonials', 'testimonials.php', 1),
 (8, 'Helpful Links', 'hlinks.php', 1),
 (9, 'Staff', 'staff.php', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mw_parents`
+--
+
+CREATE TABLE IF NOT EXISTS `mw_parents` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `type` varchar(255) NOT NULL,
+  `first_name` varchar(255) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
+  `parent_of` int(11) NOT NULL,
+  `contact_number_one` varchar(255) NOT NULL,
+  `contact_number_two` varchar(255) NOT NULL,
+  `contact_number_three` varchar(255) NOT NULL,
+  `email_address_one` varchar(255) NOT NULL,
+  `email_address_two` varchar(255) NOT NULL,
+  `email_address_three` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `mw_parents`
+--
+
+INSERT INTO `mw_parents` (`id`, `type`, `first_name`, `last_name`, `parent_of`, `contact_number_one`, `contact_number_two`, `contact_number_three`, `email_address_one`, `email_address_two`, `email_address_three`) VALUES
+(1, '1', 'Master ', 'Ringo', 3, '0715556327', '', '', 'vusile@gmail.com', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mw_parent_types`
+--
+
+CREATE TABLE IF NOT EXISTS `mw_parent_types` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `mw_parent_types`
+--
+
+INSERT INTO `mw_parent_types` (`id`, `title`) VALUES
+(1, 'Father'),
+(2, 'Mother'),
+(3, 'Guardian');
 
 -- --------------------------------------------------------
 
@@ -835,6 +923,31 @@ INSERT INTO `mw_settings` (`id`, `setting`, `value`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `mw_students`
+--
+
+CREATE TABLE IF NOT EXISTS `mw_students` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `student_registration_number` varchar(255) NOT NULL,
+  `first_name` varchar(255) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
+  `birthday` date NOT NULL,
+  `class` int(11) NOT NULL,
+  `photo` varchar(255) NOT NULL,
+  `parents` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `mw_students`
+--
+
+INSERT INTO `mw_students` (`id`, `student_registration_number`, `first_name`, `last_name`, `birthday`, `class`, `photo`, `parents`) VALUES
+(3, '1001', 'Pendo', 'Ringo', '2012-12-01', 3, 'da3f7-ChrysanthemumLR.jpg', '<a target = "_blank" href = "http://localhost/myworld/backend/mw_parents/3">Parents</a>');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `mw_teachers_classes`
 --
 
@@ -970,7 +1083,7 @@ CREATE TABLE IF NOT EXISTS `mw_users` (
 --
 
 INSERT INTO `mw_users` (`id`, `ip_address`, `username`, `password`, `salt`, `email`, `activation_code`, `forgotten_password_code`, `forgotten_password_time`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
-(1, '\0\0', 'administrator', '59beecdf7fc966e2f17fd8f65a4a9aeb09d4a3d4', '9462e8eee0', 'admin@admin.com', '', NULL, NULL, NULL, 1268889823, 1356068966, 1, 'Admin', 'istrator', 'ADMIN', '0'),
+(1, '\0\0', 'administrator', '59beecdf7fc966e2f17fd8f65a4a9aeb09d4a3d4', '9462e8eee0', 'admin@admin.com', '', NULL, NULL, NULL, 1268889823, 1356944316, 1, 'Admin', 'istrator', 'ADMIN', '0'),
 (2, '\0\0', 'anton.fouquet@djpa.co.tz', 'ded126212466ac57fea9c2dbab79f42acaa5670b', NULL, 'anton.fouquet@djpa.co.tz', NULL, NULL, NULL, NULL, 1351672322, 1351672358, 1, 'Anton', 'Fouquet', NULL, '+255 753 102 000'),
 (3, '\0\0', 'anton2.fouquet@djpa.co.tz', '5ef2cc5b647649523f749a4da095c1a5e3fdae46', NULL, 'anton2.fouquet@djpa.co.tz', NULL, NULL, NULL, NULL, 1353495312, 1353495312, 1, 'Anton', 'Fouquet', NULL, '+255 753 102 000'),
 (4, '\0\0', 'anton23.fouquet@djpa.co.tz', '7e06f410a1f61449a70e041e0284265df154924a', NULL, 'anton23.fouquet@djpa.co.tz', NULL, NULL, NULL, NULL, 1353495348, 1353495348, 1, 'Anton', 'Fouquet', NULL, '+255 753 102 000');

@@ -3,8 +3,8 @@
 <div id="fback"> <div id="fnav">
       <ul>
         <li><a href="#">Site Map</a></li>
-        <li ><a href="contact.html">Contact Us</a></li>
-        <li ><a href="about.html">About Us</a></li>
+        <li ><a href="contact-us">Contact Us</a></li>
+        <li ><a href="about">About Us</a></li>
     </ul>
       </div>
       </div>
@@ -28,7 +28,7 @@ $('#myCarousel').carousel({
    </script>
    
   <script>
-  $('#banner1').cycle({fx: 'fade'});
+  $('#banner1').cycle();
   $('#banner2').cycle();
   $('#banner3').cycle();
   $('#banner4').cycle();

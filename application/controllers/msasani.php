@@ -19,11 +19,16 @@ class Msasani extends CI_Controller {
 	 */
 	public function index()
 	{
-		$header = $this->header();
+
 		$this->db->where('identifier','MSASANI');
 		$pages = $this->db->get('mw_pages');
 		$data['text'] = $pages->row()->text;
 		$header['title'] = $pages->row()->title;
+		
+		
+		$logo_id = $pages->row()->logo;
+		
+		$header = $this->header($logo_id);
 		
 		$this->load->view('header',$header);
 		$this->load->view('sidebar', $data);
@@ -32,7 +37,7 @@ class Msasani extends CI_Controller {
 
 	}
 	
-	function header()
+	function header($logo_id=1)
 	{
 		$header_images = $this->db->get('mw_header_images');
 	
@@ -49,6 +54,12 @@ class Msasani extends CI_Controller {
 			$header['right'] .= "<img src = 'img/" . $imgs->right . "' />";
 			
 		}
+		
+		$this->db->where('id',$logo_id);
+		$logo = $this->db->get('mw_logos');
+		
+		$header['logo'] = $logo->row()->logo;
+		$header['tag_line'] = $logo->row()->tag_line;
 		
 		return $header;
 	}
@@ -170,11 +181,13 @@ class Msasani extends CI_Controller {
 		
 	public function page($identifier)
 	{
-		$header = $this->header();
 		$this->db->where('type',3);
 		$this->db->where('url',$identifier);
 		$content = $this->db->get('mw_pages');
 		
+		$logo_id = $content->row()->logo;
+		
+		$header = $this->header($logo_id);
 		$data['text'] = $content->row()->text;
 		$header['title'] = $content->row()->title;
 		
@@ -220,13 +233,14 @@ class Msasani extends CI_Controller {
 	
 	function project($url)
 	{
-		$header = $this->header();
+		$header = $this->header(4);
 		$this->db->where('url',$url);
 		$pages = $this->db->get('mw_projects');
 		$data['text'] = $pages->row()->text;
 		$header['title'] = $pages->row()->title;
 		$sidebar = $this->sidebar();
-		
+
+	
 		$this->load->view('header',$header);
 		$this->load->view('sidebar', $sidebar);
 		$this->load->view('subpage', $data);

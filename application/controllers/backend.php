@@ -23,6 +23,28 @@ class Backend extends CI_Controller {
 			redirect('login');
 	}	
 	
+	function make_url_from_title($title,$table,$id)
+	{
+		$url = strtolower(url_title($title));
+		
+
+		$this->db->where('url',$url);
+		$obj=$this->db->get($table);
+		
+		if($obj->num_rows() > 0)
+		{
+			$this->db->where('id',$id);
+			$this->db->where('url',$url);
+			$obj=$this->db->get($table);
+			
+			if( $obj->num_rows() == 0 )
+				$url = $this->make_url_from_title($url . '-' . $url,$table,$id);
+		}
+		
+		return $url;
+		
+	}
+	
 	function mw_page_templates()
 	{
 	
@@ -33,18 +55,45 @@ class Backend extends CI_Controller {
 
 	}	
 
-	function mw_partner_links()
+	function mw_logos()
 	{		
+		$this->grocery_crud->set_field_upload('logo', 'img');
 		$output = $this->grocery_crud->render();
 		$this->_example_output($output);
 	}
 	
+	function mw_partner_links()
+	{		
+		$this->grocery_crud->callback_after_insert(array($this, 'partner_links_callback'));
+		$this->grocery_crud->callback_after_update(array($this, 'partner_links_callback'));
+		$output = $this->grocery_crud->render();
+		$this->_example_output($output);
+	}
+	
+	
+	function partner_links_callback($post_array,$primary_key)
+	{
+		$data = array (
+			'partner_website' => prep_url($post_array['partner_website'])
+		);
+		
+		$this->db->where('id',$primary_key);
+		$this->db->update('mw_partner_links',$data);
+	
+	}
+	
+	
+	
 	function mw_header_images()
 	{		
 		$this->grocery_crud->set_field_upload('left', 'img');
+		$this->grocery_crud->display_as('left', 'Left Image (141px by 278px)');
 		$this->grocery_crud->set_field_upload('centre_top', 'img');
+		$this->grocery_crud->display_as('centre_top', 'Centre Top Image (237px by 128px)');
 		$this->grocery_crud->set_field_upload('centre_bottom', 'img');
+		$this->grocery_crud->display_as('centre_bottom', 'Centre Bottom Image (237px by 131px)');
 		$this->grocery_crud->set_field_upload('right', 'img');
+		$this->grocery_crud->display_as('right', 'Right Image (302px by 278px)');
 		$this->grocery_crud->callback_after_insert(array($this, 'resize_header_images'));
 		$this->grocery_crud->callback_after_update(array($this, 'resize_header_images'));
 		
@@ -126,7 +175,8 @@ class Backend extends CI_Controller {
 	function assign_link_to_category($post_array,$primary_key)
 	{
 		$data = array (
-			'category' => $this->uri->segment(3)
+			'category' => $this->uri->segment(3),
+			'url' => prep_url($post_array['url'])
 		);
 		
 		$this->db->where('id',$primary_key);
@@ -143,7 +193,61 @@ class Backend extends CI_Controller {
 		$output = $this->grocery_crud->render();
 		$this->_example_output($output);
 
+	}		
+	
+	function mw_students($class)
+	{
+		$this->grocery_crud->unset_columns('class');
+		$this->grocery_crud->unset_fields('class','parents');
+		$this->grocery_crud->set_field_upload('photo','photos');
+		$this->grocery_crud->callback_after_insert(array($this, 'students_callback'));
+		$this->grocery_crud->callback_after_update(array($this, 'students_callback'));
+		$this->grocery_crud->where('class',$class);
+		$output = $this->grocery_crud->render();
+		$this->_example_output($output);
+
 	}	
+	
+	function students_callback($post_array,$primary_key)
+	{
+		$data = array (
+			'class' =>$this->uri->segment(3),
+			'parents' => '<a target = "_blank" href = "' . base_url() . 'backend/mw_parents/' .  $primary_key . '">Parents</a>'
+		);
+		
+		$this->db->where('id',$primary_key);
+		$this->db->update('mw_students',$data);
+		
+		
+	}
+	
+	function mw_parents($student)
+	{
+
+
+		//$this->grocery_crud->unset_columns('school');
+		$this->grocery_crud->unset_fields('parent_of');
+		$this->grocery_crud->where('parent_of',$student);
+		$this->grocery_crud->set_relation('type','mw_parent_types','title');
+		$this->grocery_crud->set_relation('parent_of','mw_students','{first_name} {last_name}');
+		$this->grocery_crud->callback_after_insert(array($this, 'parents_callback'));
+		$this->grocery_crud->callback_after_update(array($this, 'parents_callback'));
+		$output = $this->grocery_crud->render();
+		$this->_example_output($output);
+
+	}	
+	
+	function parents_callback($post_array,$primary_key)
+	{
+		$data = array (
+			'parent_of' => $this->uri->segment(3),
+			
+		);
+		
+		$this->db->where('id',$primary_key);
+		$this->db->update('mw_parents',$data);
+	}
+	
 	
 	function mw_teaching_staff($school=2)
 	{
@@ -174,7 +278,8 @@ class Backend extends CI_Controller {
 	function set_school($post_array,$primary_key)
 	{
 		$data = array (
-			'school' => $this->uri->segment(3)
+			'school' => $this->uri->segment(3),
+			'students' => '<a target = "_blank" href = "' . base_url() . 'backend/mw_students/' .  $primary_key . '">Students</a>'
 		);
 		
 		$this->db->where('id',$primary_key);
@@ -258,6 +363,7 @@ class Backend extends CI_Controller {
 			$this->grocery_crud->set_relation('template','mw_page_templates','name');
 		
 	
+		$this->grocery_crud->set_relation('logo','mw_logos','title');
 		$this->grocery_crud->set_relation('parent','mw_categories','title');
 			
 		$this->grocery_crud->unset_delete();
@@ -275,7 +381,8 @@ class Backend extends CI_Controller {
 	{
 	
 		$data = array (
-			'type' => $this->uri->segment(3)
+			'type' => $this->uri->segment(3),
+			'url' => $this->make_url_from_title($post_array['title'], 'mw_pages', $primary_key)
 		);
 		
 		$doc = new DOMDocument();
@@ -386,7 +493,7 @@ class Backend extends CI_Controller {
 		
 		if($title_obj->row()->url == '')
 		{
-			$data['url'] = $this->convert_url('mw_projects', 'url', $title_obj->row()->title);
+			$data['url'] = $this->make_url_from_title($title_obj->row()->title, 'mw_projects', $primary_key);
 		}
 		
 
@@ -542,10 +649,9 @@ class Backend extends CI_Controller {
 		$title_obj=$this->db->get('mw_news');
 		
 		$data['date'] = date('Y-m-d');
-		if($title_obj->row()->url == '')
-		{
-			$data['url'] = $this->convert_url('mw_news', 'url', $title_obj->row()->title);
-		}
+
+		$data['url'] = $this->make_url_from_title($title_obj->row()->title, 'mw_news', $primary_key);
+
 		
 		$this->db->where('id',$primary_key);
 		$this->db->update('mw_news',$data);
