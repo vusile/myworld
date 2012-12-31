@@ -262,9 +262,9 @@ margin-top:10px;
 margin-bottom: 60px;
 }
 #slideshow{
-	margin-left:15px;
+	margin-left:10px;
 	width:400px;
-	height:300px;
+	height:310px;
 	margin-bottom:40px;
 	margin-top:5px;
 }
@@ -365,3 +365,5 @@ padding:0;
 .contact{
 	margin-top:40px;
 }
+
+#myCarousel img {padding:0;}

@@ -4802,11 +4802,14 @@ a.thumbnail:hover {
   position: relative;
   margin-bottom: 20px;
   line-height: 1;
+  width:410px;
+  
 }
 .carousel-inner {
   overflow: hidden;
   width: 100%;
   position: relative;
+  width:400px;
 }
 .carousel .item {
   display: none;
