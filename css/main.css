@@ -306,7 +306,7 @@ margin-left: -13px;
 	margin-top: 40px;
 	background:#ffffff;
 	width:1024px;
-	height:80px;
+	/*height:80px;*/
 	margin-bottom:-20px;
 	
 	
@@ -316,7 +316,7 @@ margin-left: -13px;
 	background-image:url(../img/Footer-Background.png);
 	background-repeat:repeat-x;
 	width:1012px;
-	height:60px;
+	/*height:60px;*/
 	margin-left:6px;
 }
 #fnav{

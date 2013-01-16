@@ -2,6 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8" />
+	<base href = "<?php echo base_url(); ?>" />
 <?php 
 if(isset($css_files))
 foreach($css_files as $file): ?>
@@ -44,8 +45,9 @@ a:hover
 		<a href='<?php echo site_url('backend/mw_settings')?>'>Settings</a> 
 		<a href='<?php echo site_url('backend/mw_categories')?>'>Page Categories</a> |
 		<a href='<?php echo site_url('backend/mw_logos')?>'>Logos</a> | 
+		<a href='<?php echo site_url('backend/mw_files')?>'>Uploaded Files and Documents</a> |
 		<?php if($this->ion_auth->is_admin()): ?>
-			<a href='<?php echo site_url('backend/mw_page_templates')?>'>Page Templates</a> 
+			<a href='<?php echo site_url('backend/mw_page_templates')?>'>Page Templates</a> |
 		<?php endif; ?>
 		<h2>My World Upanga</h2>
 		<a href='<?php echo site_url('backend/mw_pages/2')?>'>My World Upanga Pages</a> |

@@ -89,6 +89,7 @@
       </div>
     </div>
 	<?php endforeach; ?>
+
      <!-- end pic no 4 goes here-->
     
   </div><!-- /.carousel-inner -->

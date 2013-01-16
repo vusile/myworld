@@ -19,7 +19,7 @@ $(function(){
 			{ name: 'basicstyles', items : [ 'Bold','Italic','Underline','Link','Unlink'] },
 			{ name: 'paragraph', items : [ 'NumberedList','BulletedList','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock' ] },
 			{ name: 'insert', items : [ 'Image','HorizontalRule','MediaEmbed' ] },
-			{ name: 'styles', items : [ 'Styles'/*,'Format'*/] }
+			{ name: 'styles', items : [ 'BGColor','Table' ]}
 		],
 		width:700,
 		filebrowserBrowseUrl : 'http://localhost/myworld/ckfinder/ckfinder.html',

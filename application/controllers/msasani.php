@@ -171,12 +171,28 @@ class Msasani extends CI_Controller {
 			
 			$staff .= '<br>';
 			$staff .= '<img src="photos/' . $teacher->photo .'" alt=""  class="img7">';
-			$staff .= "<p>" . $teacher->description . "<p><div style = 'clear:both; margin-top:7px;  width: 740px; border-top:1px #cdcdcd solid;'></div>";
+			$staff .= "<p>" . $teacher->description . "<p><div style = 'clear:both; margin-top:7px; margin-bottom: 15px;  width: 740px; border-top:1px #cdcdcd solid;'></div>";
 			
 		}
 		
 		return $staff;
 		
+	}
+
+	private function randomAlphaNum($length){ 
+
+		/*$rangeMin = pow(36, $length-1); //smallest number to give length digits in base 36 
+		$rangeMax = pow(36, $length)-1; //largest number to give length digits in base 36 
+		$base10Rand = mt_rand($rangeMin, $rangeMax); //get the random number 
+		$newRand = base_convert($base10Rand, 10, 36); //convert it 
+		
+		return $newRand; //spit it out */
+		
+		$arr = str_split('ABCDEFGHJKMNPQRSTUVWXYZ23456789'); // get all the characters into an array
+		shuffle($arr); // randomize the array
+		$arr = array_slice($arr, 0, $length); // get the first six (random) characters out
+		return implode('', $arr); // smush them back into a string
+
 	}
 		
 	public function page($identifier)
@@ -207,8 +223,31 @@ class Msasani extends CI_Controller {
 			break;
 			
 			case 'testimonials.php':
-			$this->db->where('school',3);
+			$this->db->where('approved',1);
 			$data['testimonials'] = $this->db->get('mw_testimonials');
+			$word = strtoupper($this->randomAlphaNum(7));
+		
+		
+			$this->load->helper('captcha');
+			$vals = array(
+			'word' => $word,
+			'img_path'	 => './captcha/',
+			'img_url'	 => 'captcha/',
+			'font_path'	 => './captcha/fonts/arial.ttf',
+			'img_width'	 => '200',
+			'img_height' => 50,
+			);
+			
+			$data['cap'] = create_captcha($vals);
+		
+			$cap_data = array(
+			'captcha_time'	=> $data['cap']['time'],
+			'ip_address'	=> $this->input->ip_address(),
+			'word'	 => $data['cap']['word']
+			);
+			
+			$query = $this->db->insert_string('mw_captcha', $cap_data);	
+			$this->db->query($query);
 			break;
 			
 			case 'hlinks.php':

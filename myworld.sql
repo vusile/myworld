@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 31, 2012 at 09:33 AM
+-- Generation Time: Jan 16, 2013 at 03:06 PM
 -- Server version: 5.5.20
 -- PHP Version: 5.3.10
 
@@ -82,84 +82,29 @@ CREATE TABLE IF NOT EXISTS `mw_captcha` (
   `word` varchar(20) NOT NULL,
   PRIMARY KEY (`captcha_id`),
   KEY `word` (`word`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=400 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=422 ;
 
 --
 -- Dumping data for table `mw_captcha`
 --
 
 INSERT INTO `mw_captcha` (`captcha_id`, `captcha_time`, `ip_address`, `word`) VALUES
-(329, 1351863886, '127.0.0.1', '3UST8FD'),
-(330, 1351863911, '127.0.0.1', 'WYCSBHX'),
-(331, 1351863915, '127.0.0.1', 'FDNKBY2'),
-(332, 1351863971, '127.0.0.1', 'BKMNGZE'),
-(333, 1351864463, '127.0.0.1', 'BQ6ZH3D'),
-(334, 1351864480, '127.0.0.1', 'JYRD8HS'),
-(335, 1353926856, '127.0.0.1', '3QKNUWF'),
-(336, 1354025475, '127.0.0.1', '4UK9TNM'),
-(337, 1355466756, '127.0.0.1', '9X5QEMW'),
-(338, 1355468360, '127.0.0.1', 'QC8JSKB'),
-(339, 1355468364, '127.0.0.1', 'SGF9HWX'),
-(340, 1355468426, '127.0.0.1', 'VSRK2PD'),
-(341, 1355468444, '127.0.0.1', 'ZEFA4WN'),
-(342, 1355468967, '127.0.0.1', '8D9QACW'),
-(343, 1355468971, '127.0.0.1', 'MU8K9CY'),
-(344, 1355468984, '127.0.0.1', 'BX579KN'),
-(345, 1355469055, '127.0.0.1', '6WFNAPJ'),
-(346, 1355469378, '127.0.0.1', 'VN6AEQW'),
-(347, 1355470840, '127.0.0.1', 'WKG4Z73'),
-(348, 1355471828, '127.0.0.1', '5D3GQR7'),
-(349, 1355472000, '127.0.0.1', 'XPAVTBF'),
-(350, 1355472254, '127.0.0.1', 'SA8D7Y5'),
-(351, 1355473103, '127.0.0.1', 'JYVG3WF'),
-(352, 1355485324, '127.0.0.1', 'ZVU6HD3'),
-(353, 1355485356, '127.0.0.1', 'NDZTWP6'),
-(354, 1355485382, '127.0.0.1', 'Z98NVD3'),
-(355, 1355485405, '127.0.0.1', 'Y5AUMCS'),
-(356, 1355485420, '127.0.0.1', 'JMPS7W5'),
-(357, 1355485426, '127.0.0.1', '4DPYEKX'),
-(358, 1355490447, '127.0.0.1', 'EJTZHB2'),
-(359, 1355727477, '127.0.0.1', 'X32VQ67'),
-(360, 1355727974, '127.0.0.1', 'GX2N7FH'),
-(361, 1355728401, '127.0.0.1', '59P6XEK'),
-(362, 1355729197, '127.0.0.1', 'P9WVH8T'),
-(363, 1355729649, '127.0.0.1', '2CJPRT9'),
-(364, 1355733461, '127.0.0.1', '9YF2G7R'),
-(365, 1355733475, '127.0.0.1', '46DE9PX'),
-(366, 1355733709, '127.0.0.1', 'KTMQ8DS'),
-(367, 1355744007, '127.0.0.1', 'RYZGB9X'),
-(368, 1355753320, '127.0.0.1', 'U3M7WRZ'),
-(369, 1355809528, '127.0.0.1', '2PTK5BA'),
-(370, 1355809552, '127.0.0.1', 'AXU5TC2'),
-(371, 1355809719, '127.0.0.1', 'P4F7YKT'),
-(372, 1355809724, '127.0.0.1', 'PFU5RDM'),
-(373, 1355809731, '127.0.0.1', 'PMN6S4G'),
-(374, 1355809775, '127.0.0.1', '9Q7S5FD'),
-(375, 1355809824, '127.0.0.1', 'HCEP2TU'),
-(376, 1355809867, '127.0.0.1', 'K58XSNA'),
-(377, 1355813203, '127.0.0.1', 'VWQT35N'),
-(378, 1355838893, '127.0.0.1', 'V5WEDMC'),
-(379, 1356005837, '127.0.0.1', 'M86AWVH'),
-(380, 1356012907, '127.0.0.1', '36BPY7M'),
-(381, 1356077998, '127.0.0.1', 'DMW8QJS'),
-(382, 1356078023, '127.0.0.1', 'XMZ5V3D'),
-(383, 1356078031, '127.0.0.1', 'F3BEUCM'),
-(384, 1356078070, '127.0.0.1', '3QTEYMZ'),
-(385, 1356095440, '127.0.0.1', 'ZX5FBJM'),
-(386, 1356096461, '127.0.0.1', '4DYNHPK'),
-(387, 1356098280, '127.0.0.1', '3BETUDR'),
-(388, 1356587917, '127.0.0.1', 'RPTGSHV'),
-(389, 1356588516, '127.0.0.1', 'SAZGKPT'),
-(390, 1356590816, '127.0.0.1', 'AYWJ4BM'),
-(391, 1356591048, '127.0.0.1', 'VNUKZ9P'),
-(392, 1356591567, '127.0.0.1', 'WMEUKZN'),
-(393, 1356592261, '127.0.0.1', 'JGUR549'),
-(394, 1356595980, '127.0.0.1', 'Q9Y7KMZ'),
-(395, 1356601062, '127.0.0.1', '54PZSGE'),
-(396, 1356601836, '127.0.0.1', 'ZRYT6BA'),
-(397, 1356604334, '127.0.0.1', 'V4QPBSC'),
-(398, 1356610207, '127.0.0.1', 'BVDH9KP'),
-(399, 1356613859, '127.0.0.1', 'QMXGTP7');
+(406, 1358341823, '127.0.0.1', 'MGKAB5V'),
+(407, 1358341943, '127.0.0.1', 'AHJ8EKT'),
+(408, 1358342019, '127.0.0.1', 'V4YQAPH'),
+(409, 1358342028, '127.0.0.1', 'TPQKFW2'),
+(410, 1358342059, '127.0.0.1', 'EUWYQPS'),
+(411, 1358342074, '127.0.0.1', '4XRH7CD'),
+(412, 1358342180, '127.0.0.1', 'MRJHZVQ'),
+(413, 1358342203, '127.0.0.1', 'NJE35TR'),
+(414, 1358342311, '127.0.0.1', 'TQC367J'),
+(415, 1358344815, '127.0.0.1', 'XTA24W9'),
+(416, 1358344852, '127.0.0.1', 'R4358B6'),
+(417, 1358345240, '127.0.0.1', '6PMJSYK'),
+(418, 1358345347, '127.0.0.1', '42EMXA5'),
+(419, 1358345397, '127.0.0.1', 'BXYHJMA'),
+(420, 1358347214, '127.0.0.1', '4TYCPFD'),
+(421, 1358347220, '127.0.0.1', 'D5R97FZ');
 
 -- --------------------------------------------------------
 
@@ -171,7 +116,7 @@ CREATE TABLE IF NOT EXISTS `mw_categories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `mw_categories`
@@ -181,7 +126,9 @@ INSERT INTO `mw_categories` (`id`, `title`) VALUES
 (1, 'Our Approach'),
 (2, 'The School'),
 (3, 'Parent Resources'),
-(4, 'Home');
+(4, 'Home'),
+(5, 'Test Category'),
+(6, 'Test Category 2');
 
 -- --------------------------------------------------------
 
@@ -196,7 +143,7 @@ CREATE TABLE IF NOT EXISTS `mw_classes` (
   `school` int(11) NOT NULL,
   `students` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `mw_classes`
@@ -206,7 +153,8 @@ INSERT INTO `mw_classes` (`id`, `class_name`, `class_teacher`, `school`, `studen
 (1, 'Lion', 0, 0, ''),
 (2, 'Lion', 0, 0, ''),
 (3, 'Lion', 0, 3, '<a target = "_blank" href = "http://localhost/myworld/backend/mw_students/3">Students</a>'),
-(4, 'Elephant', 0, 2, '<a target = "_blank" href = "http://localhost/myworld/backend/mw_students/4">Students</a>');
+(4, 'Elephant', 0, 2, '<a target = "_blank" href = "http://localhost/myworld/backend/mw_students/4">Students</a>'),
+(5, 'Class 1', 1, 2, '<a target = "_blank" href = "http://localhost/myworld/backend/mw_students/5">Students</a>');
 
 -- --------------------------------------------------------
 
@@ -284,6 +232,27 @@ INSERT INTO `mw_directory` (`id`, `company_name`, `website`, `logo`, `company_ty
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `mw_files`
+--
+
+CREATE TABLE IF NOT EXISTS `mw_files` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `file` varchar(255) NOT NULL,
+  `url` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `mw_files`
+--
+
+INSERT INTO `mw_files` (`id`, `name`, `file`, `url`) VALUES
+(1, 'Report', 'd4726-Desert.jpg', 'http://localhost/myworld//uploads/d4726-Desert.jpg');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `mw_groups`
 --
 
@@ -315,7 +284,7 @@ CREATE TABLE IF NOT EXISTS `mw_header_images` (
   `centre_bottom` varchar(255) NOT NULL,
   `right` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `mw_header_images`
@@ -323,7 +292,8 @@ CREATE TABLE IF NOT EXISTS `mw_header_images` (
 
 INSERT INTO `mw_header_images` (`id`, `left`, `centre_top`, `centre_bottom`, `right`) VALUES
 (1, 'c0952-141x278a.jpg', 'dcffe-237x128a.jpg', '246c9-237x131a.jpg', 'ccc0f-302x278a.jpg'),
-(2, 'd24c5-141x278b.jpg', 'e2454-237x128b.jpg', 'c96fa-237x131b.jpg', '1542f-302x278b.jpg');
+(2, 'd24c5-141x278b.jpg', 'e2454-237x128b.jpg', 'c96fa-237x131b.jpg', '1542f-302x278b.jpg'),
+(3, '5852a-Tulips.jpg', 'b572e-Desert.jpg', 'aa3a9-Lighthouse.jpg', '20731-Koala.jpg');
 
 -- --------------------------------------------------------
 
@@ -338,7 +308,7 @@ CREATE TABLE IF NOT EXISTS `mw_helpful_links` (
   `school` int(11) NOT NULL,
   `category` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `mw_helpful_links`
@@ -347,7 +317,9 @@ CREATE TABLE IF NOT EXISTS `mw_helpful_links` (
 INSERT INTO `mw_helpful_links` (`id`, `link_text`, `url`, `school`, `category`) VALUES
 (3, 'Listen to Kids', 'http://www.listeningtokids.com', 3, 4),
 (4, 'Music Can Help', 'http://www.swahilimusicnotes.com', 1, 4),
-(5, 'Kids Speak their Minds', 'http://www.speakyourmind.com', 1, 6);
+(5, 'Kids Speak their Minds', 'http://www.speakyourmind.com', 1, 6),
+(6, 'ZoomTanzania', 'http://www.zoomtanzania.com', 1, 7),
+(7, 'Great Science Projects for the home', 'http://www.greatprojects.com', 3, 7);
 
 -- --------------------------------------------------------
 
@@ -361,7 +333,7 @@ CREATE TABLE IF NOT EXISTS `mw_helpful_links_categories` (
   `the_links` varchar(255) NOT NULL,
   `school` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `mw_helpful_links_categories`
@@ -370,7 +342,8 @@ CREATE TABLE IF NOT EXISTS `mw_helpful_links_categories` (
 INSERT INTO `mw_helpful_links_categories` (`id`, `category`, `the_links`, `school`) VALUES
 (4, 'Help Children As they Play', '<a target = "_blank" href = "http://localhost/myworld/backend/mw_helpful_links/4">Helpful Links</a>', 3),
 (5, 'Dance & Games', '<a target = "_blank" href = "http://localhost/myworld/backend/mw_helpful_links/5">Helpful Links</a>', 2),
-(6, 'Public Speaking for kids links', '<a target = "_blank" href = "http://localhost/myworld/backend/mw_helpful_links/6">Helpful Links</a>', 1);
+(6, 'Public Speaking for kids links', '<a target = "_blank" href = "http://localhost/myworld/backend/mw_helpful_links/6">Helpful Links</a>', 1),
+(7, 'Having Fun with kids', '<a target = "_blank" href = "http://localhost/myworld/backend/mw_helpful_links/7">Helpful Links</a>', 1);
 
 -- --------------------------------------------------------
 
@@ -488,7 +461,7 @@ CREATE TABLE IF NOT EXISTS `mw_image_scroller` (
 
 INSERT INTO `mw_image_scroller` (`id`, `photo`, `caption`, `url`) VALUES
 (5, '08db3-Koala.jpg', 'Koala Dude', NULL),
-(6, '06ae1-Penguins.jpg', 'The Dancing Penguins Dancing', NULL);
+(6, '06ae1-Penguins.jpg', 'The Dancing Penguins Dancing', 'http://www.zoomtanzania.com');
 
 -- --------------------------------------------------------
 
@@ -650,14 +623,14 @@ CREATE TABLE IF NOT EXISTS `mw_pages` (
   `table` varchar(255) NOT NULL,
   `logo` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=38 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=44 ;
 
 --
 -- Dumping data for table `mw_pages`
 --
 
 INSERT INTO `mw_pages` (`id`, `title`, `text`, `identifier`, `thumb_nail`, `type`, `url`, `template`, `parent`, `table`, `logo`) VALUES
-(1, 'About My World Preschool', '<p>\r\n	<img alt="Flowers" src="/myworld/ckfinder/userfiles/images/Hydrangeas.jpg" style="width: 206px; height: 224px; float: left;" />While still warm, the oil, like hot punch, is received into the six-barrel casks; and while, perhaps, the ship is pitching and rolling this way and that in the midnight sea, the enormous casks are slewed round and headed over, end for end, and sometimes perilously scoot across the slippery deck, like so many land slides, till at last man-handled and stayed in their course; and all round the hoops, rap, rap, go as many hammers as can play upon them, for now, EX OFFICIO, every sailor is a cooper.</p>\r\n<p>\r\n	At length, when the last pint is casked, and all is cool, then the great hatchways are unsealed, the bowels of the ship are thrown open, and down go the casks to their final rest in the sea. This done, the hatches are replaced, and hermetically closed, like a closet walled up. In the sperm fishery, this is perhaps one of the most remarkable incidents in all the business of whaling.</p>\r\n<p>\r\n	One day the planks stream with freshets of blood and oil; on the sacred quarter-deck enormous masses of the whale&#39;s head are profanely piled; great rusty casks lie about, as in a brewery yard; the smoke from the try-works has besooted all the bulwarks; the mariners go about suffused with unctuousness; the entire ship seems great leviathan himself; while on all hands the din is deafening.</p>\r\n<p>\r\n	But a day or two after, you look about you, and prick your ears in this self-same ship; and were it not for the tell-tale boats and try-works, you would all but swear you trod some silent merchant vessel, with a most scrupulously neat commander. The unmanufactured sperm oil possesses a singularly cleansing virtue. This is the reason why the decks never look so white as just after what they call an affair of oil. Besides, from the ashes of the burned scraps of the whale, a potent lye is readily made; and whenever any adhesiveness from the back of the whale remains clinging to the side, that lye quickly exterminates it. Hands go diligently along the bulwarks, and with buckets of water and rags restore them to their full tidiness.</p>\r\n<p>\r\n	The soot is brushed from the lower rigging. All the numerous implements which have been in use are likewise faithfully cleansed and put away. The great hatch is scrubbed and placed upon the try-works, completely hiding the pots; every cask is out of sight; all tackles are coiled in unseen nooks; and when by the combined and simultaneous industry of almost the entire ship&#39;s company, the whole of this conscientious duty is at last concluded, then the crew themselves proceed to their own ablutions; shift themselves from top to toe; and finally issue to the immaculate deck, fresh and all aglow, as bridegrooms new-leaped from out the daintiest Holland.</p>\r\n<div>\r\n	<div>\r\n		&nbsp;</div>\r\n	<div>\r\n		&nbsp;</div>\r\n</div>\r\n<p>\r\n	&nbsp;</p>\r\n', 'ABOUT', 'Hydrangeas.jpg', 1, 'about-my-world-preschool', 1, 4, '', '1'),
+(1, 'About My World Preschool', '<p>\r\n	While still warm, the oil, like hot punch, is received into the six-barrel casks; and while, perhaps, the ship is pitching and rolling this way and that in the midnight sea, the enormous casks are slewed round and headed over, end for end, and sometimes perilously scoot across the slippery deck, like so many land slides, till at last man-handled and stayed in their course; and all round the hoops, rap, rap, go as many hammers as can play upon them, for now, EX OFFICIO, every sailor is a cooper.</p>\r\n<p>\r\n	<a href="http://localhost/myworld/msasani-preschool" title="kkkkkkk">At length,</a> when the last pint is casked, and all is cool, then the great hatchways are unsealed, the bowels of the ship are thrown open, and down go the casks to their final rest in the sea. This done, the hatches are replaced, and hermetically closed, like a closet walled up. In the sperm fishery, this is perhaps one of the most remarkable incidents in all the business of whaling.</p>\r\n<div class="media_embed" style="text-align: center;">\r\n	<div class="media_embed">\r\n		<iframe allowfullscreen="" frameborder="0" height="225" src="http://www.youtube.com/embed/BYjoERBzfNw?rel=0" width="300"></iframe></div>\r\n</div>\r\n<p>\r\n	One day the planks stream with freshets of blood and oil; on the sacred quarter-deck enormous masses of the whale&#39;s head are profanely piled; great rusty casks lie about, as in a brewery yard; the smoke from the try-works has besooted all the bulwarks; the mariners go about suffused with unctuousness; the entire ship seems great leviathan himself; while on all hands the din is deafening.</p>\r\n<p>\r\n	&nbsp;</p>\r\n<p>\r\n	But a day or two after, you look about you, and prick your ears in this self-same ship; and were it not for the tell-tale boats and try-works, you would all but swear you trod some silent merchant vessel, with a most scrupulously neat commander. The unmanufactured sperm oil possesses a singularly cleansing virtue. This is the reason why the decks never look so white as just after what they call an affair of oil. Besides, from the ashes of the burned scraps of the whale, a potent lye is readily made; and whenever any adhesiveness from the back of the whale remains clinging to the side, that lye quickly exterminates it. Hands go diligently along the bulwarks, and with buckets of water and rags restore them to their full tidiness.</p>\r\n<p>\r\n	The soot is brushed from the lower rigging. All the numerous implements which have been in use are likewise faithfully cleansed and put away. The great hatch is scrubbed and placed upon the try-works, completely hiding the pots; every cask is out of sight; all tackles are coiled in unseen nooks; and when by the combined and simultaneous industry of almost the entire ship&#39;s company, the whole of this conscientious duty is at last concluded, then the crew themselves proceed to their own ablutions; shift themselves from top to toe; and finally issue to the immaculate deck, fresh and all aglow, as bridegrooms new-leaped from out the daintiest Holland.</p>\r\n<div>\r\n	<div>\r\n		&nbsp;</div>\r\n	<div>\r\n		&nbsp;</div>\r\n</div>\r\n<p>\r\n	&nbsp;</p>\r\n', 'ABOUT', '', 1, 'about-my-world-preschool', 1, 4, '', '1'),
 (2, 'Contact My World Preschool', '<p>\r\n	<span style="color: rgb(51, 51, 51); font-family: ''Helvetica Neue'', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 20px; ">We value your feedback, please say hello!</span></p>\r\n', 'CONTACT', '', 1, 'contact-my-world-preschool', 5, 4, '', '1'),
 (7, 'My World Preschool | Home', '<p>\r\n	Under this head I reckon a monster which, by the various names of Fin-Back, Tall-Spout, and Long-John, has been seen almost in every sea and is commonly the whale whose distant jet is so often descried by passengers crossing the Atlantic, in the New York packet-tracks. In the length he attains, and in his baleen, the Fin-back resembles the right whale, but is of a less portly girth, and a lighter colour, approaching to olive.</p>\r\n', 'HOME', '', 1, 'my-world-preschool-home', 6, 4, '', '1'),
 (9, 'My World Preschool Msasani', '<p>\r\n	<img alt="Surfing Guy" src="/myworld/ckfinder/userfiles/images/-148.jpg" style="width: 300px; height: 199px; float: left;" />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae ullamcorper lacus. In urna dolor, molestie et commodo eu, viverra nec ligula. Sed a sodales ipsum, nec commodo quam nisl sed diam. In urna dolor, molestie et commodo eu, viverra nec ligula. Sed a In urna dolor, molestie et commodo eu, viverra nec ligula. Sed a&nbsp;<a href="http://localhost/myworld/msasani/page/play-ground">See Our Play Ground</a>.&nbsp;<br />\r\n	<br />\r\n	Cras quis velit ac dolor tristique placerat. Phasellus placerat aliquet semper. Donec in elit sit amet neque venenatis faucibus eget eget magna. Pellentesque pretium nunc vitae orci ultrices ac vehicula sapien pretium. Nullam non tellus risus, ut laoreet turpis. Aliquam erat volutpat. Sed lectus leo, mattis ut vehicula quis, ultrices id tellus. Duis adipiscing mauris nec nulla faucibus ac porta ipsum imperdiet. Donec porttitor suscipit elit, a ultrices nibh suscipit ut. Suspendisse nec nisl mauris, nec cursus neque. Phasellus elit eros, feugiat eget elementum quis, faucibus sed augue. Morbi fringilla dictum velit ac rhoncus. Aenean auctor tellus sodales lectus condimentum interdum. Donec nisi augue, ornare dignissim pellentesque sit amet, vehicula in urna. Nam faucibus aliquet nisi, vitae tristique mauris tincidunt eu. Nullam sagittis felis vitae eros dignissim lobortis.</p>\r\n', 'MSASANI', '-148.jpg', 3, 'my-world-preschool-msasani', 2, 1, '', '4'),
@@ -672,7 +645,7 @@ INSERT INTO `mw_pages` (`id`, `title`, `text`, `identifier`, `thumb_nail`, `type
 (18, 'Teaching Staff', '', 'TEACHING_STAFF', '', 2, 'teaching-staff', 9, 2, '', '5'),
 (19, 'Application Guidelines', '', 'APPLICATION_GUIDELINES', '', 2, 'application-guidelines', 2, 3, '', '5'),
 (20, 'Parent Handbook', '', 'PARENT_HANDBOOK', '', 2, 'parent-handbook', 2, 3, '', '5'),
-(21, 'Testimonials', '', 'TESTIMONIALS', '', 2, 'testimonials', 2, 3, '', '5'),
+(21, 'Testimonials', '', 'TESTIMONIALS', '', 2, 'testimonials', 7, 3, '', '5'),
 (22, 'Helpful Links', '', 'HELPFUL_LINKS', '', 2, 'helpful-links', 8, 3, 'mw_helpful_links', '4'),
 (23, 'Curriculum', '<p>\r\n	Curriculum Test</p>\r\n', 'MSASANI_CURRICULUM', '', 3, 'curriculum-curriculum', 2, 1, '', '4'),
 (24, 'School-Home Link', '', 'MSASANI_SCHOOL_HOME_LINK', '', 3, 'school-home-link', 2, 1, '', '4'),
@@ -688,7 +661,12 @@ INSERT INTO `mw_pages` (`id`, `title`, `text`, `identifier`, `thumb_nail`, `type
 (34, 'Baby Centre', '', 'BABY_CENTER', '', 4, 'baby-centre', 2, 0, '', '2'),
 (35, 'Art Centre', '', 'ART_CENTER', '', 4, 'art-centre', 2, 0, '', '2'),
 (36, 'Café', '', 'CAFE', '', 4, 'caf', 2, 0, '', '2'),
-(37, 'Play Ground', '', 'PLAY_GROUND', '', 4, 'play-ground', 2, 0, '', '2');
+(37, 'Play Ground', '', 'PLAY_GROUND', '', 4, 'play-ground', 2, 0, '', '2'),
+(38, 'Test Page', '<p>\r\n	This is a test page</p>\r\n', '', '', 2, 'test-page', 2, 1, '', '5'),
+(39, 'Testing New Category', '<p>\r\n	Testing</p>\r\n', '', '', 2, 'testing-new-category', 2, 5, '', '5'),
+(40, 'Cool', '<p>\r\n	Test</p>\r\n', '', '', 3, 'cool', 2, 6, '', '4'),
+(41, 'Add Record', '<p>\r\n	test</p>\r\n', '', '', 3, 'add-record', 2, 5, '', '4'),
+(42, 'Training Centre Test', '<p>\r\n	Test</p>\r\n', '', '', 5, 'training-centre-test', 2, 5, '', '3');
 
 -- --------------------------------------------------------
 
@@ -718,55 +696,6 @@ INSERT INTO `mw_page_templates` (`id`, `name`, `view`, `access_level`) VALUES
 (7, 'Testimonials', 'testimonials.php', 1),
 (8, 'Helpful Links', 'hlinks.php', 1),
 (9, 'Staff', 'staff.php', 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `mw_parents`
---
-
-CREATE TABLE IF NOT EXISTS `mw_parents` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `type` varchar(255) NOT NULL,
-  `first_name` varchar(255) NOT NULL,
-  `last_name` varchar(255) NOT NULL,
-  `parent_of` int(11) NOT NULL,
-  `contact_number_one` varchar(255) NOT NULL,
-  `contact_number_two` varchar(255) NOT NULL,
-  `contact_number_three` varchar(255) NOT NULL,
-  `email_address_one` varchar(255) NOT NULL,
-  `email_address_two` varchar(255) NOT NULL,
-  `email_address_three` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
-
---
--- Dumping data for table `mw_parents`
---
-
-INSERT INTO `mw_parents` (`id`, `type`, `first_name`, `last_name`, `parent_of`, `contact_number_one`, `contact_number_two`, `contact_number_three`, `email_address_one`, `email_address_two`, `email_address_three`) VALUES
-(1, '1', 'Master ', 'Ringo', 3, '0715556327', '', '', 'vusile@gmail.com', '', '');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `mw_parent_types`
---
-
-CREATE TABLE IF NOT EXISTS `mw_parent_types` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
-
---
--- Dumping data for table `mw_parent_types`
---
-
-INSERT INTO `mw_parent_types` (`id`, `title`) VALUES
-(1, 'Father'),
-(2, 'Mother'),
-(3, 'Guardian');
 
 -- --------------------------------------------------------
 
@@ -918,7 +847,7 @@ CREATE TABLE IF NOT EXISTS `mw_settings` (
 --
 
 INSERT INTO `mw_settings` (`id`, `setting`, `value`) VALUES
-(1, 'My World Pre School Prezi Video', 'http://www.youtube.com/watch?v=z3lsd6tiDA4');
+(1, 'My World Pre School Prezi Video', 'http://www.youtube.com/watch?v=BYjoERBzfNw');
 
 -- --------------------------------------------------------
 
@@ -931,19 +860,30 @@ CREATE TABLE IF NOT EXISTS `mw_students` (
   `student_registration_number` varchar(255) NOT NULL,
   `first_name` varchar(255) NOT NULL,
   `last_name` varchar(255) NOT NULL,
-  `birthday` date NOT NULL,
   `class` int(11) NOT NULL,
-  `photo` varchar(255) NOT NULL,
-  `parents` varchar(255) NOT NULL,
+  `parent_1_name` varchar(255) DEFAULT NULL,
+  `parent_1_email_1` varchar(100) DEFAULT NULL,
+  `parent_1_email_2` varchar(100) DEFAULT NULL,
+  `parent_1_phone_numbers` varchar(100) DEFAULT NULL,
+  `parent_2_name` varchar(100) DEFAULT NULL,
+  `parent_2_email_1` varchar(100) DEFAULT NULL,
+  `parent_2_email_2` varchar(100) DEFAULT NULL,
+  `parent_2_phone_numbers` varchar(100) DEFAULT NULL,
+  `parent_3_name` varchar(100) DEFAULT NULL,
+  `parent_3_email_1` varchar(100) DEFAULT NULL,
+  `parent_3_email_2` varchar(100) DEFAULT NULL,
+  `parent_3_phone_numbers` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `mw_students`
 --
 
-INSERT INTO `mw_students` (`id`, `student_registration_number`, `first_name`, `last_name`, `birthday`, `class`, `photo`, `parents`) VALUES
-(3, '1001', 'Pendo', 'Ringo', '2012-12-01', 3, 'da3f7-ChrysanthemumLR.jpg', '<a target = "_blank" href = "http://localhost/myworld/backend/mw_parents/3">Parents</a>');
+INSERT INTO `mw_students` (`id`, `student_registration_number`, `first_name`, `last_name`, `class`, `parent_1_name`, `parent_1_email_1`, `parent_1_email_2`, `parent_1_phone_numbers`, `parent_2_name`, `parent_2_email_1`, `parent_2_email_2`, `parent_2_phone_numbers`, `parent_3_name`, `parent_3_email_1`, `parent_3_email_2`, `parent_3_phone_numbers`) VALUES
+(4, '100101', 'Terence', 'Silonda', 5, 'Lilian Mwenda', 'mwenda.lilian@yahoo.com', NULL, '784540459', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(5, '100101', 'Terence', 'Silonda', 3, 'Lilian Mwenda', 'mwenda.lilian@yahoo.com', NULL, '784540459', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(6, '100101', 'Terence', 'Silonda', 3, 'Lilian Mwenda', 'mwenda.lilian@yahoo.com', 'lilian.mwenda@gmail.com', '784540459', 'Thomas Silonad', 'Vusimuzi@gmail.com', 'silonda@gmail.com', NULL, 'Deborah Mwenda', 'info@bahari.org', NULL, '713617634');
 
 -- --------------------------------------------------------
 
@@ -962,7 +902,15 @@ CREATE TABLE IF NOT EXISTS `mw_teachers_classes` (
 --
 
 INSERT INTO `mw_teachers_classes` (`teacher_id`, `class_id`, `priority`) VALUES
-(3, 3, 0);
+(3, 3, 0),
+(4, 4, 0),
+(5, 4, 0),
+(6, 4, 0),
+(7, 4, 0),
+(8, 4, 0),
+(9, 4, 0),
+(10, 4, 0),
+(1, 4, 0);
 
 -- --------------------------------------------------------
 
@@ -973,20 +921,28 @@ INSERT INTO `mw_teachers_classes` (`teacher_id`, `class_id`, `priority`) VALUES
 CREATE TABLE IF NOT EXISTS `mw_teaching_staff` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
   `photo` varchar(255) NOT NULL,
   `description` text NOT NULL,
   `school` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `mw_teaching_staff`
 --
 
-INSERT INTO `mw_teaching_staff` (`id`, `name`, `photo`, `description`, `school`) VALUES
-(1, 'Mr. Koala', 'c9417-Koala.jpg', '<p>\r\n	He always likes to teach tree climbing ;)</p>\r\n', 2),
-(2, 'Terence Silonda', '', '<p>\r\n	He&#39;s the best</p>\r\n', 0),
-(3, 'Terence', '39c80-Chrysanthemum.jpg', '<p>\r\n	The best teacher out there :)</p>\r\n', 3);
+INSERT INTO `mw_teaching_staff` (`id`, `name`, `email`, `photo`, `description`, `school`) VALUES
+(1, 'Mr. Koala', '', 'c9417-Koala.jpg', '<p>\r\n	He always likes to teach tree climbing ;).&nbsp;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sagittis eleifend dui nec malesuada. Ut mollis imperdiet metus eu aliquam. Sed ut eros magna, ut bibendum diam. Nam imperdiet sem in orci accumsan venenatis. In hac habitasse platea dictumst. Phasellus rutrum consectetur est, vitae gravida risus scelerisque non. Morbi magna orci, varius at laoreet sit amet, vulputate eget odio. Sed at massa eget ante commodo mollis.</p>\r\n', 2),
+(2, 'Terence Silonda', '', '', '<p>\r\n	He&#39;s the best</p>\r\n', 0),
+(3, 'Terence', '', '39c80-Chrysanthemum.jpg', '<p>\r\n	The best teacher out there :)</p>\r\n', 3),
+(4, 'Mr. John', '', 'a8dec-Tulips.jpg', '<p>\r\n	He&#39;s great, what can we say?</p>\r\n', 0),
+(5, 'Mr. John', '', 'a8dec-Tulips.jpg', '<p>\r\n	He&#39;s great, what can we say?</p>\r\n', 0),
+(6, 'Mr. John', '', 'a8dec-Tulips.jpg', '<p>\r\n	He&#39;s great, what can we say?</p>\r\n', 0),
+(7, 'Mr. John', '', 'a8dec-Tulips.jpg', '<p>\r\n	He&#39;s great, what can we say?</p>\r\n', 0),
+(8, 'Tere', '', 'f3fca-Jellyfish.jpg', '<p>\r\n	test</p>\r\n', 0),
+(9, 'Sir. Terence', '', '07e98-Hydrangeas.jpg', '<p>\r\n	Funny</p>\r\n', 2),
+(10, 'Office Teacher', 'office@teacher.com', '2c3a7-Jellyfish.jpg', '<p>\r\n	Great</p>\r\n', 2);
 
 -- --------------------------------------------------------
 
@@ -1027,7 +983,7 @@ CREATE TABLE IF NOT EXISTS `mw_testimonials` (
   `date` date NOT NULL,
   `school` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `mw_testimonials`
@@ -1035,7 +991,17 @@ CREATE TABLE IF NOT EXISTS `mw_testimonials` (
 
 INSERT INTO `mw_testimonials` (`id`, `name`, `title`, `message`, `email`, `approved`, `date`, `school`) VALUES
 (1, 'Terence Silonda', 'Keep up the Good Work', '<p>\r\n	Now that&#39;s great. I love your website and I love your school. Go Go guys :)</p>\r\n', 'terence@zoomtanzania.com', 1, '2012-12-18', 3),
-(2, 'Daniel Chikaka', 'Web Developer', '<p>\r\n	I&#39;ve enjoyed every step of making this amazing website. The good vibe that comes from the school spreads to all in the community. I&#39;m proud to have done this project.</p>\r\n', 'danniemanji@gmail.com', 1, '2012-12-17', 3);
+(2, 'Daniel Chikaka', 'Web Developer', '<p>\r\n	I&#39;ve enjoyed every step of making this amazing website. The good vibe that comes from the school spreads to all in the community. I&#39;m proud to have done this project.</p>\r\n', 'danniemanji@gmail.com', 1, '2012-12-17', 3),
+(3, 'John Doe', 'Go My World Go!', '<p>\r\n	These guys are greaaaaat</p>\r\n', 'test@test.com', 1, '2013-01-12', 2),
+(4, 'Terence Vusile Silonda', 'Former Student', 'These guys are the best', 'terence@zoomtanzania.com', 0, '2013-01-16', 0),
+(5, 'Terence Vusile Silonda', 'Former Student', 'These guys are the best', 'terence@zoomtanzania.com', 0, '2013-01-16', 0),
+(6, 'Terence Vusile Silonda', 'Former Student', 'These guys are the best', 'terence@zoomtanzania.com', 0, '2013-01-16', 0),
+(7, 'Terence Vusile Silonda', 'Former Student', 'These guys are the best', 'terence@zoomtanzania.com', 0, '2013-01-16', 0),
+(8, 'Terence Vusile Silonda', 'Former Student', 'These guys are the best', 'terence@zoomtanzania.com', 0, '2013-01-16', 0),
+(9, 'Terence Vusile Silonda', 'Former Student', 'These guys are the best', 'terence@zoomtanzania.com', 0, '2013-01-16', 0),
+(10, 'Terence Vusile Silonda', 'Former Student', 'These guys are the best', 'terence@zoomtanzania.com', 0, '2013-01-16', 0),
+(11, 'Terence Vusile Silonda', 'Former Student', 'These guys are the best', 'terence@zoomtanzania.com', 0, '2013-01-16', 0),
+(12, 'Terence Vusile Silonda', 'Former Student', 'These guys are the best', 'terence@zoomtanzania.com', 0, '2013-01-16', 0);
 
 -- --------------------------------------------------------
 
@@ -1050,6 +1016,26 @@ CREATE TABLE IF NOT EXISTS `mw_upanga_classes` (
   `class_teacher` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mw_upload_students_form`
+--
+
+CREATE TABLE IF NOT EXISTS `mw_upload_students_form` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `file` varchar(255) NOT NULL,
+  `class` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data for table `mw_upload_students_form`
+--
+
+INSERT INTO `mw_upload_students_form` (`id`, `file`, `class`) VALUES
+(5, '807ff-students.xlsx', 3);
 
 -- --------------------------------------------------------
 
@@ -1076,17 +1062,17 @@ CREATE TABLE IF NOT EXISTS `mw_users` (
   `company` varchar(100) DEFAULT NULL,
   `phone` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `mw_users`
 --
 
 INSERT INTO `mw_users` (`id`, `ip_address`, `username`, `password`, `salt`, `email`, `activation_code`, `forgotten_password_code`, `forgotten_password_time`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
-(1, '\0\0', 'administrator', '59beecdf7fc966e2f17fd8f65a4a9aeb09d4a3d4', '9462e8eee0', 'admin@admin.com', '', NULL, NULL, NULL, 1268889823, 1356944316, 1, 'Admin', 'istrator', 'ADMIN', '0'),
-(2, '\0\0', 'anton.fouquet@djpa.co.tz', 'ded126212466ac57fea9c2dbab79f42acaa5670b', NULL, 'anton.fouquet@djpa.co.tz', NULL, NULL, NULL, NULL, 1351672322, 1351672358, 1, 'Anton', 'Fouquet', NULL, '+255 753 102 000'),
-(3, '\0\0', 'anton2.fouquet@djpa.co.tz', '5ef2cc5b647649523f749a4da095c1a5e3fdae46', NULL, 'anton2.fouquet@djpa.co.tz', NULL, NULL, NULL, NULL, 1353495312, 1353495312, 1, 'Anton', 'Fouquet', NULL, '+255 753 102 000'),
-(4, '\0\0', 'anton23.fouquet@djpa.co.tz', '7e06f410a1f61449a70e041e0284265df154924a', NULL, 'anton23.fouquet@djpa.co.tz', NULL, NULL, NULL, NULL, 1353495348, 1353495348, 1, 'Anton', 'Fouquet', NULL, '+255 753 102 000');
+(1, '\0\0', 'administrator', '59beecdf7fc966e2f17fd8f65a4a9aeb09d4a3d4', '9462e8eee0', 'admin@admin.com', '', NULL, NULL, NULL, 1268889823, 1358329953, 1, 'Admin', 'istrator', 'ADMIN', '0'),
+(5, '\0\0', 'office@teacher.com', '0ff36032b9219def5aabdd0f747c429ce21f17b1', NULL, 'office@teacher.com', NULL, NULL, NULL, NULL, 1358329628, 1358329928, 1, 'Office Teacher', NULL, NULL, NULL),
+(6, '\0\0', '', 'a7a7840f9fb4d8f3086a73fc3f66f46b75fd825c', NULL, '', NULL, NULL, NULL, NULL, 1358336229, 1358336229, 1, 'Mr. Koala', NULL, NULL, NULL),
+(7, '\0\0', '', '70385371b3feca12a31f28ce6d0269f972ff3be1', NULL, '', NULL, NULL, NULL, NULL, 1358336344, 1358336344, 1, 'Mr. Koala', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1099,7 +1085,7 @@ CREATE TABLE IF NOT EXISTS `mw_users_groups` (
   `user_id` mediumint(8) unsigned NOT NULL,
   `group_id` mediumint(8) unsigned NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `mw_users_groups`
@@ -1110,7 +1096,10 @@ INSERT INTO `mw_users_groups` (`id`, `user_id`, `group_id`) VALUES
 (2, 1, 2),
 (3, 2, 2),
 (4, 3, 2),
-(5, 4, 2);
+(5, 4, 2),
+(6, 5, 2),
+(7, 6, 2),
+(8, 7, 2);
 
 --
 -- Constraints for dumped tables

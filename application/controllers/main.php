@@ -21,7 +21,7 @@ class Main extends CI_Controller {
 	{
 		
 		$this->db->order_by('id','desc');
-		$this->db->limit(4);
+		$this->db->limit(3);
 		$data['news'] = $this->db->get('mw_news');
 		
 		$data['images'] = $this->db->get('mw_image_scroller');
@@ -456,9 +456,82 @@ class Main extends CI_Controller {
 			redirect('contact/3');
 	}
 	
-	/*function validate_captcha()
+	function submittestimonial()
 	{
-	}*/
+		if(isset($_POST))
+		{
+			$this->load->library('form_validation');
+			$this->form_validation->set_rules('name', 'Name', 'required');
+			$this->form_validation->set_rules('title', 'Title', 'required');
+			$this->form_validation->set_rules('email', 'Email', 'required|matches[confirm_email]');
+			$this->form_validation->set_rules('testimonial', 'Testimonial', 'required');
+			$this->form_validation->set_rules('captcha', 'The Captcha', 'required|callback_validate_captcha');
+			
+			$this->form_validation->set_error_delimiters('<li>','</li>');
+			
+			if ($this->form_validation->run() == TRUE)
+			{	
+			
+				$data = array(
+						'name'=>$_POST['name'],
+						'title'=>$_POST['title'],
+						'email'=>$_POST['email'],
+						'message'=>$_POST['testimonial'],
+						'approved'=>0,
+						'date'=>date('Y-m-d')
+					);
+				$this->db->insert('mw_testimonials', $data);
+				//echo "Not Configured";
+				//$this->load->library('email');
+
+				$this->load->library('email');
+				
+				$config['protocol'] = 'smtp';
+				//$config['smtp_host'] = 'ssl://smtp.googlemail.com';
+				$config['smtp_host'] = 'box800.bluehost.com';
+				$config['smtp_user'] = 'info@zoomtanzaniahost.com';
+				$config['smtp_pass'] = '123456';
+				$config['smtp_port'] = '26';
+				$config['mailtype'] = 'html';
+				$config['wordwrap'] = TRUE;
+				$config['charset']='utf-8';  
+				$config['newline']="\r\n";  
+
+				$this->email->initialize($config);
+				
+
+				$this->email->from('info@zoomtanzaniahost.com', 'My World');
+				$this->email->to('terence@zoomtanzania.com'); 
+				//$this->email->to('rupalhyp@hotmail.com'); 
+				
+				
+				$this->email->subject('New Testimonial Needs to be Reviewed');
+				$message = '<html><head></head><body>';
+				$message .= 'Hi, a new testimonial was posted on the site and needs to be reviewed.';
+				$message .= '</body></html>';	
+				$this->email->message($message);	
+
+				if($this->email->send())
+				{
+					$header = $this->header();
+					$data['details']->text = 'Hi, your testimonial was submitted. Please note it will not appear on the site until it is reviewed.';
+					$header['title'] = $data['title']= 'Testimonial Submitted.';
+					$this->load->view('header',$header);
+					$this->load->view('page',$data);
+					$this->load->view('footer');
+				}
+				else
+					redirect('upanga/page/testimonials');
+				
+			}
+			
+			else
+				redirect('upanga/page/testimonials');
+		}
+		
+		else
+			redirect('upanga/page/testimonials');
+	}
 	
 	function register_test()
 	{

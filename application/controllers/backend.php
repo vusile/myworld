@@ -193,10 +193,16 @@ class Backend extends CI_Controller {
 		$output = $this->grocery_crud->render();
 		$this->_example_output($output);
 
-	}		
+	}	
+
+	function callba($post_array, $primary_key) {
+		
+	}
+
 	
 	function mw_students($class)
 	{
+		//$this->grocery_crud->set_theme('datatables');
 		$this->grocery_crud->unset_columns('class');
 		$this->grocery_crud->unset_fields('class','parents');
 		$this->grocery_crud->set_field_upload('photo','photos');
@@ -265,6 +271,8 @@ class Backend extends CI_Controller {
 
 	function mw_classes($school=2)
 	{	
+		//$this->grocery_crud->set_theme('datatables');
+		$this->grocery_crud->add_action('Upload Students', 'img/arrow_up-opt.png', 'backend/mw_upload_students_form');
 		$this->grocery_crud->set_relation('class_teacher','mw_teaching_staff','name',array('mw_teaching_staff.school'=>$school));
 		$this->grocery_crud->unset_columns('school');
 		$this->grocery_crud->unset_fields('school');
@@ -279,14 +287,18 @@ class Backend extends CI_Controller {
 	{
 		$data = array (
 			'school' => $this->uri->segment(3),
-			'students' => '<a target = "_blank" href = "' . base_url() . 'backend/mw_students/' .  $primary_key . '">Students</a>'
 		);
+		
+		if($this->uri->segment(2)=='mw_classes')
+			$data['students'] = '<a target = "_blank" href = "' . base_url() . 'backend/mw_students/' .  $primary_key . '">Students</a>';
 		
 		$this->db->where('id',$primary_key);
 		$this->db->update($this->uri->segment(2),$data);
 		
 		if($this->uri->segment(2)=='mw_teaching_staff')
 		{
+
+
 			$this->db->where('id',$primary_key);
 			$teachers= $this->db->get('mw_teaching_staff');
 			
@@ -313,10 +325,121 @@ class Backend extends CI_Controller {
 				$this->image_moo->load($source_image)->resize(150,999999999999)->save( $source_image,$overwrite=TRUE);
 			else if($width <= $height and $height > 150 )
 				$this->image_moo->load($source_image)->resize(999999999999,150)->save( $source_image,$overwrite=TRUE);	
+
+
+			$username = $teacher->email;
+			$email = $teacher->email;
+			$password = 'password';
+			$additional_data = array(
+				'first_name' => $teacher->name,
+			);								
+	//		$group = array('1'); // Sets user to admin. No need for array('1', '2') as user is always set to member by default
+			$this->ion_auth->register($username, $password, $email, $additional_data);
 				
 		}
 
 		return true;
+	}
+
+
+	function mw_upload_students_form()
+	{
+		$this->grocery_crud->set_field_upload('file','uploads');
+		$this->grocery_crud->unset_fields('class');
+		$this->grocery_crud->unset_columns('class');
+		$this->grocery_crud->callback_after_insert(array($this, 'upload_students_callback'));
+		$this->grocery_crud->callback_after_update(array($this, 'upload_students_callback'));
+		$output = $this->grocery_crud->render();
+		$this->_example_output($output);
+	}
+
+	function upload_students_callback($post_array, $primary_key) {
+		$data['class'] = $this->uri->segment(3);
+		$this->db->where('id', $primary_key);
+		$this->db->update('mw_upload_students_form', $data);
+		include 'Classes/PHPExcel/IOFactory.php';
+		$objPHPExcel = PHPExcel_IOFactory::load('uploads/' . $post_array['file']);
+		$sheetData = $objPHPExcel->getActiveSheet()->toArray(null,true,true,true);
+
+		$datas=array();
+		$count = 0;
+		foreach($sheetData as $student)
+		{
+			if($count > 0)
+			{
+
+
+					$data['class']=$this->uri->segment(3);
+					$data['student_registration_number']=$student['A'];
+					$data['first_name']=$student['B'];
+					$data['last_name']=$student['C'];
+					$data['parent_1_name']=$student['D'];
+					$data['parent_1_email_1']=$student['E'];
+					$data['parent_1_email_2']=$student['F'];
+					$data['parent_1_phone_numbers']=$student['G'];					
+					$data['parent_2_name']=$student['H'];
+					$data['parent_2_email_1']=$student['I'];
+					$data['parent_2_email_2']=$student['J'];
+					$data['parent_2_phone_numbers']=$student['K'];					
+					$data['parent_3_name']=$student['L'];
+					$data['parent_3_email_1']=$student['M'];
+					$data['parent_3_email_2']=$student['N'];
+					$data['parent_3_phone_numbers']=$student['O'];
+					$datas[]=$data;
+
+
+			}
+			else
+			{}
+			$count++;
+			
+		}
+
+		$this->db->insert_batch('mw_students', $datas);
+
+	}	
+
+	function test()
+	{
+		include 'Classes/PHPExcel/IOFactory.php';
+		$objPHPExcel = PHPExcel_IOFactory::load('uploads/students.xlsx');
+		$sheetData = $objPHPExcel->getActiveSheet()->toArray(null,true,true,true);
+		
+		$datas=array();
+		$count = 0;
+		foreach($sheetData as $student)
+		{
+			if($count > 0)
+			{
+
+
+					$data['class']=$this->uri->segment(3);
+					$data['student_registration_number']=$student['A'];
+					$data['first_name']=$student['B'];
+					$data['last_name']=$student['C'];
+					$data['parent_1_name']=$student['D'];
+					$data['parent_1_email_1']=$student['E'];
+					$data['parent_1_email_2']=$student['F'];
+					$data['parent_1_phone_numbers']=$student['G'];					
+					$data['parent_2_name']=$student['H'];
+					$data['parent_2_email_1']=$student['I'];
+					$data['parent_2_email_2']=$student['J'];
+					$data['parent_2_phone_numbers']=$student['K'];					
+					$data['parent_3_name']=$student['L'];
+					$data['parent_3_email_1']=$student['M'];
+					$data['parent_3_email_2']=$student['N'];
+					$data['parent_3_phone_numbers']=$student['O'];
+					$datas[]=$data;
+
+
+			}
+			else
+			{}
+			$count++;
+			
+		}
+		//print_r($datas);
+		$this->db->insert_batch('mw_students', $datas);
 	}
 	
 	function mw_newsletters()
@@ -710,8 +833,23 @@ class Backend extends CI_Controller {
 		else
 			$this->image_moo->load($source_image)->resize($resize_width,$resize_height)->save($source_image,$overwrite=TRUE);
 	}
+
+	function mw_files()
+	{
+		$this->grocery_crud->set_field_upload('file','uploads');
+		$this->grocery_crud->unset_columns('file');
+		$this->grocery_crud->unset_fields('url');
+		$this->grocery_crud->callback_after_insert(array($this, 'files_callback'));
+		$this->grocery_crud->callback_after_update(array($this, 'files_callback'));
+		$output = $this->grocery_crud->render();
+		$this->_example_output($output);
+	}
 	
-	
+	function files_callback($post_array, $primary_key) {
+		$data['url'] = base_url() . "/uploads/" . $post_array['file'];
+		$this->db->where('id', $primary_key); 
+		$this->db->update('mw_files', $data);
+	}
 	
 	
 	function index()
