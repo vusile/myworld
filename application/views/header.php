@@ -9,6 +9,17 @@
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 <link rel="icon" type="image/ico" href="img/favicon.ico"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+<script src="js/jquery.cycle.all.js" type="text/javascript"></script>
+
+   
+  <script>
+  $('#banner1').cycle();
+  $('#banner2').cycle();
+  $('#banner3').cycle();
+  $('#banner4').cycle();
+  </script>
 </head>
 <body>
 

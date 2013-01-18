@@ -66,6 +66,7 @@ class Msasani extends CI_Controller {
 		
 	function sidebar ($identifier = '')
 	{
+		$flag = 0;
 		$page_categories=$this->db->get('mw_categories');
 		
 		$sidebar['sidebar']='';
@@ -89,9 +90,31 @@ class Msasani extends CI_Controller {
 						$sidebar['sidebar'] .= '<li><a href="msasani/page/' . $page->url . '">'. $page->title .'</a></li>';
 				}
 				
+				$flag++;
 			}
 			
 		}
+		
+		//if($flag==0)
+		//{
+			$this->db->where('type',3);
+			$this->db->where('parent',0);
+
+			if($this->db->count_all_results('mw_pages') > 0){
+				$this->db->where('type',3);
+			$this->db->where('parent',0);
+
+				$pages=$this->db->get('mw_pages');
+				
+				foreach($pages->result() as $page)
+				{
+					if($identifier == $page->url)
+						$sidebar['sidebar'] .= '<li class="activex"><a href="msasani/page/' . $page->url . '">'. $page->title .'</a></li>';
+					else
+						$sidebar['sidebar'] .= '<li><a href="msasani/page/' . $page->url . '">'. $page->title .'</a></li>';
+				}
+			}
+		//}
 		
 		return $sidebar;
 	}

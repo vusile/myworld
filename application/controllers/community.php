@@ -94,11 +94,14 @@ class Community extends CI_Controller {
 			
 		}
 		
-		if($flag==0)
-		{
+		//if($flag==0)
+		//{
 			$this->db->where('type',4);
+			$this->db->where('parent',0);
+
 			if($this->db->count_all_results('mw_pages') > 0){
 				$this->db->where('type',4);
+			$this->db->where('parent',0);
 
 				$pages=$this->db->get('mw_pages');
 				
@@ -110,7 +113,7 @@ class Community extends CI_Controller {
 						$sidebar['sidebar'] .= '<li><a href="community/page/' . $page->url . '">'. $page->title .'</a></li>';
 				}
 			}
-		}
+		//}
 		
 		return $sidebar;
 	}

@@ -149,6 +149,17 @@ margin: -279px 0px 0px 463px;
 .summary_title_h1 {
 	margin-left: -24px;
 }
+
+.space-between {
+	margin-right: 10px;
+}
+
+h4{
+	text-align:left;
+	color:#031289;		
+	margin-bottom: 10px;
+}
+
 /*first row */
 #news{
 	margin-left: 6px;
@@ -303,7 +314,7 @@ margin-left: -13px;
 /*footer*/
 
 #footer{
-	margin-top: 40px;
+	/*margin-top: 40px;*/
 	background:#ffffff;
 	width:1024px;
 	/*height:80px;*/

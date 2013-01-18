@@ -49,29 +49,22 @@
      </div>
   </div>
   
-  <div class="span3">
-     <div id="linkbutton">
-    <a href="#"> <p>Read our <br> Evolution Report</p></a>
-     </div>
-  
-  <div id="linkbutton2">
-    <a href="#"> <p>What is Play <br>Based Learning</p></a>
-     </div>
-       <div id="linkbutton3">
-     <a href="#"><p>For Whatever<br> Rupal Forgot</p></a>
-     </div>
+  <div class="span3" >
+     <a href="uploads/My-World-Evaluation-Report.pdf" target = "_blank"><img src="img/read-our-evaluation-report.png" alt="Our Evaluation Report"  style = "margin-left:5px;"/></a>
+     <img src="img/progressive-play-based-education.png" alt="Progressive Play Based Education" style = "margin-left:5px;"/>
+     <img src="img/imagination-playground.png" alt="Imagination Playground" style = "margin-left:5px;" />
   </div>
   </div>    <!--end of span3-->
 
 </div>  <!--end of row-->
 <div class="row">
-  <div class="span4">
+  <div class="span4" style = "margin-top: -54px;">
       <div id="fb">
      <div class="fb-like-box" data-href="http://www.facebook.com/myworldpreschool?fref=ts" data-width="295" data-height="300" data-show-faces="true" data-stream="false" data-header="true"></div>
       </div>
   </div>
   
-  <div class="span5">
+  <div class="span5" style = "margin-top: -50px;">
      <div id="slideshow"> <!-- start of slideshow-->
 <div id="myCarousel" class="carousel slide"><!-- class of slide for animation -->
   <div class="carousel-inner">  <!--start of c- inner-->
@@ -108,9 +101,22 @@
  
   </div> <!-- end of span 5-->
   
-  <div class="span3">
+  <div class="span3" >
+    <!-- AddThis Follow BEGIN -->
+<!-- AddThis Follow END -->
+
     <div id="partiners">
-       <h4 style = "margin-bottom:5px;">Our Partners</h4>
+      <br>
+    <p style = "text-align:left; color:#031289;margin-bottom: 10px; font-size: 17.5px; font-weight: bold; margin-left: 15px;">Follow Us</p>
+    <div style = "margin-left:10px;">
+    <div class="addthis_toolbox addthis_32x32_style addthis_default_style">
+    <a class="addthis_button_twitter_follow space-between" addthis:userid="ZoomTanzania"></a>
+    <a class="addthis_button_youtube_follow space-between" addthis:userid="vusilesilonda/videos"></a>
+    <a class="addthis_button_pinterest_follow space-between" addthis:userid="vusile"></a>
+    </div>
+    </div>
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-50f7fc3e4132aef9"></script>
+      <br> <h4 style = "margin-bottom:5px;">Our Partners</h4>
         <ul>
 		<?php foreach($links->result() as $link): ?>
 			<li style = "margin-bottom:3px;"><a href="<?php echo $link->partner_website ?>"><?php echo $link->partner_name ?></a></li>
@@ -127,6 +133,3 @@
 </div>  <!--end of row-->
 
 <!--start of footer-->
-
-
-

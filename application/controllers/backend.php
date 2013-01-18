@@ -126,6 +126,20 @@ class Backend extends CI_Controller {
 	{
 	
 		$this->grocery_crud->set_relation('approved','mw_options','title');
+		$this->grocery_crud->unset_columns('school');
+		$this->grocery_crud->unset_fields('school','date');
+		
+		$output = $this->grocery_crud->render();
+		$this->_example_output($output);
+
+	}	
+
+	function mw_messages()
+	{
+	
+		
+		$this->grocery_crud->unset_columns('identifier');
+		$this->grocery_crud->unset_fields('identifier');
 		
 		$output = $this->grocery_crud->render();
 		$this->_example_output($output);
@@ -203,6 +217,7 @@ class Backend extends CI_Controller {
 	function mw_students($class)
 	{
 		//$this->grocery_crud->set_theme('datatables');
+		$this->grocery_crud->order_by('first_name');
 		$this->grocery_crud->unset_columns('class');
 		$this->grocery_crud->unset_fields('class','parents');
 		$this->grocery_crud->set_field_upload('photo','photos');
@@ -269,13 +284,22 @@ class Backend extends CI_Controller {
 
 	}
 
-	function mw_classes($school=2)
+	function mw_classes($school=2,$class=0)
 	{	
+		if($class !=0)
+			$this->grocery_crud->where('mw_classes.id',$class);	
 		//$this->grocery_crud->set_theme('datatables');
 		$this->grocery_crud->add_action('Upload Students', 'img/arrow_up-opt.png', 'backend/mw_upload_students_form');
-		$this->grocery_crud->set_relation('class_teacher','mw_teaching_staff','name',array('mw_teaching_staff.school'=>$school));
-		$this->grocery_crud->unset_columns('school');
-		$this->grocery_crud->unset_fields('school');
+		$this->grocery_crud->add_action('Send Email', 'img/email_20x20.png', 'backend/send_email_form');
+		//$this->grocery_crud->set_relation('class_teacher','mw_teaching_staff','name',array('mw_teaching_staff.school'=>$school));
+		$this->grocery_crud->unset_columns('school','class_teacher');
+		$this->grocery_crud->unset_fields('school','class_teacher');
+		if($this->ion_auth->in_group('teacher'))
+		{
+			$this->grocery_crud->unset_delete();
+			$this->grocery_crud->unset_add();
+		
+		}		
 		$this->grocery_crud->where('mw_classes.school',$school);
 		$this->grocery_crud->callback_after_insert(array($this, 'set_school'));
 		$this->grocery_crud->callback_after_update(array($this, 'set_school'));
@@ -333,7 +357,7 @@ class Backend extends CI_Controller {
 			$additional_data = array(
 				'first_name' => $teacher->name,
 			);								
-	//		$group = array('1'); // Sets user to admin. No need for array('1', '2') as user is always set to member by default
+			$group = array('3'); // Sets user to admin. No need for array('1', '2') as user is always set to member by default
 			$this->ion_auth->register($username, $password, $email, $additional_data);
 				
 		}
@@ -349,6 +373,8 @@ class Backend extends CI_Controller {
 		$this->grocery_crud->unset_columns('class');
 		$this->grocery_crud->callback_after_insert(array($this, 'upload_students_callback'));
 		$this->grocery_crud->callback_after_update(array($this, 'upload_students_callback'));
+		$this->grocery_crud->set_lang_string('insert_success_message',
+                 'Your data has been successfully stored into the database.<br/>Please wait while you are redirecting to the list page. <script type="text/javascript">window.location = "'.site_url(strtolower('backend') .'/'. strtolower('mw_students')) .'/'. $this->uri->segment(3) .'";</script><div style="display:none">.');
 		$output = $this->grocery_crud->render();
 		$this->_example_output($output);
 	}
@@ -396,51 +422,18 @@ class Backend extends CI_Controller {
 		}
 
 		$this->db->insert_batch('mw_students', $datas);
+		unlink('uploads/' . $post_array['file']);
+		$this->db->where('id', $primary_key);
+		$this->db->delete('mw_upload_students_form');
+		//redirect('backend/mw_students/' . $this->uri->segment(3));
+
+		//$this->mw_students( $this->uri->segment(3) );
+
+		   
 
 	}	
 
-	function test()
-	{
-		include 'Classes/PHPExcel/IOFactory.php';
-		$objPHPExcel = PHPExcel_IOFactory::load('uploads/students.xlsx');
-		$sheetData = $objPHPExcel->getActiveSheet()->toArray(null,true,true,true);
-		
-		$datas=array();
-		$count = 0;
-		foreach($sheetData as $student)
-		{
-			if($count > 0)
-			{
-
-
-					$data['class']=$this->uri->segment(3);
-					$data['student_registration_number']=$student['A'];
-					$data['first_name']=$student['B'];
-					$data['last_name']=$student['C'];
-					$data['parent_1_name']=$student['D'];
-					$data['parent_1_email_1']=$student['E'];
-					$data['parent_1_email_2']=$student['F'];
-					$data['parent_1_phone_numbers']=$student['G'];					
-					$data['parent_2_name']=$student['H'];
-					$data['parent_2_email_1']=$student['I'];
-					$data['parent_2_email_2']=$student['J'];
-					$data['parent_2_phone_numbers']=$student['K'];					
-					$data['parent_3_name']=$student['L'];
-					$data['parent_3_email_1']=$student['M'];
-					$data['parent_3_email_2']=$student['N'];
-					$data['parent_3_phone_numbers']=$student['O'];
-					$datas[]=$data;
-
-
-			}
-			else
-			{}
-			$count++;
-			
-		}
-		//print_r($datas);
-		$this->db->insert_batch('mw_students', $datas);
-	}
+	
 	
 	function mw_newsletters()
 	{
@@ -844,11 +837,73 @@ class Backend extends CI_Controller {
 		$output = $this->grocery_crud->render();
 		$this->_example_output($output);
 	}
+
+
 	
 	function files_callback($post_array, $primary_key) {
 		$data['url'] = base_url() . "/uploads/" . $post_array['file'];
 		$this->db->where('id', $primary_key); 
 		$this->db->update('mw_files', $data);
+	}
+
+	function send_email_form($cls=0,$edit=0,$reuse=0)
+	{
+
+		if($cls != 0)
+		{
+			$this->db->where('id', $cls);
+			$class = $this->db->get('mw_classes');
+			$data['class_name']=$class->row()->class_name;
+			$data['class'] = $cls;
+
+		}
+		$this->load->view('send-email',$data);
+		
+	}
+
+
+	function preview_message()
+	{
+
+		$teacher = $this->ion_auth->user()->row();
+		$this->db->where('email', $teacher->email);
+		$teachers = $this->db->get('mw_teaching_staff');
+		$teacher = $teachers->row();
+
+				
+
+		$data = array(
+			'title'=>$_POST['subject'],
+			 'message'=>$_POST['message'],
+			 'date'=> date('Y-m-d'),
+			 'sent_by'=> $teacher->id
+			);
+
+		$this->db->insert('mw_emails', $data);
+		$id = $this->db->insert_id();
+
+		$data = array (
+			'email_id'=>$id,
+			'sent_to'=> $_POST['classes']
+			);
+
+		$this->db->insert('mw_email_sent_to', $data);
+
+		$data = array();
+
+		$data['id'] = $id;
+		$data['title'] = $_POST['subject'];
+		$data['details']->text = $_POST['message'] . '<a href = "send_class_message/' . $teacher->id . '/' . $this->db->insert_id() .  '">This is Correct, Send it</a>  |  <a href= ""> Wait a Minute, I need to edit this</a>';
+		$data['teacher'] = $teacher->id;
+
+
+		$this->load->view('page', $data);
+
+	}
+
+	function send_class_message($teacher, $email_id)
+	{
+
 	}
 	
 	

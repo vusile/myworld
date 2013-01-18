@@ -388,7 +388,7 @@ class Main extends CI_Controller {
 			$this->load->library('form_validation');
 			$this->form_validation->set_rules('name', 'Name', 'required');
 			$this->form_validation->set_rules('subject', 'Subject', 'required');
-			$this->form_validation->set_rules('email', 'Email', 'required');
+			$this->form_validation->set_rules('email', 'Email', 'required|matches[confirm_email]');
 			$this->form_validation->set_rules('message', 'The Message', 'required');
 			$this->form_validation->set_rules('captcha', 'The Captcha', 'required|callback_validate_captcha');
 			
@@ -398,23 +398,22 @@ class Main extends CI_Controller {
 			{	
 			
 				//echo "Not Configured";
-				$this->load->library('email');
-				
-				$config['protocol'] = 'mail';
-				$config['smtp_host'] = 'auth.smtp.1and1.com';
-				$config['smtp_user'] = 'info@nipefagio.com';
-				$config['smtp_pass'] = 'nipefagio123';
-				$config['smtp_port'] = '25';
+				$config['protocol'] = 'smtp';
+				//$config['smtp_host'] = 'ssl://smtp.googlemail.com';
+				$config['smtp_host'] = 'box800.bluehost.com';
+				$config['smtp_user'] = 'info@zoomtanzaniahost.com';
+				$config['smtp_pass'] = '123456';
+				$config['smtp_port'] = '26';
 				$config['mailtype'] = 'html';
 				$config['wordwrap'] = TRUE;
 				$config['charset']='utf-8';  
 				$config['newline']="\r\n";  
 
 				$this->email->initialize($config);
+				
 
-				$this->email->from('info@nipefagio.com', 'NipeFagio');
-				$this->email->bcc('terence@zoomtanzania.com'); 
-				$this->email->to('anton.fouquet@djpa.co.tz'); 
+				$this->email->from('info@zoomtanzaniahost.com', 'My World');
+				$this->email->to('terence@zoomtanzania.com'); 
 				
 				
 				$this->email->subject($_POST['subject']);
@@ -431,12 +430,11 @@ class Main extends CI_Controller {
 				if($this->email->send())
 				{
 					
-					
+					$this->db->select ('*, message as text');
 					$this->db->where('identifier','MESSAGE_SENT');
-					$details = $this->db->get('mw_pages');
+					$details = $this->db->get('mw_messages');
 					
-					$header['projects'] = $this->get_projects(1);
-					$header['publications'] = $this->get_projects(2);	
+					$header = $this->header();
 					$data['details'] = $details->row();
 					$header['title'] = $details->row()->title;
 					$this->load->view('Header',$header);
@@ -477,7 +475,7 @@ class Main extends CI_Controller {
 						'title'=>$_POST['title'],
 						'email'=>$_POST['email'],
 						'message'=>$_POST['testimonial'],
-						'approved'=>0,
+						'approved'=>2,
 						'date'=>date('Y-m-d')
 					);
 				$this->db->insert('mw_testimonials', $data);
@@ -513,24 +511,27 @@ class Main extends CI_Controller {
 
 				if($this->email->send())
 				{
+					$this->db->select ('*, message as text');
+					$this->db->where('identifier','TESTIMONIAL_SENT');
+					$details = $this->db->get('mw_messages');
 					$header = $this->header();
-					$data['details']->text = 'Hi, your testimonial was submitted. Please note it will not appear on the site until it is reviewed.';
-					$header['title'] = $data['title']= 'Testimonial Submitted.';
+					$data['details'] = $details->row();
+					$header['title'] = $details->row()->title;
 					$this->load->view('header',$header);
 					$this->load->view('page',$data);
 					$this->load->view('footer');
 				}
 				else
-					redirect('upanga/page/testimonials');
+					redirect('upanga/page/testimonials/1');
 				
 			}
 			
 			else
-				redirect('upanga/page/testimonials');
+				redirect('upanga/page/testimonials#testimonial-form/2');
 		}
 		
 		else
-			redirect('upanga/page/testimonials');
+			redirect('upanga/page/testimonials/3');
 	}
 	
 	function register_test()

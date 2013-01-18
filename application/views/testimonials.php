@@ -1,8 +1,53 @@
+<!--*start of first row for news, video and button/-->
+<script src="js/jquery.validate.min.js" type = "text/javascript"></script>
+<script type = "text/javascript">
+$(document).ready(function(){
+ 
+ $('#contact-form').validate(
+ {
+  rules: {
+    name: {
+      minlength: 2,
+      required: true
+    },    
+  
+  captcha: {
+      
+      required: true
+    
+    },
+    email: {
+      required: true,
+      email: true
+    },
+ confirm_email: { equalTo:'#email', email:true },
+
+    subject: {
+      minlength: 2,
+      required: true
+    },
+    testimonial: {
+      minlength: 2,
+      required: true
+    }
+  },
+  highlight: function(label) {
+    $(label).closest('.control-group').addClass('error');
+  },
+  success: function(label) {
+    label
+      .text('OK!').addClass('valid')
+      .closest('.control-group').addClass('success');
+  }
+ });
+}); // end document.ready
+</script>
 <div class="span9">
 <div class="content">
 <div class="title_h1 summary_title_h1">
 <h1><?php if(isset($title)) echo $title ?></h1>
 </div>
+
 <Br><a href = "<?php echo current_url(); ?>#testimonial-form" >Submit a Testimonial</a><br><br>
 <?php foreach ($testimonials->result() as $testimonial): ?>
 <p class = 'testimonial'><?php echo strip_tags($testimonial->message); ?><p> 
@@ -12,8 +57,9 @@
 
 
  <div class="contact" id = "testimonial-form" style = "margin-top:0;">
+  <?php if($this->uri->segment(4)==2): ?><Br><span style = "font-weight: bold; color:red;">Something Went Wrong, Please Type in your Testimonial Again</span><br><br><?php endif; ?>
  	<span style = "font-size: 18px; font-weight: bold;">Submit a Testimonial</span><br>
-<form class="form-horizontal" style = "margin-top: 10px;" method = "post" action = "submittestimonial" >
+<form class="form-horizontal" style = "margin-top: 10px;" method = "post" action = "submittestimonial" id = "contact-form" >
   <div class="control-group">
     <label class="control-label" for="name">Name:</label>
     <div class="controls">

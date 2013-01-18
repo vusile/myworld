@@ -1,42 +1,91 @@
 <!--*start of first row for news, video and button/-->
+<script src="js/jquery.validate.min.js" type = "text/javascript"></script>
+<script type = "text/javascript">
+$(document).ready(function(){
+ 
+ $('#contact-form').validate(
+ {
+  rules: {
+    name: {
+      minlength: 2,
+      required: true
+    },    
+  
+  captcha: {
+      
+      required: true
+    
+    },
+    email: {
+      required: true,
+      email: true
+    },
+ confirm_email: { equalTo:'#email', email:true },
+
+    subject: {
+      minlength: 2,
+      required: true
+    },
+    message: {
+      minlength: 2,
+      required: true
+    }
+  },
+  highlight: function(label) {
+    $(label).closest('.control-group').addClass('error');
+  },
+  success: function(label) {
+    label
+      .text('OK!').addClass('valid')
+      .closest('.control-group').addClass('success');
+  }
+ });
+}); // end document.ready
+</script>
 <div class="row">
 <div class="span12">
 <div class="teaser">
 <div class="title_h1">
 <h1><?php if(isset($title)) echo $title ?></h1>
 </div>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam interdum ligula et tellus tempor sed condimentum massa mattis. Etiam id hendrerit orci. Nullam vel diam nisl, imperdiet lobortis est. Donec consectetur, mi quis aliquam placerat, lacus massa </p>
+<p><?php echo $details->text ?></p>
 </div>
 <div class="contact">
-<form class="form-horizontal">
+<form class="form-horizontal" id = "contact-form" method = "post" action = "send_message">
   <div class="control-group">
     <label class="control-label" for="inputName">Name:</label>
     <div class="controls">
-      <input type="text" id="inputName" placeholder="Enter your Name">
+      <input type="text" id="name" name = "name" placeholder="Enter your Name">
     </div>
   </div>
   <div class="control-group">
     <label class="control-label" for="inputPhone">Phone:</label>
     <div class="controls">
-      <input type="text" id="inputPhone" placeholder="Enter your Phone Number">
+      <input type="text" id="phone" name = "phone" placeholder="Enter your Phone Number">
     </div>
   </div>
   <div class="control-group">
     <label class="control-label" for="inputEmail">Email:</label>
     <div class="controls">
-      <input type="text" id="inputEmail" placeholder="Enter your Email">
+      <input type="text" id="email" name = "email" placeholder="Enter your Email">
+    </div>
+  </div> 
+   <div class="control-group">
+    <label class="control-label" for="inputEmail">Confirm Email:</label>
+    <div class="controls">
+      <input type="text" id="confirm_email" name = "confirm_email" placeholder="Please type your email again.">
     </div>
   </div>
   <div class="control-group">
     <label class="control-label" for="inputSubject">Subject:</label>
     <div class="controls">
-      <input type="text" id="inputSubject" placeholder="Enter the Subject">
+      <input type="text"  id="subject" name = "subject" placeholder="Enter the Subject">
     </div>
   </div>
   <div class="control-group">
     <label class="control-label" for="inputSubject">Message:</label>
     <div class="controls">
-  <textarea rows="5" ></textarea>
+  <textarea class="input-xxlarge" name = "message" id = "message" rows = "10" ></textarea>
   </div>
   </div>
   <div class="control-group">
