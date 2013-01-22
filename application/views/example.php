@@ -33,9 +33,9 @@ a:hover
 </head>
 <body>
 	<div>
+			<a href='<?php echo site_url('logout')?>'>Logout</a> |	
 		<?php if($this->ion_auth->in_group(array('admin','su'))): ?>
 			<h2>General</h2>
-			<a href='<?php echo site_url('logout')?>'>Logout</a> |
 			<a href='<?php echo site_url('backend/mw_pages/1')?>'>Main Pages</a> |
 			<a href='<?php echo site_url('backend/mw_news')?>'>News</a> |
 			<a href='<?php echo site_url('backend/mw_helpful_links_categories')?>'>Helpful Links</a> |
@@ -43,12 +43,12 @@ a:hover
 			<a href='<?php echo site_url('backend/mw_header_images')?>'>Header Images</a> |
 			<a href='<?php echo site_url('backend/mw_testimonials')?>'>Testimonials</a> | 
 			<a href='<?php echo site_url('backend/mw_partner_links')?>'>Partners Links</a> | 
-			<a href='<?php echo site_url('backend/mw_messages')?>'>Site Messages</a> | 
-			<a href='<?php echo site_url('backend/mw_settings')?>'>Settings</a> 
+			<a href='<?php echo site_url('backend/mw_settings')?>'>Home Page Settings</a> |
 			<a href='<?php echo site_url('backend/mw_categories')?>'>Page Categories</a> |
 			<a href='<?php echo site_url('backend/mw_logos')?>'>Logos</a> | 
 			<a href='<?php echo site_url('backend/mw_files')?>'>Uploaded Files and Documents</a> |
 			<?php if($this->ion_auth->is_admin()): ?>
+				<a href='<?php echo site_url('backend/mw_messages')?>'>Site Messages</a> | 	
 				<a href='<?php echo site_url('backend/mw_page_templates')?>'>Page Templates</a> |
 			<?php endif; ?>
 			<h2>My World Upanga</h2>

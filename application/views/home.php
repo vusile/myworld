@@ -50,21 +50,21 @@
   </div>
   
   <div class="span3" >
-     <a href="uploads/My-World-Evaluation-Report.pdf" target = "_blank"><img src="img/read-our-evaluation-report.png" alt="Our Evaluation Report"  style = "margin-left:5px;"/></a>
-     <img src="img/progressive-play-based-education.png" alt="Progressive Play Based Education" style = "margin-left:5px;"/>
-     <img src="img/imagination-playground.png" alt="Imagination Playground" style = "margin-left:5px;" />
+     <img src="img/progressive-play-based-education.png" alt="Progressive Play Based Education" style = "margin-left:5px; "/>
+     <a href="uploads/My-World-Evaluation-Report.pdf" target = "_blank"><img src="img/read-our-evaluation-report.png" alt="Our Evaluation Report"  style = "margin-left:5px; margin-top: 7px;"/></a>
+     <a href = "http://www.imaginationplayground.com/" target="_blank"><img src="img/imagination-playground.png" alt="Imagination Playground" style = "margin-left:5px; margin-top: 7px;" /></a>
   </div>
   </div>    <!--end of span3-->
 
 </div>  <!--end of row-->
 <div class="row">
-  <div class="span4" style = "margin-top: -54px;">
+  <div class="span4" style = "margin-top: -68px;">
       <div id="fb">
      <div class="fb-like-box" data-href="http://www.facebook.com/myworldpreschool?fref=ts" data-width="295" data-height="300" data-show-faces="true" data-stream="false" data-header="true"></div>
       </div>
   </div>
   
-  <div class="span5" style = "margin-top: -50px;">
+  <div class="span5" style = "margin-top: -64px;">
      <div id="slideshow"> <!-- start of slideshow-->
 <div id="myCarousel" class="carousel slide"><!-- class of slide for animation -->
   <div class="carousel-inner">  <!--start of c- inner-->
@@ -110,9 +110,9 @@
     <p style = "text-align:left; color:#031289;margin-bottom: 10px; font-size: 17.5px; font-weight: bold; margin-left: 15px;">Follow Us</p>
     <div style = "margin-left:10px;">
     <div class="addthis_toolbox addthis_32x32_style addthis_default_style">
-    <a class="addthis_button_twitter_follow space-between" addthis:userid="ZoomTanzania"></a>
-    <a class="addthis_button_youtube_follow space-between" addthis:userid="vusilesilonda/videos"></a>
-    <a class="addthis_button_pinterest_follow space-between" addthis:userid="vusile"></a>
+    <a class="addthis_button_twitter_follow space-between" addthis:userid="MyWorldTZ"></a>
+    <a class="addthis_button_youtube_follow space-between" addthis:userid="MyWorldTz/videos"></a>
+    <a class="addthis_button_pinterest_follow space-between" addthis:userid="MyWorldTz"></a>
     </div>
     </div>
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-50f7fc3e4132aef9"></script>

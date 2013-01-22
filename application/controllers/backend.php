@@ -232,8 +232,7 @@ class Backend extends CI_Controller {
 	function students_callback($post_array,$primary_key)
 	{
 		$data = array (
-			'class' =>$this->uri->segment(3),
-			'parents' => '<a target = "_blank" href = "' . base_url() . 'backend/mw_parents/' .  $primary_key . '">Parents</a>'
+			'class' =>$this->uri->segment(3)
 		);
 		
 		$this->db->where('id',$primary_key);
@@ -358,7 +357,7 @@ class Backend extends CI_Controller {
 				'first_name' => $teacher->name,
 			);								
 			$group = array('3'); // Sets user to admin. No need for array('1', '2') as user is always set to member by default
-			$this->ion_auth->register($username, $password, $email, $additional_data);
+			$this->ion_auth->register($username, $password, $email, $additional_data,$group);
 				
 		}
 
@@ -400,17 +399,14 @@ class Backend extends CI_Controller {
 					$data['first_name']=$student['B'];
 					$data['last_name']=$student['C'];
 					$data['parent_1_name']=$student['D'];
-					$data['parent_1_email_1']=$student['E'];
-					$data['parent_1_email_2']=$student['F'];
-					$data['parent_1_phone_numbers']=$student['G'];					
-					$data['parent_2_name']=$student['H'];
-					$data['parent_2_email_1']=$student['I'];
-					$data['parent_2_email_2']=$student['J'];
-					$data['parent_2_phone_numbers']=$student['K'];					
-					$data['parent_3_name']=$student['L'];
-					$data['parent_3_email_1']=$student['M'];
-					$data['parent_3_email_2']=$student['N'];
-					$data['parent_3_phone_numbers']=$student['O'];
+					$data['parent_1_email']=$student['E'];
+					$data['parent_1_phone_numbers']=$student['F'];					
+					$data['parent_2_name']=$student['G'];
+					$data['parent_2_email']=$student['H'];
+					$data['parent_2_phone_numbers']=$student['I'];					
+					$data['parent_3_name']=$student['J'];
+					$data['parent_3_email']=$student['K'];
+					$data['parent_3_phone_numbers']=$student['L'];
 					$datas[]=$data;
 
 
@@ -481,10 +477,21 @@ class Backend extends CI_Controller {
 	
 		$this->grocery_crud->set_relation('logo','mw_logos','title');
 		$this->grocery_crud->set_relation('parent','mw_categories','title');
-			
-		$this->grocery_crud->unset_delete();
-		$this->grocery_crud->unset_fields('thumb_nail','type');
-		$this->grocery_crud->unset_columns('thumb_nail','type');
+		
+		if($type == 1)
+			$this->grocery_crud->unset_delete();
+
+		if($this->ion_auth->in_group(array('su')))
+		{
+			$this->grocery_crud->unset_fields('thumb_nail','type','url','table','identifier');
+			$this->grocery_crud->unset_columns('thumb_nail','type','url','table','identifier');	
+		}
+		else
+		{
+			$this->grocery_crud->unset_fields('thumb_nail','type');
+			$this->grocery_crud->unset_columns('thumb_nail','type');	
+		}
+		
 		$this->grocery_crud->callback_after_insert(array($this, 'generate_thumb'));
 		$this->grocery_crud->callback_after_update(array($this, 'generate_thumb'));
 		$output = $this->grocery_crud->render();
@@ -855,8 +862,18 @@ class Backend extends CI_Controller {
 			$class = $this->db->get('mw_classes');
 			$data['class_name']=$class->row()->class_name;
 			$data['class'] = $cls;
-
 		}
+
+		if($edit!=0)
+		{
+
+			$this->db->where('id', $edit);
+			$email=$this->db->get('mw_emails');
+			$data['subject'] = $email->row()->title;
+			$data['message'] = $email->row()->message;
+			$data['edit'] = $edit;
+		}
+
 		$this->load->view('send-email',$data);
 		
 	}
@@ -879,21 +896,37 @@ class Backend extends CI_Controller {
 			 'sent_by'=> $teacher->id
 			);
 
-		$this->db->insert('mw_emails', $data);
-		$id = $this->db->insert_id();
+		if(isset($_POST['edit']) and $_POST['edit'] != 0)
+		{
+			$this->db->where('id', $_POST['edit']);
+			$this->db->update('mw_emails', $data);
+			$id = $_POST['edit'];
 
-		$data = array (
+			$this->db->where('email_id', $id);
+			$m=$this->db->get('mw_email_sent_to');
+			$sent_to_id = $m->row()->id;
+
+		}
+		else
+		{
+			$this->db->insert('mw_emails', $data);
+			$id = $this->db->insert_id();
+			$data = array (
 			'email_id'=>$id,
 			'sent_to'=> $_POST['classes']
 			);
 
-		$this->db->insert('mw_email_sent_to', $data);
+			$this->db->insert('mw_email_sent_to', $data);
+			$sent_to_id =$this->db->insert_id();
+		}	
+
+
 
 		$data = array();
 
 		$data['id'] = $id;
-		$data['title'] = $_POST['subject'];
-		$data['details']->text = $_POST['message'] . '<a href = "send_class_message/' . $teacher->id . '/' . $this->db->insert_id() .  '">This is Correct, Send it</a>  |  <a href= ""> Wait a Minute, I need to edit this</a>';
+		$data['title'] = 'Subject: ' . $_POST['subject'];
+		$data['details']->text = 'Message: ' . $_POST['message'] . '<a href = "send_class_message/' . $teacher->id . '/' . $sent_to_id .  '">This is Correct, Send it</a>  |  <a href= "send_email_form/' . $_POST['classes'] . '/' . $id . '"> Wait a Minute, I need to edit this</a>';
 		$data['teacher'] = $teacher->id;
 
 
@@ -903,6 +936,61 @@ class Backend extends CI_Controller {
 
 	function send_class_message($teacher, $email_id)
 	{
+		
+		$not_sent = array();
+		$this->load->library('email');
+		
+		$config['protocol'] = 'smtp';
+		//$config['smtp_host'] = 'ssl://smtp.googlemail.com';
+		$config['smtp_host'] = 'box800.bluehost.com';
+		$config['smtp_user'] = 'info@zoomtanzaniahost.com';
+		$config['smtp_pass'] = '123456';
+		$config['smtp_port'] = '26';
+		$config['mailtype'] = 'html';
+		$config['wordwrap'] = TRUE;
+		$config['charset']='utf-8';  
+		$config['newline']="\r\n";  
+
+		$this->email->initialize($config);
+
+		$this->db->where('email_id', $email_id);
+		$emails=$this->db->get('mw_email_sent_to');
+		$email= $emails->row();
+		$class=$email->sent_to;
+
+
+
+		$this->db->where('class', $class);
+		$students=$this->db->get('mw_students');	
+
+		
+		$this->db->where('id', $email_id);
+		$email_to_send=$this->db->get('mw_emails');
+
+		$email_subject = $email_to_send->row()->title;
+		$email_message = $email_to_send->row()->message;
+		$this->email->from('info@zoomtanzaniahost.com', 'My World');
+		$this->email->subject($email_subject);
+		$this->email->message($email_message);
+		$this->email->set_alt_message(strip_tags($email_message));
+
+		foreach ($students->result() as $student) {
+	
+			$parent_emails = array();
+			if($student->parent_1_email != '')
+				$parent_emails[1] = $student->parent_1_email;			
+			if($student->parent_2_email != '')
+				$parent_emails[2] = $student->parent_2_email;			
+			if($student->parent_3_email != '')
+				$parent_emails[3] = $student->parent_3_email;
+			$this->email->to($parent_emails);
+
+			print_r($parent_emails);
+
+			if(!$this->email->send())
+				$not_set[$email_id]=$student->id;
+				
+		}
 
 	}
 	

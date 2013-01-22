@@ -88,9 +88,9 @@ class Main extends CI_Controller {
 		
 		$header = $this->header();
 		$header['title'] = 'Login';
-		$this->load->view('Header',$header);
+		$this->load->view('header',$header);
 		$this->load->view('Login');
-		$this->load->view('Footer');
+		$this->load->view('footer');
 	}
 	
 	function login_user()
@@ -499,8 +499,8 @@ class Main extends CI_Controller {
 				
 
 				$this->email->from('info@zoomtanzaniahost.com', 'My World');
-				$this->email->to('terence@zoomtanzania.com'); 
-				//$this->email->to('rupalhyp@hotmail.com'); 
+				$this->email->bcc('terence@zoomtanzania.com'); 
+				$this->email->to('rupalhyp@hotmail.com'); 
 				
 				
 				$this->email->subject('New Testimonial Needs to be Reviewed');
@@ -508,6 +508,8 @@ class Main extends CI_Controller {
 				$message .= 'Hi, a new testimonial was posted on the site and needs to be reviewed.';
 				$message .= '</body></html>';	
 				$this->email->message($message);	
+
+				$data = array();
 
 				if($this->email->send())
 				{
@@ -536,15 +538,15 @@ class Main extends CI_Controller {
 	
 	function register_test()
 	{
-		$username = 'anton.fouquet@djpa.co.tz';
-		$email = 'anton.fouquet@djpa.co.tz';
-		$password = 'nIp3F@giO';
+		$username = 'rupalhyp@hotmail.com';
+		$email = 'rupalhyp@hotmail.com';
+		$password = 'mYwOrLd';
 		$additional_data = array(
-			'first_name' => 'Anton',
-			'last_name' => 'Fouquet',
-			'phone' => '+255 753 102 000'
+			'first_name' => 'Rupal',
+			'last_name' => 'Ganatra',
+			'phone' => '+255 755 378 324'
 		);								
-//		$group = array('1'); // Sets user to admin. No need for array('1', '2') as user is always set to member by default
+		$group = array('4'); // Sets user to admin. No need for array('1', '2') as user is always set to member by default
 
 		$this->ion_auth->register($username, $password, $email, $additional_data);
 	}

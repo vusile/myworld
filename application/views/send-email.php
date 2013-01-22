@@ -23,17 +23,18 @@
   <div class="control-group">
     <label class="control-label" for="inputSubject">Subject:</label>
     <div class="controls">
-      <input type="text"  id="subject" name = "subject" placeholder="Enter the Subject">
+      <input type="text"  id="subject" name = "subject" placeholder="Enter the Subject" value="<?php if(isset($subject)) echo $subject ?>">
     </div>
   </div>
   <div class="control-group">
     <label class="control-label" for="inputSubject">Message:</label>
     <div class="controls">
-  <textarea class="input-xxlarge mini-texteditor" name = "message" id = "message" rows = "10" ></textarea>
+  <textarea class="input-xxlarge mini-texteditor" name = "message" id = "message" rows = "10" ><?php if(isset($message)) echo $message ?></textarea>
   </div>
   </div>
   
       <input type="hidden"  id="classes" name = "classes" value="<?php echo $class; ?>">
+      <input type="hidden"  id="edit" name = "edit" value="<?php if(isset($edit)) echo $edit; else echo 0; ?>">
 	
 	  <div class="control-group">
     <div class="controls">
