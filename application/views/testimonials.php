@@ -50,7 +50,7 @@ $(document).ready(function(){
 
 <Br><a href = "<?php echo current_url(); ?>#testimonial-form" >Submit a Testimonial</a><br><br>
 <?php foreach ($testimonials->result() as $testimonial): ?>
-<p class = 'testimonial'><?php echo strip_tags($testimonial->message); ?><p> 
+<p class = 'testimonial'><?php echo strip_tags($testimonial->message,"<p>"); ?><p> 
 <p class = "signature"> <?php echo $testimonial->name ?>, <?php echo $testimonial->title; ?></p>
 <hr>
 <?php endforeach; ?>

@@ -247,6 +247,7 @@ class Msasani extends CI_Controller {
 			
 			case 'testimonials.php':
 			$this->db->where('approved',1);
+			$this->db->order_by('id', 'desc');
 			$data['testimonials'] = $this->db->get('mw_testimonials');
 			$word = strtoupper($this->randomAlphaNum(7));
 		

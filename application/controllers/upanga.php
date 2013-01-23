@@ -65,7 +65,7 @@ class Upanga extends CI_Controller {
 	
 	function sidebar ($identifier = '')
 	{
-$flag = 0;
+		$flag = 0;
 		$page_categories=$this->db->get('mw_categories');
 		
 		$sidebar['sidebar']='';
@@ -250,6 +250,7 @@ $flag = 0;
 			
 			case 'testimonials.php':
 			$this->db->where('approved',1);
+			$this->db->order_by('id', 'desc');
 			$data['testimonials'] = $this->db->get('mw_testimonials');
 
 			$word = strtoupper($this->randomAlphaNum(7));

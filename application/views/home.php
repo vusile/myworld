@@ -70,8 +70,13 @@
   <div class="carousel-inner">  <!--start of c- inner-->
   
  <!-- pic no 1 goes here-->
-    <?php foreach($images->result() as $image): ?>
-    <div class="item"><!-- class of active since it's the first item -->
+    <?php $i = 0; foreach($images->result() as $image): ?>
+    <?php if($i==0): ?>
+    <?php $i++; ?>
+       <div class="item active"><!-- class of active since it's the first item -->
+    <?php else: ?>
+       <div class="item"><!-- class of active since it's the first item -->
+  <?php endif; ?>
       <img src="img/<?php echo $image->photo ?>"  alt="<?php echo $image->caption; ?>" />
       <div class="carousel-caption">
 	  <?php if($image->url != ''): ?>
@@ -83,6 +88,15 @@
     </div>
 	<?php endforeach; ?>
 
+<div class="item">
+  <iframe width="400" height="300" src="http://www.youtube.com/embed/RrWnZ7VySac?rel=0" frameborder="0" allowfullscreen></iframe>
+  <div class="carousel-caption">Caption Text
+</div>
+</div>
+
+<div class="item">
+ <div style = "width:400px; height:300px">asfj;alksjf;lkjas;lkfja;kljfa;kljdf</div>
+</div>
      <!-- end pic no 4 goes here-->
     
   </div><!-- /.carousel-inner -->

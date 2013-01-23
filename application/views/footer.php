@@ -16,13 +16,12 @@
 </div>
 
 
-<script src="js/bootstrap-carousel.js" type="text/javascript"></script>
+
 <script src="js/bootstrap.js" type="text/javascript"></script>
 
 <script>
 $('#myCarousel').carousel({
-      interval: 5000,
-      pause: "hover"
+      interval: false
     });
 
    </script>
