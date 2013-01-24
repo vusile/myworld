@@ -161,7 +161,7 @@ class Msasani extends CI_Controller {
 	{
 		$staff = '';
 		$this->db->where('school',$school);
-		$teachers = $this->db->get('mw_teaching_staff');
+		$teachers = $this->db->get('mw_users');
 		
 		$this->db->where('school',$school);
 		$classes = $this->db->get('mw_classes');
@@ -175,7 +175,7 @@ class Msasani extends CI_Controller {
 		
 		foreach($teachers->result() as $teacher)
 		{
-			$staff .= "<strong>Teacher's Name: </strong>" . $teacher->name .  "<br>";
+			$staff .= "<strong>Teacher's Name: </strong>" . $teacher->first_name .  "<br>";
 			$staff .= '<strong>Class(es): </strong>' ; 
 			$this->db->where('teacher_id', $teacher->id);
 			$tac = $this->db->get('mw_teachers_classes');

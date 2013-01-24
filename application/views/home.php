@@ -76,27 +76,27 @@
        <div class="item active"><!-- class of active since it's the first item -->
     <?php else: ?>
        <div class="item"><!-- class of active since it's the first item -->
-  <?php endif; ?>
+    <?php endif; ?>
+     <?php if ($image->text_only_entry != ''): ?>
+     <div style = "width:370px; height:275px; border: 2px #031289 solid; padding: 10px; font-size: 18px;"><?php echo $image->text_only_entry; ?></div>
+         <?php elseif ($image->youtube != ''): ?>
+     <iframe width="400" height="300" src="<?php echo str_replace('watch?v=', 'embed/', $image->youtube ); ?>" frameborder="0" allowfullscreen></iframe> 
+    <?php elseif($image->photo != ''): ?>
       <img src="img/<?php echo $image->photo ?>"  alt="<?php echo $image->caption; ?>" />
       <div class="carousel-caption">
-	  <?php if($image->url != ''): ?>
+    <?php if($image->url != ''): ?>
         <a href="<?php echo $image->url ?>"><p><?php echo $image->caption; ?></p></a>
-	  <?php else: ?>
+    <?php else: ?>
         <p><?php echo $image->caption; ?></p>
-	  <?php endif; ?>
+    <?php endif; ?>
       </div>
+
+
+   <?php endif; ?>
     </div>
-	<?php endforeach; ?>
+  <?php endforeach; ?>
 
-<div class="item">
-  <iframe width="400" height="300" src="http://www.youtube.com/embed/RrWnZ7VySac?rel=0" frameborder="0" allowfullscreen></iframe>
-  <div class="carousel-caption">Caption Text
-</div>
-</div>
 
-<div class="item">
- <div style = "width:400px; height:300px">asfj;alksjf;lkjas;lkfja;kljfa;kljdf</div>
-</div>
      <!-- end pic no 4 goes here-->
     
   </div><!-- /.carousel-inner -->

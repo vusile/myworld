@@ -368,7 +368,7 @@ padding:0;
 #fnav li:active{
 	color:#000000;
 }*/
-.carousel .carousel-control { visibility: hidden; }
+.carousel .carousel-control { visibility: visible; }
 .carousel:hover .carousel-control { visibility: visible; }
 
 /*for corousel banner settings 

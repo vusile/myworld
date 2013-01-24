@@ -14,7 +14,7 @@
 <div class="span12">
 <div class="teaser">
 <div class="title_h1">
-<h1>Send Email To <?php echo $class_name; ?> Class</h1><br><br>
+<h1>Send Email <?php if (isset($class_name)) echo 'To ' . $class_name . ' Class'; ?> </h1><br><br>
 </div>
 </div>
 <div class="contact" style = "clear:both; ">
@@ -32,8 +32,22 @@
   <textarea class="input-xxlarge mini-texteditor" name = "message" id = "message" rows = "10" ><?php if(isset($message)) echo $message ?></textarea>
   </div>
   </div>
+  <?php if($this->ion_auth->in_group(array('admin','su'))): ?>
+    <div class="control-group">
+    <label class="control-label" for="inputSubject">Send To:</label>
+    <div class="controls">
+      <select id="category" name = "category">
+          <option value ="">Select One</option>
+          <option value ="1">Both Schools</option>
+          <option value ="2">Upanga School</option>
+          <option value ="3">Msasani School</option>
   
+      </select>
+      </div>
+  </div>
+  <?php else: ?>
       <input type="hidden"  id="classes" name = "classes" value="<?php echo $class; ?>">
+  <?php endif; ?>
       <input type="hidden"  id="edit" name = "edit" value="<?php if(isset($edit)) echo $edit; else echo 0; ?>">
 	
 	  <div class="control-group">

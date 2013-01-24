@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 21, 2013 at 01:31 PM
+-- Generation Time: Jan 24, 2013 at 02:18 PM
 -- Server version: 5.5.20
 -- PHP Version: 5.3.10
 
@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `mw_captcha` (
   `word` varchar(20) NOT NULL,
   PRIMARY KEY (`captcha_id`),
   KEY `word` (`word`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=449 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=452 ;
 
 --
 -- Dumping data for table `mw_captcha`
@@ -90,7 +90,10 @@ INSERT INTO `mw_captcha` (`captcha_id`, `captcha_time`, `ip_address`, `word`) VA
 (445, 1358416963, '127.0.0.1', 'Z7UHX3N'),
 (446, 1358416991, '127.0.0.1', '8QK32MC'),
 (447, 1358417042, '127.0.0.1', 'H9K6XB5'),
-(448, 1358499303, '127.0.0.1', 'M26RCUS');
+(448, 1358499303, '127.0.0.1', 'M26RCUS'),
+(449, 1358833756, '127.0.0.1', 'RW9QJ83'),
+(450, 1358834140, '127.0.0.1', 'BW32ZT8'),
+(451, 1358944151, '127.0.0.1', '73PVQJ9');
 
 -- --------------------------------------------------------
 
@@ -102,7 +105,7 @@ CREATE TABLE IF NOT EXISTS `mw_categories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `mw_categories`
@@ -112,9 +115,7 @@ INSERT INTO `mw_categories` (`id`, `title`) VALUES
 (1, 'Our Approach'),
 (2, 'The School'),
 (3, 'Parent Resources'),
-(4, 'Home'),
-(5, 'Test Category'),
-(6, 'Test Category 2');
+(4, 'Home');
 
 -- --------------------------------------------------------
 
@@ -153,16 +154,24 @@ CREATE TABLE IF NOT EXISTS `mw_emails` (
   `date` date NOT NULL,
   `sent_by` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `mw_emails`
 --
 
 INSERT INTO `mw_emails` (`id`, `title`, `message`, `date`, `sent_by`) VALUES
-(1, 'Testing', '<p>\r\n	This is the message</p>\r\n', '2013-01-18', 10),
+(1, 'Testing', '<p>\r\n	<span style="background-color:#ffff00;">test</span></p>\r\n', '2013-01-21', 10),
 (2, 'Testing', '<p>\r\n	This is the message</p>\r\n', '2013-01-18', 10),
-(3, 'Testing', '<p>\r\n	This is the message</p>\r\n', '2013-01-18', 10);
+(3, 'Testing', '<p>\r\n	This is the message</p>\r\n', '2013-01-18', 10),
+(4, 'Testing', '<p>\r\n	test</p>\r\n', '2013-01-21', 10),
+(5, 'Testing', '<p>\r\n	<span style="background-color:#ffff00;">test</span></p>\r\n', '2013-01-21', 10),
+(6, 'Testing', '<p>\r\n	<span style="background-color:#ffff00;">test</span></p>\r\n', '2013-01-21', 10),
+(7, 'Testing', '<p>\r\n	<span style="background-color:#ffff00;">test</span></p>\r\n', '2013-01-21', 10),
+(8, 'Testing', '<p>\r\n	<span style="background-color:#ffff00;">test</span></p>\r\n', '2013-01-21', 10),
+(9, 'Testing', '<p>\r\n	<span style="background-color:#ffff00;">test</span></p>\r\n', '2013-01-21', 10),
+(10, 'Testing Class Email', '<p>\r\n	Wohooooo</p>\r\n', '2013-01-22', 11),
+(11, 'Test', '<p>\r\n	Test</p>\r\n', '2013-01-22', 11);
 
 -- --------------------------------------------------------
 
@@ -175,7 +184,7 @@ CREATE TABLE IF NOT EXISTS `mw_email_sent_to` (
   `email_id` int(11) NOT NULL,
   `sent_to` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `mw_email_sent_to`
@@ -184,7 +193,15 @@ CREATE TABLE IF NOT EXISTS `mw_email_sent_to` (
 INSERT INTO `mw_email_sent_to` (`id`, `email_id`, `sent_to`) VALUES
 (1, 1, 4),
 (2, 2, 4),
-(3, 3, 4);
+(3, 3, 4),
+(4, 4, 4),
+(5, 5, 4),
+(6, 6, 4),
+(7, 7, 4),
+(8, 8, 4),
+(9, 9, 4),
+(10, 10, 3),
+(11, 11, 3);
 
 -- --------------------------------------------------------
 
@@ -205,7 +222,7 @@ CREATE TABLE IF NOT EXISTS `mw_files` (
 --
 
 INSERT INTO `mw_files` (`id`, `name`, `file`, `url`) VALUES
-(1, 'Report', 'd4726-Desert.jpg', 'http://localhost/myworld//uploads/d4726-Desert.jpg');
+(1, 'The Life of Pi', '602ef-Bwana-alitoa.pdf', 'http://localhost/myworld//uploads/602ef-Bwana-alitoa.pdf');
 
 -- --------------------------------------------------------
 
@@ -267,18 +284,7 @@ CREATE TABLE IF NOT EXISTS `mw_helpful_links` (
   `school` int(11) NOT NULL,
   `category` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
-
---
--- Dumping data for table `mw_helpful_links`
---
-
-INSERT INTO `mw_helpful_links` (`id`, `link_text`, `url`, `school`, `category`) VALUES
-(3, 'Listen to Kids', 'http://www.listeningtokids.com', 3, 4),
-(4, 'Music Can Help', 'http://www.swahilimusicnotes.com', 1, 4),
-(5, 'Kids Speak their Minds', 'http://www.speakyourmind.com', 1, 6),
-(6, 'ZoomTanzania', 'http://www.zoomtanzania.com', 1, 7),
-(7, 'Great Science Projects for the home', 'http://www.greatprojects.com', 3, 7);
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -292,17 +298,7 @@ CREATE TABLE IF NOT EXISTS `mw_helpful_links_categories` (
   `the_links` varchar(255) NOT NULL,
   `school` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
-
---
--- Dumping data for table `mw_helpful_links_categories`
---
-
-INSERT INTO `mw_helpful_links_categories` (`id`, `category`, `the_links`, `school`) VALUES
-(4, 'Help Children As they Play', '<a target = "_blank" href = "http://localhost/myworld/backend/mw_helpful_links/4">Helpful Links</a>', 3),
-(5, 'Dance & Games', '<a target = "_blank" href = "http://localhost/myworld/backend/mw_helpful_links/5">Helpful Links</a>', 2),
-(6, 'Public Speaking for kids links', '<a target = "_blank" href = "http://localhost/myworld/backend/mw_helpful_links/6">Helpful Links</a>', 1),
-(7, 'Having Fun with kids', '<a target = "_blank" href = "http://localhost/myworld/backend/mw_helpful_links/7">Helpful Links</a>', 1);
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -388,16 +384,20 @@ CREATE TABLE IF NOT EXISTS `mw_image_scroller` (
   `photo` varchar(255) NOT NULL,
   `caption` varchar(255) NOT NULL,
   `url` varchar(255) DEFAULT NULL,
+  `youtube` varchar(255) DEFAULT NULL,
+  `text_only_entry` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `mw_image_scroller`
 --
 
-INSERT INTO `mw_image_scroller` (`id`, `photo`, `caption`, `url`) VALUES
-(5, '08db3-Koala.jpg', 'Koala Dude', NULL),
-(6, '06ae1-Penguins.jpg', 'The Dancing Penguins Dancing', 'http://www.zoomtanzania.com');
+INSERT INTO `mw_image_scroller` (`id`, `photo`, `caption`, `url`, `youtube`, `text_only_entry`) VALUES
+(5, '08db3-Koala.jpg', 'Koala Dude', NULL, NULL, ''),
+(6, '06ae1-Penguins.jpg', 'The Dancing Penguins Dancing', 'http://www.zoomtanzania.com', NULL, ''),
+(8, '', '', NULL, 'http://www.youtube.com/watch?v=GRSk2558uRI', ''),
+(9, '', '', NULL, NULL, '<p>\r\n	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget ante risus. Mauris eu arcu arcu. Suspendisse nec adipiscing sem. Integer lacinia euismod magna lobortis tempor.</p>\r\n<p>\r\n	Quisque imperdiet condimentum feugiat. Aliquam ac leo mauris. Pellentesque sem neque, tempor id luctus sed, consequat eget diam. Maecenas pellentesque lectus a nulla malesuada sagittis.</p>\r\n<p>\r\n	<a href="http://localhost/myworld//uploads/602ef-Bwana-alitoa.pdf">Download it here</a></p>\r\n');
 
 -- --------------------------------------------------------
 
@@ -567,7 +567,7 @@ CREATE TABLE IF NOT EXISTS `mw_pages` (
   `table` varchar(255) NOT NULL,
   `logo` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=43 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=38 ;
 
 --
 -- Dumping data for table `mw_pages`
@@ -605,12 +605,7 @@ INSERT INTO `mw_pages` (`id`, `title`, `text`, `identifier`, `thumb_nail`, `type
 (34, 'Baby Centre', '', 'BABY_CENTER', '', 4, 'baby-centre', 2, 0, '', '2'),
 (35, 'Art Centre', '', 'ART_CENTER', '', 4, 'art-centre', 2, 0, '', '2'),
 (36, 'Café', '', 'CAFE', '', 4, 'caf', 2, 0, '', '2'),
-(37, 'Play Ground', '', 'PLAY_GROUND', '', 4, 'play-ground', 2, 0, '', '2'),
-(38, 'Test Page', '<p>\r\n	This is a test page</p>\r\n', '', '', 2, 'test-page', 2, 1, '', '5'),
-(39, 'Testing New Category', '<p>\r\n	Testing</p>\r\n', '', '', 2, 'testing-new-category', 2, 5, '', '5'),
-(40, 'Cool', '<p>\r\n	Test</p>\r\n', '', '', 3, 'cool', 2, 6, '', '4'),
-(41, 'Add Record', '<p>\r\n	test</p>\r\n', '', '', 3, 'add-record', 2, 5, '', '4'),
-(42, 'Training Centre Test', '<p>\r\n	Test</p>\r\n', '', '', 5, 'training-centre-test', 2, 6, '', '3');
+(37, 'Play Ground', '', 'PLAY_GROUND', '', 4, 'play-ground', 2, 0, '', '2');
 
 -- --------------------------------------------------------
 
@@ -652,15 +647,14 @@ CREATE TABLE IF NOT EXISTS `mw_partner_links` (
   `partner_name` varchar(255) NOT NULL,
   `partner_website` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `mw_partner_links`
 --
 
 INSERT INTO `mw_partner_links` (`id`, `partner_name`, `partner_website`) VALUES
-(1, 'Play Based Learning', 'http://www.playbasedlearning.com.au/'),
-(2, 'ZoomTanzania.com', 'http://www.zoomtanzania.com/');
+(1, 'Play Based Learning', 'http://www.playbasedlearning.com.au/');
 
 -- --------------------------------------------------------
 
@@ -806,16 +800,13 @@ CREATE TABLE IF NOT EXISTS `mw_students` (
   `last_name` varchar(255) NOT NULL,
   `class` int(11) NOT NULL,
   `parent_1_name` varchar(255) DEFAULT NULL,
-  `parent_1_email_1` varchar(100) DEFAULT NULL,
-  `parent_1_email_2` varchar(100) DEFAULT NULL,
+  `parent_1_email` varchar(100) DEFAULT NULL,
   `parent_1_phone_numbers` varchar(100) DEFAULT NULL,
   `parent_2_name` varchar(100) DEFAULT NULL,
-  `parent_2_email_1` varchar(100) DEFAULT NULL,
-  `parent_2_email_2` varchar(100) DEFAULT NULL,
+  `parent_2_email` varchar(100) DEFAULT NULL,
   `parent_2_phone_numbers` varchar(100) DEFAULT NULL,
   `parent_3_name` varchar(100) DEFAULT NULL,
-  `parent_3_email_1` varchar(100) DEFAULT NULL,
-  `parent_3_email_2` varchar(100) DEFAULT NULL,
+  `parent_3_email` varchar(100) DEFAULT NULL,
   `parent_3_phone_numbers` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=28 ;
@@ -824,30 +815,30 @@ CREATE TABLE IF NOT EXISTS `mw_students` (
 -- Dumping data for table `mw_students`
 --
 
-INSERT INTO `mw_students` (`id`, `student_registration_number`, `first_name`, `last_name`, `class`, `parent_1_name`, `parent_1_email_1`, `parent_1_email_2`, `parent_1_phone_numbers`, `parent_2_name`, `parent_2_email_1`, `parent_2_email_2`, `parent_2_phone_numbers`, `parent_3_name`, `parent_3_email_1`, `parent_3_email_2`, `parent_3_phone_numbers`) VALUES
-(4, '100101', 'Terence', 'Silonda', 5, 'Lilian Mwenda', 'mwenda.lilian@yahoo.com', NULL, '784540459', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(5, '100101', 'Terence', 'Silonda', 3, 'Lilian Mwenda', 'mwenda.lilian@yahoo.com', NULL, '784540459', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(6, '100101', 'Terence', 'Silonda', 3, 'Lilian Mwenda', 'mwenda.lilian@yahoo.com', 'lilian.mwenda@gmail.com', '784540459', 'Thomas Silonad', 'Vusimuzi@gmail.com', 'silonda@gmail.com', NULL, 'Deborah Mwenda', 'info@bahari.org', NULL, '713617634'),
-(7, '100101', 'Terence', 'Silonda', 4, 'Lilian Mwenda', 'mwenda.lilian@yahoo.com', NULL, '784540459', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(8, '100101', 'Terence', 'Silonda', 4, 'Lilian Mwenda', 'mwenda.lilian@yahoo.com', 'lilian.mwenda@gmail.com', '784540459', 'Thomas Silonad', 'Vusimuzi@gmail.com', 'silonda@gmail.com', NULL, 'Deborah Mwenda', 'info@bahari.org', NULL, '713617634'),
-(9, '100101', 'Terence', 'Silonda', 4, 'Lilian Mwenda', 'mwenda.lilian@yahoo.com', NULL, '784540459', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(10, '100101', 'Terence', 'Silonda', 4, 'Lilian Mwenda', 'mwenda.lilian@yahoo.com', 'lilian.mwenda@gmail.com', '784540459', 'Thomas Silonad', 'Vusimuzi@gmail.com', 'silonda@gmail.com', NULL, 'Deborah Mwenda', 'info@bahari.org', NULL, '713617634'),
-(11, '100101', 'Terence', 'Silonda', 4, 'Lilian Mwenda', 'mwenda.lilian@yahoo.com', NULL, '784540459', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(12, '100101', 'Terence', 'Silonda', 4, 'Lilian Mwenda', 'mwenda.lilian@yahoo.com', 'lilian.mwenda@gmail.com', '784540459', 'Thomas Silonad', 'Vusimuzi@gmail.com', 'silonda@gmail.com', NULL, 'Deborah Mwenda', 'info@bahari.org', NULL, '713617634'),
-(13, '100101', 'Terence', 'Silonda', 4, 'Lilian Mwenda', 'mwenda.lilian@yahoo.com', NULL, '784540459', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(14, '100101', 'Terence', 'Silonda', 4, 'Lilian Mwenda', 'mwenda.lilian@yahoo.com', 'lilian.mwenda@gmail.com', '784540459', 'Thomas Silonad', 'Vusimuzi@gmail.com', 'silonda@gmail.com', NULL, 'Deborah Mwenda', 'info@bahari.org', NULL, '713617634'),
-(15, '100101', 'Terence', 'Silonda', 4, 'Lilian Mwenda', 'mwenda.lilian@yahoo.com', NULL, '784540459', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(16, '100101', 'Terence', 'Silonda', 4, 'Lilian Mwenda', 'mwenda.lilian@yahoo.com', 'lilian.mwenda@gmail.com', '784540459', 'Thomas Silonad', 'Vusimuzi@gmail.com', 'silonda@gmail.com', NULL, 'Deborah Mwenda', 'info@bahari.org', NULL, '713617634'),
-(17, '100101', 'Terence', 'Silonda', 4, 'Lilian Mwenda', 'mwenda.lilian@yahoo.com', NULL, '784540459', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(18, '100101', 'Terence', 'Silonda', 4, 'Lilian Mwenda', 'mwenda.lilian@yahoo.com', 'lilian.mwenda@gmail.com', '784540459', 'Thomas Silonad', 'Vusimuzi@gmail.com', 'silonda@gmail.com', NULL, 'Deborah Mwenda', 'info@bahari.org', NULL, '713617634'),
-(19, '100101', 'Terence', 'Silonda', 4, 'Lilian Mwenda', 'mwenda.lilian@yahoo.com', NULL, '784540459', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(20, '100101', 'Terence', 'Silonda', 4, 'Lilian Mwenda', 'mwenda.lilian@yahoo.com', 'lilian.mwenda@gmail.com', '784540459', 'Thomas Silonad', 'Vusimuzi@gmail.com', 'silonda@gmail.com', NULL, 'Deborah Mwenda', 'info@bahari.org', NULL, '713617634'),
-(21, '100101', 'Terence', 'Silonda', 4, 'Lilian Mwenda', 'mwenda.lilian@yahoo.com', NULL, '784540459', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(22, '100101', 'Terence', 'Silonda', 4, 'Lilian Mwenda', 'mwenda.lilian@yahoo.com', 'lilian.mwenda@gmail.com', '784540459', 'Thomas Silonad', 'Vusimuzi@gmail.com', 'silonda@gmail.com', NULL, 'Deborah Mwenda', 'info@bahari.org', NULL, '713617634'),
-(24, '100101', 'Terence', 'Silonda', 4, 'Lilian Mwenda', 'mwenda.lilian@yahoo.com', NULL, '784540459', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(25, '100101', 'Terence', 'Silonda', 4, 'Lilian Mwenda', 'mwenda.lilian@yahoo.com', 'lilian.mwenda@gmail.com', '784540459', 'Thomas Silonad', 'Vusimuzi@gmail.com', 'silonda@gmail.com', NULL, 'Deborah Mwenda', 'info@bahari.org', NULL, '713617634'),
-(26, '100101', 'Terence', 'Silonda', 4, 'Lilian Mwenda', 'mwenda.lilian@yahoo.com', NULL, '784540459', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(27, '100101', 'Terence', 'Silonda', 4, 'Lilian Mwenda', 'mwenda.lilian@yahoo.com', 'lilian.mwenda@gmail.com', '784540459', 'Thomas Silonad', 'Vusimuzi@gmail.com', 'silonda@gmail.com', NULL, 'Deborah Mwenda', 'info@bahari.org', NULL, '713617634');
+INSERT INTO `mw_students` (`id`, `student_registration_number`, `first_name`, `last_name`, `class`, `parent_1_name`, `parent_1_email`, `parent_1_phone_numbers`, `parent_2_name`, `parent_2_email`, `parent_2_phone_numbers`, `parent_3_name`, `parent_3_email`, `parent_3_phone_numbers`) VALUES
+(4, '100101', 'Terence', 'Silonda', 5, 'Lilian Mwenda', 'mwenda.lilian@yahoo.com', '784540459', NULL, NULL, NULL, NULL, NULL, NULL),
+(5, '100101', 'Terence', 'Silonda', 3, 'Lilian Mwenda', 'vusile@gmail.com', '784540459', NULL, NULL, NULL, NULL, NULL, NULL),
+(6, '100101', 'Terence', 'Silonda', 3, 'Lilian Mwenda', 'terence@zoomtanzania.com', '784540459', 'Thomas Silonad', 'tery_bboy@yahoo.com', NULL, 'Deborah Mwenda', NULL, '713617634'),
+(7, '100101', 'Terence', 'Silonda', 4, 'Lilian Mwenda', 'mwenda.lilian@yahoo.com', '784540459', NULL, NULL, NULL, NULL, NULL, NULL),
+(8, '100101', 'Terence', 'Silonda', 4, 'Lilian Mwenda', 'mwenda.lilian@yahoo.com', '784540459', 'Thomas Silonad', 'Vusimuzi@gmail.com', NULL, 'Deborah Mwenda', 'info@bahari.org', '713617634'),
+(9, '100101', 'Terence', 'Silonda', 4, 'Lilian Mwenda', 'mwenda.lilian@yahoo.com', '784540459', NULL, NULL, NULL, NULL, NULL, NULL),
+(10, '100101', 'Terence', 'Silonda', 4, 'Lilian Mwenda', 'mwenda.lilian@yahoo.com', '784540459', 'Thomas Silonad', 'Vusimuzi@gmail.com', NULL, 'Deborah Mwenda', 'info@bahari.org', '713617634'),
+(11, '100101', 'Terence', 'Silonda', 4, 'Lilian Mwenda', 'mwenda.lilian@yahoo.com', '784540459', NULL, NULL, NULL, NULL, NULL, NULL),
+(12, '100101', 'Terence', 'Silonda', 4, 'Lilian Mwenda', 'mwenda.lilian@yahoo.com', '784540459', 'Thomas Silonad', 'Vusimuzi@gmail.com', NULL, 'Deborah Mwenda', 'info@bahari.org', '713617634'),
+(13, '100101', 'Terence', 'Silonda', 4, 'Lilian Mwenda', 'mwenda.lilian@yahoo.com', '784540459', NULL, NULL, NULL, NULL, NULL, NULL),
+(14, '100101', 'Terence', 'Silonda', 4, 'Lilian Mwenda', 'mwenda.lilian@yahoo.com', '784540459', 'Thomas Silonad', 'Vusimuzi@gmail.com', NULL, 'Deborah Mwenda', 'info@bahari.org', '713617634'),
+(15, '100101', 'Terence', 'Silonda', 4, 'Lilian Mwenda', 'mwenda.lilian@yahoo.com', '784540459', NULL, NULL, NULL, NULL, NULL, NULL),
+(16, '100101', 'Terence', 'Silonda', 4, 'Lilian Mwenda', 'mwenda.lilian@yahoo.com', '784540459', 'Thomas Silonad', 'Vusimuzi@gmail.com', NULL, 'Deborah Mwenda', 'info@bahari.org', '713617634'),
+(17, '100101', 'Terence', 'Silonda', 4, 'Lilian Mwenda', 'mwenda.lilian@yahoo.com', '784540459', NULL, NULL, NULL, NULL, NULL, NULL),
+(18, '100101', 'Terence', 'Silonda', 4, 'Lilian Mwenda', 'mwenda.lilian@yahoo.com', '784540459', 'Thomas Silonad', 'Vusimuzi@gmail.com', NULL, 'Deborah Mwenda', 'info@bahari.org', '713617634'),
+(19, '100101', 'Terence', 'Silonda', 4, 'Lilian Mwenda', 'mwenda.lilian@yahoo.com', '784540459', NULL, NULL, NULL, NULL, NULL, NULL),
+(20, '100101', 'Terence', 'Silonda', 4, 'Lilian Mwenda', 'mwenda.lilian@yahoo.com', '784540459', 'Thomas Silonad', 'Vusimuzi@gmail.com', NULL, 'Deborah Mwenda', 'info@bahari.org', '713617634'),
+(21, '100101', 'Terence', 'Silonda', 4, 'Lilian Mwenda', 'mwenda.lilian@yahoo.com', '784540459', NULL, NULL, NULL, NULL, NULL, NULL),
+(22, '100101', 'Terence', 'Silonda', 4, 'Lilian Mwenda', 'mwenda.lilian@yahoo.com', '784540459', 'Thomas Silonad', 'Vusimuzi@gmail.com', NULL, 'Deborah Mwenda', 'info@bahari.org', '713617634'),
+(24, '100101', 'Terence', 'Silonda', 4, 'Lilian Mwenda', 'mwenda.lilian@yahoo.com', '784540459', NULL, NULL, NULL, NULL, NULL, NULL),
+(25, '100101', 'Terence', 'Silonda', 4, 'Lilian Mwenda', 'mwenda.lilian@yahoo.com', '784540459', 'Thomas Silonad', 'Vusimuzi@gmail.com', NULL, 'Deborah Mwenda', 'info@bahari.org', '713617634'),
+(26, '100101', 'Terence', 'Silonda', 4, 'Lilian Mwenda', 'mwenda.lilian@yahoo.com', '784540459', NULL, NULL, NULL, NULL, NULL, NULL),
+(27, '100101', 'Terence', 'Silonda', 4, 'Lilian Mwenda', 'mwenda.lilian@yahoo.com', '784540459', 'Thomas Silonad', 'Vusimuzi@gmail.com', NULL, 'Deborah Mwenda', 'info@bahari.org', '713617634');
 
 -- --------------------------------------------------------
 
@@ -873,8 +864,14 @@ INSERT INTO `mw_teachers_classes` (`teacher_id`, `class_id`, `priority`) VALUES
 (7, 4, 0),
 (8, 4, 0),
 (9, 4, 0),
-(10, 4, 0),
-(1, 4, 0);
+(1, 4, 0),
+(10, 5, 0),
+(11, 5, 0),
+(12, 5, 0),
+(13, 5, 0),
+(14, 5, 0),
+(16, 5, 0),
+(19, 3, 0);
 
 -- --------------------------------------------------------
 
@@ -890,7 +887,7 @@ CREATE TABLE IF NOT EXISTS `mw_teaching_staff` (
   `description` text NOT NULL,
   `school` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `mw_teaching_staff`
@@ -906,7 +903,8 @@ INSERT INTO `mw_teaching_staff` (`id`, `name`, `email`, `photo`, `description`, 
 (7, 'Mr. John', '', 'a8dec-Tulips.jpg', '<p>\r\n	He&#39;s great, what can we say?</p>\r\n', 0),
 (8, 'Tere', '', 'f3fca-Jellyfish.jpg', '<p>\r\n	test</p>\r\n', 0),
 (9, 'Sir. Terence', '', '07e98-Hydrangeas.jpg', '<p>\r\n	Funny</p>\r\n', 2),
-(10, 'Office Teacher', 'office@teacher.com', '2c3a7-Jellyfish.jpg', '<p>\r\n	Great</p>\r\n', 2);
+(10, 'Office Teacher', 'office@teacher.com', '2c3a7-Jellyfish.jpg', '<p>\r\n	Great</p>\r\n', 2),
+(11, 'Terence', 'tery@zt.com', '', '<p>\r\n	Cool</p>\r\n', 2);
 
 -- --------------------------------------------------------
 
@@ -973,18 +971,26 @@ CREATE TABLE IF NOT EXISTS `mw_users` (
   `last_name` varchar(50) DEFAULT NULL,
   `company` varchar(100) DEFAULT NULL,
   `phone` varchar(20) DEFAULT NULL,
+  `photo` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `school` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
 
 --
 -- Dumping data for table `mw_users`
 --
 
-INSERT INTO `mw_users` (`id`, `ip_address`, `username`, `password`, `salt`, `email`, `activation_code`, `forgotten_password_code`, `forgotten_password_time`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
-(1, '\0\0', 'administrator', '59beecdf7fc966e2f17fd8f65a4a9aeb09d4a3d4', '9462e8eee0', 'admin@admin.com', '', NULL, NULL, NULL, 1268889823, 1358510529, 1, 'Admin', 'istrator', 'ADMIN', '0'),
-(5, '\0\0', 'office@teacher.com', '0ff36032b9219def5aabdd0f747c429ce21f17b1', NULL, 'office@teacher.com', NULL, NULL, NULL, NULL, 1358329628, 1358502385, 1, 'Office Teacher', NULL, NULL, NULL),
-(6, '\0\0', '', 'a7a7840f9fb4d8f3086a73fc3f66f46b75fd825c', NULL, '', NULL, NULL, NULL, NULL, 1358336229, 1358336229, 1, 'Mr. Koala', NULL, NULL, NULL),
-(7, '\0\0', '', '70385371b3feca12a31f28ce6d0269f972ff3be1', NULL, '', NULL, NULL, NULL, NULL, 1358336344, 1358336344, 1, 'Mr. Koala', NULL, NULL, NULL);
+INSERT INTO `mw_users` (`id`, `ip_address`, `username`, `password`, `salt`, `email`, `activation_code`, `forgotten_password_code`, `forgotten_password_time`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`, `photo`, `description`, `school`) VALUES
+(1, '\0\0', 'administrator', '59beecdf7fc966e2f17fd8f65a4a9aeb09d4a3d4', '9462e8eee0', 'admin@admin.com', '', NULL, NULL, NULL, 1268889823, 1359035483, 1, 'Admin', 'istrator', 'ADMIN', '0', '', '', 0),
+(5, '\0\0', 'office@teacher.com', '0ff36032b9219def5aabdd0f747c429ce21f17b1', NULL, 'office@teacher.com', NULL, NULL, NULL, NULL, 1358329628, 1359024626, 1, 'Office Teacher', NULL, NULL, NULL, '', '', 0),
+(6, '\0\0', '', 'a7a7840f9fb4d8f3086a73fc3f66f46b75fd825c', NULL, '', NULL, NULL, NULL, NULL, 1358336229, 1358336229, 1, 'Mr. Koala', NULL, NULL, NULL, '', '', 0),
+(7, '\0\0', '', '70385371b3feca12a31f28ce6d0269f972ff3be1', NULL, '', NULL, NULL, NULL, NULL, 1358336344, 1358336344, 1, 'Mr. Koala', NULL, NULL, NULL, '', '', 0),
+(8, '\0\0', 'rupalhyp@hotmail.com', '575d5c812e0119a6ebb4f27921046d9dc4c28c17', NULL, 'rupalhyp@hotmail.com', NULL, NULL, NULL, NULL, 1358776457, 1358776472, 1, 'Rupal', 'Ganatra', NULL, '+255 755 378 324', '', '', 0),
+(9, '\0\0', 'tery@zt.com', 'd056326c9e5838f86ec1ce9b78a4407036a6bf05', NULL, 'tery@zt.com', NULL, NULL, NULL, NULL, 1358839604, 1358839621, 1, 'Terence', NULL, NULL, NULL, '', '', 0),
+(15, '\0\0', 'terence@zoomtanzania.com', '798780e864d2d493ae4a7575828fdf045613e445', NULL, 'terence@zoomtanzania.com', NULL, NULL, NULL, NULL, 1359035572, 1359035572, 1, 'Terence Sir', NULL, NULL, NULL, 'bbc9b-Desert.jpg', '', 2),
+(17, '\0\0', 'jmajor@myworld.com', '8ab07ab54ca6ca446a625b428024ac9c4ad5b055', NULL, 'jmajor@myworld.com', NULL, NULL, NULL, NULL, 1359035686, 1359035686, 1, 'John Major', NULL, NULL, NULL, '13607-Desert.jpg', '', 2),
+(19, '\0\0', 'jdede@myworld.com', '4129f8d1fb59bf59ed270ab4e5be8853adc0b699', NULL, 'jdede@myworld.com', NULL, NULL, NULL, NULL, 1359036268, 1359036397, 1, 'Juma Dede', NULL, NULL, NULL, '80122-Desert.jpg', '<p>\r\n	Jdede sir</p>\r\n', 3);
 
 -- --------------------------------------------------------
 
@@ -997,7 +1003,7 @@ CREATE TABLE IF NOT EXISTS `mw_users_groups` (
   `user_id` mediumint(8) unsigned NOT NULL,
   `group_id` mediumint(8) unsigned NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
 
 --
 -- Dumping data for table `mw_users_groups`
@@ -1011,7 +1017,13 @@ INSERT INTO `mw_users_groups` (`id`, `user_id`, `group_id`) VALUES
 (5, 4, 2),
 (6, 5, 3),
 (7, 6, 2),
-(8, 7, 2);
+(8, 7, 2),
+(9, 8, 4),
+(10, 9, 3),
+(11, 15, 3),
+(12, 17, 3),
+(13, 18, 3),
+(14, 19, 3);
 
 --
 -- Constraints for dumped tables

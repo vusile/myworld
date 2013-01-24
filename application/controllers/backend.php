@@ -269,10 +269,14 @@ class Backend extends CI_Controller {
 	}
 	
 	
-	function mw_teaching_staff($school=2)
+	function mw_users($school=2)
 	{
-		$this->grocery_crud->unset_columns('school');
-		$this->grocery_crud->unset_fields('school');
+		//$this->grocery_crud->set_table('mw_users');
+	    $this->grocery_crud->add_fields('first_name','email','photo','description','classes');
+	    $this->grocery_crud->edit_fields('first_name','email','photo','description','classes');
+	    $this->grocery_crud->columns('first_name','email','photo','description');
+	    $this->grocery_crud->display_as('first_name','Name');
+
 		$this->grocery_crud->where('school',$school);
 		$this->grocery_crud->set_relation_n_n('classes','mw_teachers_classes','mw_classes','teacher_id','class_id','class_name','priority',array('school'=>$school));
 		$this->grocery_crud->callback_after_insert(array($this, 'set_school'));
@@ -299,6 +303,8 @@ class Backend extends CI_Controller {
 			$this->grocery_crud->unset_add();
 		
 		}		
+
+
 		$this->grocery_crud->where('mw_classes.school',$school);
 		$this->grocery_crud->callback_after_insert(array($this, 'set_school'));
 		$this->grocery_crud->callback_after_update(array($this, 'set_school'));
@@ -318,25 +324,25 @@ class Backend extends CI_Controller {
 		$this->db->where('id',$primary_key);
 		$this->db->update($this->uri->segment(2),$data);
 		
-		if($this->uri->segment(2)=='mw_teaching_staff')
+		if($this->uri->segment(2)=='mw_users')
 		{
 
-
 			$this->db->where('id',$primary_key);
-			$teachers= $this->db->get('mw_teaching_staff');
+			$this->db->delete('mw_users');
+		//	$teachers= $this->db->get('mw_users');
 			
 			
 			
-			$teacher = $teachers->row();
+	//		$teacher = $teachers->row();
 			
-			$photo = $teacher->photo;
 			
-			//echo $logo;
+			
+	
 			
 			
 			$this->load->library('image_moo');
-			$source_image = 'photos/' . $photo;
-			$sizes = getimagesize('photos/' . $photo);
+			$source_image = 'photos/' . $_POST['photo'];
+			$sizes = getimagesize('photos/' . $_POST['photo']);
 			
 			
 			$width = $sizes[0];
@@ -350,11 +356,15 @@ class Backend extends CI_Controller {
 				$this->image_moo->load($source_image)->resize(999999999999,150)->save( $source_image,$overwrite=TRUE);	
 
 
-			$username = $teacher->email;
-			$email = $teacher->email;
-			$password = 'password';
+			$username = $_POST['email'];
+			$email = $_POST['email'];
+			$password = 'mYwOrLd';
 			$additional_data = array(
-				'first_name' => $teacher->name,
+				'first_name' => $_POST['first_name'],
+				'photo'=>$_POST['photo'],
+				'school'=>$this->uri->segment(3),
+				'id'=>$primary_key,
+				'description'=>$_POST['description']
 			);								
 			$group = array('3'); // Sets user to admin. No need for array('1', '2') as user is always set to member by default
 			$this->ion_auth->register($username, $password, $email, $additional_data,$group);
@@ -805,10 +815,16 @@ class Backend extends CI_Controller {
 		$this->db->where('id',$primary_key);
 		$photo=$this->db->get('mw_image_scroller');
 		$img = $photo->row()->photo;
-		
-		
 
 		$this->resize_img($img,'img','400','300',0);
+
+
+
+		// if($post_array['youtube'] != '')
+		// 	$data['youtube']= '<iframe width="400" height="300" src="' . str_replace('watch?v=', 'embed/', strip_tags($post_array['youtube']))  . '" frameborder="0" allowfullscreen></iframe>';
+
+		// $this->db->where('id', $primary_key);
+		// $this->db->update('mw_image_scroller', $data);
 	}
 	
 	function resize_img($img_name,$folder,$resize_width=99999999999,$resize_height=9999999999999,$proportional=1)
@@ -874,7 +890,11 @@ class Backend extends CI_Controller {
 			$data['edit'] = $edit;
 		}
 
-		$this->load->view('send-email',$data);
+		if(isset($data))
+			$this->load->view('send-email',$data);
+		else
+			$this->load->view('send-email');
+
 		
 	}
 
