@@ -80,7 +80,14 @@
      <?php if ($image->text_only_entry != ''): ?>
      <div style = "width:370px; height:275px; border: 2px #031289 solid; padding: 10px; font-size: 18px;"><?php echo $image->text_only_entry; ?></div>
          <?php elseif ($image->youtube != ''): ?>
-     <iframe width="400" height="300" src="<?php echo str_replace('watch?v=', 'embed/', $image->youtube ); ?>" frameborder="0" allowfullscreen></iframe> 
+        <?php
+            $v=substr($image->youtube, strpos($image->youtube, 'v='));
+            
+    $v = explode('=', $v);
+    $v = explode('?', $v[1]);
+
+    ?>
+     <iframe width="400" height="300" src="<?php echo 'http://www.youtube.com/embed/' . $v[0] ?>" frameborder="0" allowfullscreen></iframe> 
     <?php elseif($image->photo != ''): ?>
       <img src="img/<?php echo $image->photo ?>"  alt="<?php echo $image->caption; ?>" />
       <div class="carousel-caption">

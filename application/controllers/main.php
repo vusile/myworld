@@ -20,7 +20,7 @@ class Main extends CI_Controller {
 	public function index()
 	{
 		
-		$this->db->order_by('id','desc');
+		$this->db->order_by('date','desc');
 		$this->db->limit(3);
 		$data['news'] = $this->db->get('mw_news');
 		
@@ -28,8 +28,15 @@ class Main extends CI_Controller {
 		
 		$this->db->where('id',1);
 		$video = $this->db->get('mw_settings');
-		$data['video'] = str_replace('watch?v=', 'embed/', $video->row()->value);
-		
+		//$data['video'] = str_replace('watch?v=', 'embed/', $video->row()->value);
+		$v=substr($video->row()->value, strpos($video->row()->value, 'v='));
+
+		$v = explode('=', $v);
+
+
+
+		$data['video'] = 'http://www.youtube.com/embed/' . $v[1];
+
 		
 		$this->db->where('identifier','HOME');
 		$pages = $this->db->get('mw_pages');

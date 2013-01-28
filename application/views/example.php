@@ -47,6 +47,7 @@ a:hover
 			<a href='<?php echo site_url('backend/mw_categories')?>'>Page Categories</a> |
 			<a href='<?php echo site_url('backend/mw_logos')?>'>Logos</a> | 
 			<a href='<?php echo site_url('backend/mw_files')?>'>Uploaded Files and Documents</a> |
+			<a href='<?php echo site_url('backend/send_email_form')?>'>Send Email</a> |
 			<?php if($this->ion_auth->is_admin()): ?>
 				<a href='<?php echo site_url('backend/mw_messages')?>'>Site Messages</a> | 	
 				<a href='<?php echo site_url('backend/mw_page_templates')?>'>Page Templates</a> |

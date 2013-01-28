@@ -32,7 +32,7 @@
   <textarea class="input-xxlarge mini-texteditor" name = "message" id = "message" rows = "10" ><?php if(isset($message)) echo $message ?></textarea>
   </div>
   </div>
-  <?php if($this->ion_auth->in_group(array('admin','su'))): ?>
+  <?php if($this->ion_auth->in_group(array('admin','su')) and !isset($class)): ?>
     <div class="control-group">
     <label class="control-label" for="inputSubject">Send To:</label>
     <div class="controls">

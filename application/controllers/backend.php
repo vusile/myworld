@@ -903,18 +903,15 @@ class Backend extends CI_Controller {
 	{
 
 		$teacher = $this->ion_auth->user()->row();
-		$this->db->where('email', $teacher->email);
-		$teachers = $this->db->get('mw_teaching_staff');
-		$teacher = $teachers->row();
+
 
 				
-
 		$data = array(
 			'title'=>$_POST['subject'],
 			 'message'=>$_POST['message'],
 			 'date'=> date('Y-m-d'),
 			 'sent_by'=> $teacher->id
-			);
+		);
 
 		if(isset($_POST['edit']) and $_POST['edit'] != 0)
 		{
@@ -931,22 +928,54 @@ class Backend extends CI_Controller {
 		{
 			$this->db->insert('mw_emails', $data);
 			$id = $this->db->insert_id();
-			$data = array (
-			'email_id'=>$id,
-			'sent_to'=> $_POST['classes']
-			);
 
-			$this->db->insert('mw_email_sent_to', $data);
-			$sent_to_id =$this->db->insert_id();
+			$data = array();
+
+			if(isset($_POST['classes']))
+			{
+				$data = array (
+				'email_id'=>$id,
+				'sent_to'=> $_POST['classes']
+				);
+
+				$this->db->insert('mw_email_sent_to', $data);
+				$sent_to_id =$this->db->insert_id();
+			}	
+
+			else
+			{
+				
+
+				if($_POST['category']==2 or $_POST['category']==3)
+					$this->db->where('school', $_POST['category']);
+
+
+				$classes=$this->db->get('mw_classes');
+
+				foreach($classes->result() as $class)
+				{
+					$data[] = array (
+						'email_id'=>$id,
+						'sent_to'=> $class->id
+						);
+				}
+
+				//print_r($data);
+				$this->db->insert_batch('mw_email_sent_to', $data);
+			}
+
+
 		}	
-
 
 
 		$data = array();
 
 		$data['id'] = $id;
-		$data['title'] = 'Subject: ' . $_POST['subject'];
-		$data['details']->text = 'Message: ' . $_POST['message'] . '<a href = "send_class_message/' . $teacher->id . '/' . $sent_to_id .  '">This is Correct, Send it</a>  |  <a href= "send_email_form/' . $_POST['classes'] . '/' . $id . '"> Wait a Minute, I need to edit this</a>';
+		$data['title'] = 'Email Preview'; 
+		if(isset($_POST['classes']))
+		$data['details']->text = '<strong>Subject:</strong> ' . $_POST['subject'] .'<br><br><strong>Message:</strong> ' . $_POST['message'] . '<a href = "send_class_message/' . $teacher->id . '/' . $id .  '">This is Correct, Send it</a>  |  <a href= "send_email_form/' . $_POST['classes'] . '/' . $id . '"> Wait a Minute, I need to edit this</a>';
+		else
+		$data['details']->text = '<strong>Subject:</strong> ' . $_POST['subject'] .'<br><br><strong>Message:</strong> ' . $_POST['message'] . '<a href = "send_class_message/' . $teacher->id . '/' . $id .  '">This is Correct, Send it</a>  |  <a href= "send_email_form/0/' . $id . '"> Wait a Minute, I need to edit this</a>';
 		$data['teacher'] = $teacher->id;
 
 
@@ -975,12 +1004,18 @@ class Backend extends CI_Controller {
 
 		$this->db->where('email_id', $email_id);
 		$emails=$this->db->get('mw_email_sent_to');
-		$email= $emails->row();
-		$class=$email->sent_to;
+
+		$class=array();
+
+		foreach($emails->result() as $email)
+		{
+			$class[]=$email->sent_to;
+		}
 
 
 
-		$this->db->where('class', $class);
+
+		$this->db->where_in('class', $class);
 		$students=$this->db->get('mw_students');	
 
 		
@@ -1005,12 +1040,70 @@ class Backend extends CI_Controller {
 				$parent_emails[3] = $student->parent_3_email;
 			$this->email->to($parent_emails);
 
-			print_r($parent_emails);
+			//print_r($parent_emails);
 
 			if(!$this->email->send())
-				$not_set[$email_id]=$student->id;
-				
+				$not_sent[$student->id]=$student->id;	
 		}
+
+		if(isset($not_sent))
+			$this->resend_email($not_sent,$email_id);
+
+
+		echo "Email will be sent shortly. Return to <a href = 'backend'>Dashboard</a>."
+
+	}
+
+
+	function resend_email($not_sent,$email_id)
+	{
+		$this->load->library('email');
+		
+		$config['protocol'] = 'smtp';
+		//$config['smtp_host'] = 'ssl://smtp.googlemail.com';
+		$config['smtp_host'] = 'box800.bluehost.com';
+		$config['smtp_user'] = 'info@zoomtanzaniahost.com';
+		$config['smtp_pass'] = '123456';
+		$config['smtp_port'] = '26';
+		$config['mailtype'] = 'html';
+		$config['wordwrap'] = TRUE;
+		$config['charset']='utf-8';  
+		$config['newline']="\r\n";  
+
+		$this->email->initialize($config);
+
+		$this->db->where_in('id', $not_sent);
+		$students=$this->db->get('mw_students');
+
+		$this->db->where('id', $email_id);
+		$email_to_send=$this->db->get('mw_emails');
+
+		$email_subject = $email_to_send->row()->title;
+		$email_message = $email_to_send->row()->message;
+		$this->email->from('info@zoomtanzaniahost.com', 'My World');
+		$this->email->subject($email_subject);
+		$this->email->message($email_message);
+		$this->email->set_alt_message(strip_tags($email_message));
+
+		foreach ($students->result() as $student) {
+	
+			$parent_emails = array();
+			if($student->parent_1_email != '')
+				$parent_emails[1] = $student->parent_1_email;			
+			if($student->parent_2_email != '')
+				$parent_emails[2] = $student->parent_2_email;			
+			if($student->parent_3_email != '')
+				$parent_emails[3] = $student->parent_3_email;
+			$this->email->to($parent_emails);
+
+			//print_r($parent_emails);
+
+			if(!$this->email->send())
+				$not_sent[$student->id]=$student->id;	
+		}
+
+		if(isset($not_sent))
+			$this->resend_email($not_sent,$email_id);
 
 	}
 	
