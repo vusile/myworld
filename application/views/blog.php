@@ -61,7 +61,8 @@ if($feedContent && !empty($feedContent)):
 <?php echo substr(strip_tags($item->description),0,600); ?> ... <p>
 <a href="<?php  echo $item->link;  ?>"><p>Read More</p></a>
 </div>
-<div style = 'clear:both; margin-top:7px; margin-left:19px; width: 1024px; border-top:1px #cdcdcd solid;'></div>
+<div style = 'clear:both; margin-top:7px;  width: 1000px; border-top:1px #cdcdcd solid;'></div>
+<br>
 <?php endforeach; ?>
 	<?php endif; ?>
 <?php endif; ?>

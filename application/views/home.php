@@ -140,7 +140,7 @@
       <br> <h4 style = "margin-bottom:5px;">Our Partners</h4>
         <ul>
 		<?php foreach($links->result() as $link): ?>
-			<li style = "margin-bottom:3px;"><a href="<?php echo $link->partner_website ?>"><?php echo $link->partner_name ?></a></li>
+			<li style = "margin-bottom:3px;"><a href="<?php echo $link->partner_website ?>" target ="_blank"><?php echo $link->partner_name ?></a></li>
 		<?php endforeach; ?>
 
       </ul>

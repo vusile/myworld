@@ -243,6 +243,12 @@ class Training extends CI_Controller {
 			case 'staff.php':
 			$data['staff'] = $this->teaching_staff(2);
 			break;
+
+			case 'gallery.php':
+			$this->db->where('school', 5);
+			$data['school_url']='training';
+			$data['galleries'] = $this->db->get('mw_photo_albums');
+			break;
 			
 		}
 		
@@ -268,6 +274,33 @@ class Training extends CI_Controller {
 		$this->load->view('sidebar', $sidebar);
 		$this->load->view('subpage', $data);
 		$this->load->view('footer');
+	}
+
+	public function album($url)
+	{
+		$this->db->where('url',$url);
+		$album = $this->db->get('mw_photo_albums');
+
+		
+		$this->db->where('album',$album->row()->id);
+		$this->db->order_by('priority');
+		$data['images'] = $this->db->get('mw_album_images');
+		
+			
+		
+		if($album->num_rows() == 0)
+			$this->gallery();
+		else
+		{
+
+			$header = $this->header(5);
+			$data['title'] = $header['title'] = $album->row()->title;
+			$sidebar = $this->sidebar();
+			$this->load->view('header',$header);
+			$this->load->view('sidebar', $sidebar);
+			$this->load->view('album',$data);
+			$this->load->view('footer');
+		}
 	}
 }
 

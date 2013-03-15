@@ -47,6 +47,7 @@ a:hover
 			<a href='<?php echo site_url('backend/mw_categories')?>'>Page Categories</a> |
 			<a href='<?php echo site_url('backend/mw_logos')?>'>Logos</a> | 
 			<a href='<?php echo site_url('backend/mw_files')?>'>Uploaded Files and Documents</a> |
+			<a href='<?php echo site_url('backend/mw_newsletters')?>'>Newsletter</a> |
 			<a href='<?php echo site_url('backend/send_email_form')?>'>Send Email</a> |
 			<?php if($this->ion_auth->is_admin()): ?>
 				<a href='<?php echo site_url('backend/mw_messages')?>'>Site Messages</a> | 	
@@ -57,15 +58,19 @@ a:hover
 			<a href='<?php echo site_url('backend/mw_projects/2')?>'>My World Upanga Projects</a> |
 			<a href='<?php echo site_url('backend/mw_users/2')?>'>My World Upanga Staff</a> |
 			<a href='<?php echo site_url('backend/mw_classes/2')?>'>My World Upanga Classes</a> |
+			<a href='<?php echo site_url('backend/mw_photo_albums/2')?>'>My World Upanga Photo Albums</a> |
 			<h2>My World Msasani</h2>
 			<a href='<?php echo site_url('backend/mw_pages/3')?>'>My World Msasani Pages</a> |
 			<a href='<?php echo site_url('backend/mw_projects/3')?>'>My World Msasani Projects</a> |
 			<a href='<?php echo site_url('backend/mw_users/3')?>'>My World Msasani Staff</a> |
 			<a href='<?php echo site_url('backend/mw_classes/3')?>'>My World Msasani Classes</a> |
+			<a href='<?php echo site_url('backend/mw_photo_albums/3')?>'>My World Msasani Photo Albums</a> |
 			<h2>My World Community Centre</h2>
 			<a href='<?php echo site_url('backend/mw_pages/4')?>'>My World Community Centre Pages</a> |
+			<a href='<?php echo site_url('backend/mw_photo_albums/4')?>'>My World Community Centre Photo Albums</a> |
 			<h2>My World Training Centre Centre</h2>
 			<a href='<?php echo site_url('backend/mw_pages/5')?>'>My World Training Centre Pages</a> |
+			<a href='<?php echo site_url('backend/mw_photo_albums/5')?>'>My World Training Centre Photo Albums</a> |
 
 		<?php elseif($this->ion_auth->in_group('teacher')): ?>
 			<?php 

@@ -88,6 +88,28 @@ class Main extends CI_Controller {
 		
 		return $header;
 	}
+
+	public function nl($url)
+	{
+		$this->db->where('identifier',$url);
+		$newsletter = $this->db->get('mw_newsletters');
+
+		$data['subject'] = $newsletter->row()->newsletter_subject;
+	
+		$this->db->order_by('priority');
+		$this->db->where('newsletter_id',$newsletter->row()->id);
+		$news = $this->db->get('mw_newsletter_news');
+		
+		$articles = array();
+		foreach ($news->result() as $article)
+			$articles[] = $article->news_id;
+		
+		//print_r($articles);
+		$this->db->where_in('id',$articles);
+		$data['news'] = $this->db->get('mw_news');
+		
+		$this->load->view('NewsletterTemplate',$data);
+	}
 	
 	public function login()
 	{
@@ -270,27 +292,7 @@ class Main extends CI_Controller {
 		$this->load->view('Footer');
 	}
 	
-	public function album($id)
-	{
-		$this->db->where('album',$id);
-		$this->db->order_by('priority');
-		$data['images'] = $this->db->get('mw_images');
-		
-		$this->db->where('id',$id);
-		$album = $this->db->get('mw_albums');
-		
-		if($album->num_rows() == 0)
-			$this->gallery();
-		else
-		{
-			$data['title'] = $header['title'] = $album->row()->title;
-			$data['description'] = $album->row()->description;
-			
-			$this->load->view('Header',$header);
-			$this->load->view('Gallery',$data);
-			$this->load->view('Footer');
-		}
-	}
+
 	
 	private function randomAlphaNum($length){ 
 

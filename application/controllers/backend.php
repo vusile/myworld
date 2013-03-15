@@ -22,6 +22,16 @@ class Backend extends CI_Controller {
 		else
 			redirect('login');
 	}	
+
+
+	function _example_images_output($output = null)
+	{
+		if ($this->ion_auth->logged_in())
+			$this->load->view('example_images.php',$output);
+		else
+			redirect('login');
+	}	
+	
 	
 	function make_url_from_title($title,$table,$id)
 	{
@@ -1050,7 +1060,7 @@ class Backend extends CI_Controller {
 			$this->resend_email($not_sent,$email_id);
 
 
-		echo "Email will be sent shortly. Return to <a href = 'backend'>Dashboard</a>."
+		echo "Email will be sent shortly. Return to <a href = 'backend'>Dashboard</a>.";
 
 	}
 
@@ -1106,6 +1116,82 @@ class Backend extends CI_Controller {
 			$this->resend_email($not_sent,$email_id);
 
 	}
+
+
+
+	function mw_photo_albums($school)
+	{
+		$albums=$this->db->get('mw_photo_albums');
+		$image_array = array();
+		if($albums->num_rows() > 0)
+		{
+			foreach($albums->result() as $album)
+			{
+
+				$this->db->where('album',$album->id);
+				$this->db->where('priority',1);
+				$images = $this->db->get('mw_album_images');
+				
+				if($images->num_rows() == 0)
+				{
+
+					$this->db->where('album',$album->id);
+					$this->db->limit(1);
+					$images = $this->db->get('mw_album_images');
+					
+					if($images->num_rows() == 0)
+						continue;
+				}
+				
+				$image = $images->row()->image;
+				$image_array[] = array('id'=>$album->id,'thumb_nail'=>'<img width = "100" src = "img/thumb__' . $image . '" />');
+				
+			}
+			
+
+			if($images->num_rows()>0)
+				$this->db->update_batch('mw_photo_albums',$image_array,'id');
+		}
+
+		$this->grocery_crud->where('school',$school);
+		$this->grocery_crud->unset_fields('thumb_nail','images','url','school');
+		$this->grocery_crud->unset_columns('url','school');
+		$this->grocery_crud->callback_after_insert(array($this, 'albums_callback'));
+		$this->grocery_crud->callback_after_update(array($this, 'albums_callback'));
+		
+		$output = $this->grocery_crud->render();
+		$this->_example_output($output);
+	}	
+	
+	function albums_callback($post_array,$primary_key)
+	{
+		$data = array();
+		$data['images'] = '<a href = "backend/album_images/' . $primary_key . '/' . $this->uri->segment(3) . '">Images</a>'; 
+		$data['url'] = $this->make_url_from_title($post_array['title'],'mw_photo_albums',$primary_key);
+		$data['school'] = $this->uri->segment(3);
+		$this->db->where('id',$primary_key);
+		$this->db->update('mw_photo_albums', $data);
+
+	}
+	
+	function album_images()
+	{
+		$image_crud = new image_CRUD();
+	
+		$image_crud->set_primary_key_field('id');
+		$image_crud->set_url_field('image');
+		$image_crud->set_title_field('title');
+		$image_crud->set_table('mw_album_images')
+		->set_ordering_field('priority')
+		->set_relation_field('album')
+		->set_image_path('img');
+			
+		$output = $image_crud->render();
+		$output->additional_text = "<a href = 'backend/mw_photo_albums/" . $this->uri->segment(4) . "'>Return to Albums</a>";
+	
+		$this->_example_images_output($output);
+	}
+
 	
 	
 	function index()

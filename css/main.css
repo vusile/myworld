@@ -2,7 +2,7 @@
 /* CSS Document */
 *{
 	margin:0px auto;
-	font-family:"Comic Sans MS", cursive;
+	font-family:"Comic Sans MS", Georgia, Arial, cursive;
 }
 body{
 	background-image:url(../img/background-image.png);
@@ -378,3 +378,9 @@ padding:0;
 }
 
 #myCarousel img {padding:0;}
+
+#albumcol {width:220px; float: left; clear: none;}
+
+#albumcol img {width:200px;}
+
+/*#albumcol h2 {margin:0;}*/

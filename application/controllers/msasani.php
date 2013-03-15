@@ -145,7 +145,10 @@ class Msasani extends CI_Controller {
 				
 				foreach($hlinks->result() as $link)
 				{
-					$links .= '<a target="_blank" href="' . $link->url . '"><p>'. $link->link_text .'</p></a>';
+					$links .= '<a target="_blank" href="' . $link->url . '"><p style="font-weight: bold">'. $link->link_text .'</p></a>';
+
+					if(isset($link->description) and $link->description != '')
+						$links .= '<p>' . $link->description . '</p><br>';
 
 				}
 				
@@ -282,6 +285,12 @@ class Msasani extends CI_Controller {
 			case 'staff.php':
 			$data['staff'] = $this->teaching_staff(3);
 			break;
+
+			case 'gallery.php':
+			$this->db->where('school', 3);
+			$data['school_url']='msasani';
+			$data['galleries'] = $this->db->get('mw_photo_albums');
+			break;
 			
 		}
 		
@@ -308,6 +317,33 @@ class Msasani extends CI_Controller {
 		$this->load->view('sidebar', $sidebar);
 		$this->load->view('subpage', $data);
 		$this->load->view('footer');
+	}
+
+		public function album($url)
+	{
+		$this->db->where('url',$url);
+		$album = $this->db->get('mw_photo_albums');
+
+		
+		$this->db->where('album',$album->row()->id);
+		$this->db->order_by('priority');
+		$data['images'] = $this->db->get('mw_album_images');
+		
+			
+		
+		if($album->num_rows() == 0)
+			$this->gallery();
+		else
+		{
+
+			$header = $this->header(5);
+			$data['title'] = $header['title'] = $album->row()->title;
+			$sidebar = $this->sidebar();
+			$this->load->view('header',$header);
+			$this->load->view('sidebar', $sidebar);
+			$this->load->view('album',$data);
+			$this->load->view('footer');
+		}
 	}
 }
 
