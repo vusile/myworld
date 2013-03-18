@@ -308,7 +308,7 @@ margin-bottom: 60px;
 
 
 #footer{
-	height: 100px;
+	height: 70px;
 border-top: #031289 solid 1px;
 background-image: url(../img/Footer-Background.png);
 background-repeat: repeat-x;
@@ -328,10 +328,10 @@ background-color: #BBDCFF;
   left: 0;
 }
 #fback{
-	margin-top: 70px;
+	margin-top: 40px;
 }
 #fnav{
-	margin-top: 30px;
+	margin-top: -30px;
 	
 }
 #fnav a{
