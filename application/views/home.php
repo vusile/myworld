@@ -128,12 +128,13 @@
 
     <div id="partiners">
       <br>
-    <p style = "text-align:left; color:#031289;margin-bottom: 10px; font-size: 17.5px; font-weight: bold; margin-left: 15px;">Follow Us</p>
-    <div style = "margin-left:10px;">
+    <p style = "text-align:left; color:#031289;margin-bottom: 10px; font-size: 17.5px; font-weight: bold; margin-left: 10px;">Follow Us</p>
+    <div style = "margin-left:5px;">
     <div class="addthis_toolbox addthis_32x32_style addthis_default_style">
     <a class="addthis_button_twitter_follow space-between" addthis:userid="MyWorldTZ"></a>
     <a class="addthis_button_youtube_follow space-between" addthis:userid="MyWorldTz/videos"></a>
     <a class="addthis_button_pinterest_follow space-between" addthis:userid="MyWorldTz"></a>
+    <a href="#"><img src="img/subscribe_button.png" alt="" style="margin: -56px 0px 0px 132px;"></a>
     </div>
     </div>
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-50f7fc3e4132aef9"></script>
