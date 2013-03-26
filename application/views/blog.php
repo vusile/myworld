@@ -5,6 +5,7 @@
 <div class="title_h1">
 <h1><?php if(isset($title)) echo $title ?></h1>
 </div>
+<Br>
 <?php
 $feedUrl = "http://www.myworldpreschooltz.com/apps/blog/entries/feed/rss";
 $feedContent = "";
@@ -34,6 +35,7 @@ if($feedContent && !empty($feedContent)):
 <?php foreach($feedXml->channel->item as $item): ?>
  <!--start of span-->
 <div class="resizec">
+
 <h2><a href="<?php  echo $item->link;  ?>"><?php echo $item->title; ?></a></h2>
 
 	<?php
@@ -61,7 +63,7 @@ if($feedContent && !empty($feedContent)):
 <?php echo substr(strip_tags($item->description),0,600); ?> ... <p>
 <a href="<?php  echo $item->link;  ?>"><p>Read More</p></a>
 </div>
-<div style = 'clear:both; margin-top:7px;  width: 1000px; border-top:1px #cdcdcd solid;'></div>
+<div style = 'clear:both; margin-top:7px;  width: 1024px; border-top:1px #cdcdcd solid;'></div>
 <br>
 <?php endforeach; ?>
 	<?php endif; ?>

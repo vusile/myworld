@@ -2,7 +2,7 @@
 <div id="footer">
   <div id="footer_wrapper">
   <div class="span6">
-    <p id="fback">&copy; 2013 Myworld Preschool</p>
+    <p id="fback">&copy; 2013 My World Preschool</p>
   </div>
    <div class="span5">
      <div id="fnav">

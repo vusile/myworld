@@ -20,7 +20,7 @@ class Main extends CI_Controller {
 	public function index()
 	{
 		
-		$this->db->order_by('date','desc');
+		$this->db->order_by('id','desc');
 		$this->db->limit(3);
 		$data['news'] = $this->db->get('mw_news');
 		
@@ -167,6 +167,20 @@ class Main extends CI_Controller {
 		$this->load->view('page',$data);
 		$this->load->view('footer');
 	}
+
+
+	public function page($url)
+	{
+		$header = $this->header();
+		$this->db->where('url',$url);
+		$page = $this->db->get('mw_pages');
+		$data['details'] = $page->row();
+
+		$header['title'] = $data['details']->title;
+		$this->load->view('header',$header);
+		$this->load->view('page',$data);
+		$this->load->view('footer');
+	}
 		
 	public function blog()
 	{
@@ -182,7 +196,7 @@ class Main extends CI_Controller {
 	{
 		$header = $this->header();
 		$data['title'] =$header['title'] = 'My World Preschool News';
-		$this->db->order_by('date','desc');
+		$this->db->order_by('id','desc');
 		$data['news'] = $this->db->get('mw_news');
 
 			

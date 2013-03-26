@@ -134,7 +134,7 @@
     <a class="addthis_button_twitter_follow space-between" addthis:userid="MyWorldTZ"></a>
     <a class="addthis_button_youtube_follow space-between" addthis:userid="MyWorldTz/videos"></a>
     <a class="addthis_button_pinterest_follow space-between" addthis:userid="MyWorldTz"></a>
-    <a href="#"><img src="img/subscribe_button.png" alt="" style="margin: -56px 0px 0px 132px;"></a>
+    <a href="page/subscribe"><img src="img/subscribe_button.png" alt="" style="margin: -56px 0px 0px 132px;"></a>
     </div>
     </div>
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-50f7fc3e4132aef9"></script>

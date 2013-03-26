@@ -3,13 +3,23 @@
 <head>   
 <base href = "<?php echo base_url(); ?>" />
 <meta charset="utf-8">   
-<title><?php echo $title ?></title>   
+<title><?php echo $title ?> in Tanzania</title>   
 <meta name="description" content="<?php if(isset($description)) echo $description; ?>">  
 <link rel="stylesheet" type="text/css" href="css/custom.css">
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="icon" type="image/ico" href="img/favicon.ico"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+    <link href="http://cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css" />
+
+  <style type="text/css">
+#mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif;  }
+  /* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
+     We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */  
+
+#mc_embed_signup form{ padding:0 !important;}
+</style>
 
 <script src="js/jquery.cycle.all.js" type="text/javascript"></script>
 

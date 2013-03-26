@@ -19,7 +19,7 @@ $(function(){
 			{ name: 'basicstyles', items : [ 'Bold','Italic','Underline','Link','Unlink'] },
 			{ name: 'paragraph', items : [ 'NumberedList','BulletedList','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock' ] },
 			{ name: 'insert', items : [ 'Image','HorizontalRule','MediaEmbed' ] },
-			{ name: 'styles', items : [ 'BGColor','Table' ]}
+			{ name: 'styles', items : [ 'BGColor','Table','Styles','Source' ]}
 		],
 		width:700,
 		filebrowserBrowseUrl : 'http://localhost/myworld/ckfinder/ckfinder.html',
@@ -35,7 +35,8 @@ $(function(){
 		forcePasteAsPlainText : true,
 		pasteFromWordRemoveStyles : true,
 		stylesSet :[
-			{ name : 'Introduction Emphasis', element : 'strong' }
+			
+			{ name : 'Titles', element : 'span', styles : { 'font-size' : '30px', 'font-weight' : 'bold' } },
 		]
 		
 	
