@@ -21,7 +21,7 @@ $(function(){
 			{ name: 'insert', items : [ 'Image','HorizontalRule','MediaEmbed' ] },
 			{ name: 'styles', items : [ 'BGColor','Table','Styles','Source' ]}
 		],
-		width:700,
+		width:1050,
 		filebrowserBrowseUrl : 'http://localhost/myworld/ckfinder/ckfinder.html',
 		filebrowserImageBrowseUrl : 'http://localhost/myworld/ckfinder/ckfinder.html?type=Images',
 		filebrowserFlashBrowseUrl : 'http://localhost/myworld/ckfinder/ckfinder.html?type=Flash',
@@ -37,7 +37,10 @@ $(function(){
 		stylesSet :[
 			
 			{ name : 'Titles', element : 'span', styles : { 'font-size' : '30px', 'font-weight' : 'bold' } },
-		]
+		],
+
+		contentsCss : ['../../../css/custom.css', '../../../css/bootstrap.css', '../../../css/main.css'],
+		bodyId : ['wrap']
 		
 	
 	
